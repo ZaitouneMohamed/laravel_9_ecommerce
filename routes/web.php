@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\User\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,10 @@ Route::get('/admin/login', function () {
     return view('admin.auth.login');
 })->name("admin.login");
 
+Route::post('cart/store', [CartController::class, 'addToCart'])->name('cart.store')->middleware("auth");
+Route::get('cart', [CartController::class, 'cartlist'])->name('cart.list')->middleware("auth");
+Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.remove.item');
+
 Route::post("login_form" , [AuthController::class , 'login'])->name("login.function");
 Route::post("register_form" , [AuthController::class , 'register'])->name("register.function");
 Route::get("logout" , [AuthController::class , 'logout'])->name("logout");
@@ -41,5 +47,8 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection",'role
     Route::get('/', function () {
         return view('admin.index');
     });
+    Route::get("categories" , [HomeController::class , 'Categories'])->name("categories.list");
+    Route::get("SubCategories" , [HomeController::class , 'SubCategories'])->name("SubCategories.list");
+    Route::get("products" , [HomeController::class , 'Products'])->name("products.list");
 });
 
