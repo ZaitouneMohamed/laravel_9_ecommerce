@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Categories : ({{ $categories->count() }})</h3>
+            <h1 class="card-title">Categories : ({{ $categories->count() }})</h1>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

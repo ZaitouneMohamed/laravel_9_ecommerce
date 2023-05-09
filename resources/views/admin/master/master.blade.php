@@ -97,32 +97,32 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('admin.categories.list')}}" class="nav-link">
                                 <i class="fa-solid fa-bookmark"></i>
                                 <p>
                                     Categories
-                                    {{-- <span class="right badge badge-success">{{ \App\Models\Categorie::count() }}</span> --}}
+                                    <span class="right badge badge-success">{{ \App\Models\Categorie::count() }}</span>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('admin.SubCategories.list')}}" class="nav-link">
                                 <i class="fa-solid fa-user"></i>
                                 <p>
                                     Sub Categoiries
                                     <span class="right badge badge-success">
-                                        {{-- {{ \App\Models\SubCategorie::count() }} --}}
+                                        {{ \App\Models\SubCategorie::count() }}
                                     </span>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('admin.products.list')}}" class="nav-link">
                                 <i class="fa-solid fa-tag"></i>
                                 <p>
                                     products
                                     <span class="right badge badge-success">
-                                        {{-- {{\App\Models\Tags::all()->count()}} --}}
+                                        {{\App\Models\Product::all()->count()}}
                                     </span>
                                 </p>
                             </a>

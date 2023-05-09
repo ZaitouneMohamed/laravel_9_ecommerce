@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Sub Categories : ({{ $subcategories->count() }})</h3>
+            <h1 class="card-title">Sub Categories : ({{ $subcategories->count() }})</h1>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
@@ -11,6 +11,7 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Name</th>
+                        <th>categorie</th>
                         <th>products</th>
                         <th>Action</th>
                     </tr>
@@ -19,6 +20,7 @@
                     @foreach ($subcategories as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
+                            <td>{{ $item->categorie->name }}</td>
                             <td> {{ Str::limit($item->name, 10, '...') }}</td>
                             <td>{{ $item->products->count() }}</td>
                             <td>

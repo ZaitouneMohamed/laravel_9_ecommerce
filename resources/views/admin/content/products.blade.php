@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Categories : ({{ $categories->count() }})</h3>
+            <h1 class="card-title">Categories : ({{ $products->count() }})</h1>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -23,17 +23,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $item)
+                    @foreach ($products as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->title }}</td>
-                            <td>{{ $item->slug }}</td>
+                            <td>{{ Str::limit($item->title, 10, '...') }}</td>
+                            <td>{{ Str::limit($item->slug, 10 , '...') }}</td>
                             <td> {{ Str::limit($item->description, 10, '...') }}</td>
                             <td>{{ $item->price }}</td>
                             <td>{{ $item->old_price }}</td>
                             <td>{{ $item->inStock }}</td>
                             <td> <img width="70px" height="50px" src="{{ $item->image }}" alt=""> </td>
-                            <td>{{ $item->subcategorie->title }}</td>
+                            <td>{{ $item->SubCategorie->name }}</td>
                             <td>
                                 <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
                                 {{-- @if ($item->subcategories->count() == 0)
@@ -47,7 +47,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer clearfix">
-            {{ $categories->links() }}
+            {{ $products->links() }}
         </div>
     </div>
 @endsection
