@@ -38,11 +38,11 @@
                 <a href="#" class="h1"><b>Admin</b>LTE</a>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{route('login.function')}}" method="POST">
                     @csrf
                     @method('post')
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="email" value="admin@admin.com" class="form-control" name="email" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
