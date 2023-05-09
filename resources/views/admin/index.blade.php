@@ -24,7 +24,7 @@
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-info">
                             <div class="inner">
-                                {{-- <h3>{{ \App\Models\Categorie::count() }}</h3> --}}
+                                <h3>{{ \App\Models\Categorie::count() }}</h3>
                                 <p>Categories</p>
                             </div>
                             <div class="icon">
@@ -37,7 +37,20 @@
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-info">
                             <div class="inner">
-                                {{-- <h3>{{\App\Models\Product::count()}}</h3> --}}
+                                <h3>{{\App\Models\SubCategorie::count()}}</h3>
+                                <p>Sub Categorie</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{\App\Models\Product::count()}}</h3>
                                 <p>products</p>
                             </div>
                             <div class="icon">

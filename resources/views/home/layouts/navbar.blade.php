@@ -6,23 +6,31 @@
                 <div class="col-auto me-auto">
                     <ul class="top-nav">
                         <li>
-                            <a href="tel:+123-456-7890"><i
-                                    class="fa fa-phone-square me-2"></i>+123-456-7890</a>
+                            <a href="tel:+123-456-7890"><i class="fa fa-phone-square me-2"></i>+123-456-7890</a>
                         </li>
                         <li>
-                            <a href="mailto:mail@ecom.com"><i
-                                    class="fa fa-envelope me-2"></i>mail@ecom.com</a>
+                            <a href="mailto:mail@ecom.com"><i class="fa fa-envelope me-2"></i>mail@ecom.com</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-auto">
                     <ul class="top-nav">
-                        <li>
-                            <a href="/register"><i class="fas fa-user-edit me-2"></i>Register</a>
-                        </li>
-                        <li>
-                            <a href="/login"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
-                        </li>
+                        @guest
+                            <li>
+                                <a href="/register"><i class="fas fa-user-edit me-2"></i>Register</a>
+                            </li>
+                            <li>
+                                <a href="/login"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
+                            </li>
+                        @endguest
+                        @auth
+                            <li>
+                                <a href="#"><i class="fas fa-user"></i>Profile</a>
+                            </li>
+                            <li>
+                                <a href="{{route('logout')}}"><i class="fas fa-sign-in-alt me-2"></i>Log Out</a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -41,8 +49,7 @@
                     <form action="#">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="search" class="form-control border-dark"
-                                    placeholder="Search..." required>
+                                <input type="search" class="form-control border-dark" placeholder="Search..." required>
                                 <button class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
@@ -62,30 +69,28 @@
             <!-- Nav -->
             <div class="row">
                 <nav class="navbar navbar-expand-lg navbar-light bg-white col-12">
-                    <button class="navbar-toggler d-lg-none border-0" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNav">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="mainNav">
                         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span
-                                        class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            {{-- @foreach (\App\Models\Categorie::latest()->get() as $item)
-                                
+                            @foreach (\App\Models\Categorie::latest()->get() as $item)
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="electronics"
                                         data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">{{$item->name}}</a>
+                                        aria-expanded="false">{{ $item->name }}</a>
                                     <div class="dropdown-menu" aria-labelledby="electronics">
                                         @foreach ($item->subcategories as $item)
                                             <a class="dropdown-item" href="">{{ $item->name }}</a>
                                         @endforeach
                                     </div>
                                 </li>
-                            @endforeach --}}
-                            
+                            @endforeach
+
                         </ul>
                     </div>
                 </nav>
