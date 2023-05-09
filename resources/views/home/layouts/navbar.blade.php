@@ -59,8 +59,8 @@
                     <a href="#" class="header-item">
                         <i class="fas fa-heart me-2"></i><span id="header-favorite">0</span>
                     </a>
-                    <a href="cart.html" class="header-item">
-                        <i class="fas fa-shopping-bag me-2"></i><span id="header-qty" class="me-3">2</span>
+                    <a href="{{route('cart.list')}}" class="header-item">
+                        <i class="fas fa-shopping-bag me-2"></i><span id="header-qty" class="me-3">{{ Cart::getTotalQuantity()}}</span>
                         <i class="fas fa-money-bill-wave me-2"></i><span id="header-price">$4,000</span>
                     </a>
                 </div>
