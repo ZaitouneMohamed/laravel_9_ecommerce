@@ -27,7 +27,11 @@
                             <td>
                                 <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
                                 @if ($item->subcategories->count() == 0)
-                                    <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
+                                    <form action="{{ route('admin.categories.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
+                                    </form>
                                 @endif
                             </td>
                         </tr>
