@@ -33,4 +33,10 @@ class CartController extends Controller
 
         return redirect()->route('cart.list');
     }
+
+    public function add_order()
+    {
+        $cartItems = \Cart::getContent();
+        dd($cartItems);
+    }
 }

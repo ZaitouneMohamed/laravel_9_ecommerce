@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach (\App\Models\Product::latest()->take(4)->get() as $item)
+                            @foreach (\App\Models\Product::where("prenium",1)->take(4)->get() as $item)
                                 <!-- Product -->
                                 <div class="col-lg-3 col-sm-6 my-3">
                                     <div class="col-12 bg-white text-center h-100 product-item">
@@ -80,7 +80,7 @@
                                                     <input type="hidden" value="{{ $item->image }}" name="image">
                                                     <input type="hidden" value="3" name="quantity">
                                                     <button class="btn btn-outline-dark"><i
-                                                            class="fas fa-cart-plus me-2"></i>Add to cartt</button>
+                                                            class="fas fa-cart-plus me-2"></i>Add to cart</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -109,125 +109,39 @@
                             </div>
                         </div>
                         <div class="row">
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <span class="new">New</span>
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-1.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">Sony Alpha DSLR Camera</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <span class="product-price-old">
-                                                $500
-                                            </span>
-                                            <br>
-                                            <span class="product-price">
-                                                $500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Product -->
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <span class="new">New</span>
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-2.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">Optoma 4K HDR Projector</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <span class="product-price">
-                                                $1,500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Product -->
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <span class="new">New</span>
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-3.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">HP Envy Specter 360</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <div class="product-price-old">
-                                                $2,800
+                            @foreach (\App\Models\Product::latest()->take(4)->get() as $item)    
+                                <!-- Product -->
+                                <div class="col-lg-3 col-sm-6 my-3">
+                                    <div class="col-12 bg-white text-center h-100 product-item">
+                                        <span class="new">New</span>
+                                        <div class="row h-100">
+                                            <div class="col-12 p-0 mb-3">
+                                                <a href="#">
+                                                    <img src="{{ asset('assets/landing/images/image-1.jpg') }}"
+                                                        class="img-fluid">
+                                                </a>
                                             </div>
-                                            <span class="product-price">
-                                                $2,500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Product -->
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <span class="new">New</span>
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-4.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">Dell Alienware Area 51</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <span class="product-price">
-                                                $4,500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
+                                            <div class="col-12 mb-3">
+                                                <a href="#" class="product-name">{{ Str::limit($item->title, 20, '') }}</a>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <span class="product-price-old">
+                                                    {{ $item->old_price }}
+                                                </span>
+                                                <br>
+                                                <span class="product-price">
+                                                    {{ $item->price }}
+                                                </span>
+                                            </div>
+                                            <div class="col-12 mb-3 align-self-end">
+                                                <button class="btn btn-outline-dark" type="button"><i
+                                                        class="fas fa-cart-plus me-2"></i>Add to cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Product -->
+                                <!-- Product -->
+                            @endforeach
 
                         </div>
                     </div>
@@ -249,121 +163,34 @@
                             </div>
                         </div>
                         <div class="row">
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-1.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">Sony Alpha DSLR Camera</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <span class="product-price-old">
-                                                $500
-                                            </span>
-                                            <br>
-                                            <span class="product-price">
-                                                $500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Product -->
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-2.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">Optoma 4K HDR Projector</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <span class="product-price">
-                                                $1,500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Product -->
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-3.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">HP Envy Specter 360</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <div class="product-price-old">
-                                                $2,800
+                            @foreach (\App\Models\Product::orderBy("price",'asc')->take(4)->get() as $item)
+                                <!-- Product -->
+                                <div class="col-lg-3 col-sm-6 my-3">
+                                    <div class="col-12 bg-white text-center h-100 product-item">
+                                        <div class="row h-100">
+                                            <div class="col-12 p-0 mb-3">
+                                                <a href="#">
+                                                    <img src="{{ asset('assets/landing/images/image-4.jpg') }}"
+                                                        class="img-fluid">
+                                                </a>
                                             </div>
-                                            <span class="product-price">
-                                                $2,500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Product -->
-
-                            <!-- Product -->
-                            <div class="col-lg-3 col-sm-6 my-3">
-                                <div class="col-12 bg-white text-center h-100 product-item">
-                                    <div class="row h-100">
-                                        <div class="col-12 p-0 mb-3">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/landing/images/image-4.jpg') }}"
-                                                    class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <a href="#" class="product-name">Dell Alienware Area 51</a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <span class="product-price">
-                                                $4,500
-                                            </span>
-                                        </div>
-                                        <div class="col-12 mb-3 align-self-end">
-                                            <button class="btn btn-outline-dark" type="button"><i
-                                                    class="fas fa-cart-plus me-2"></i>Add to cart</button>
+                                            <div class="col-12 mb-3">
+                                                <a href="#" class="product-name">Dell Alienware Area 51</a>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <span class="product-price">
+                                                    {{ $item->price }}
+                                                </span>
+                                            </div>
+                                            <div class="col-12 mb-3 align-self-end">
+                                                <button class="btn btn-outline-dark" type="button"><i
+                                                        class="fas fa-cart-plus me-2"></i>Add to cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Product -->
+                                <!-- Product -->
+                            @endforeach
 
                         </div>
                     </div>

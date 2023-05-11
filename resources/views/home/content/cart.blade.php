@@ -41,14 +41,26 @@
                                                 <td>
                                                     {{ $item->price * $item->quantity }}
                                                 </td>
-                                                <td>
-                                                    <form action="{{ route('cart.remove.item') }}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" value="{{ $item->id }}" name="id">
-                                                        <button class="btn btn-link text-danger"><i
-                                                                class="fas fa-times"></i></button>
-                                                    </form>
-                                                </td>
+                                                @if ($loop->first)    
+                                                    <td>
+                                                        <form action="{{ route('cart.remove.item') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" value="{{ $item->id }}" name="id">
+                                                            <button class="btn btn-link text-danger"><i
+                                                                    class="fas fa-times"></i></button>
+                                                        </form>
+                                                    </td>
+                                                @else
+                                                    
+                                                    <td>
+                                                        <form action="{{ route('cart.remove.item') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" value="{{ $item->id }}" name="id">
+                                                            <button class="btn btn-link text-danger"><i
+                                                                    class="fas fa-times"></i></button>
+                                                        </form>
+                                                    </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
