@@ -20,10 +20,11 @@ return new class extends Migration
             $table->text("description");
             $table->decimal("price", 8, 2)->default(0);
             $table->decimal("old_price", 8, 2)->default(0);
-            $table->integer("inStock")->default(0);
             $table->string("image");
             $table->bigInteger("sub_categorie_id")->unsigned();
             $table->foreign("sub_categorie_id")->references("id")->on("sub_categories")->onDelete("cascade");
+            $table->integer("active")->default(0);
+            $table->integer("prenium")->default(0);
             $table->timestamps();
         });
     }

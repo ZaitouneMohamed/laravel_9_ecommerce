@@ -11,7 +11,8 @@ class Product extends Model
     protected $fillable = [
         "title", "slug", "description",
         "price", "old_price",
-        "image", "inStock", "sub_categories_id"
+        "prenium", "active",
+        "image", "sub_categorie_id"
     ];
     public function SubCategorie()
     {
