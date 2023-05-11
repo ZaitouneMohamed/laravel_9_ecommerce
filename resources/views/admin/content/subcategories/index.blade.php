@@ -20,8 +20,8 @@
                     @foreach ($subcategories as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->categorie->name }}</td>
                             <td> {{ Str::limit($item->name, 10, '...') }}</td>
+                            <td>{{ $item->categorie->name }}</td>
                             <td>{{ $item->products->count() }}</td>
                             <td>
                                 <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
