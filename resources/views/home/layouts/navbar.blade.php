@@ -28,7 +28,7 @@
                                 <a href="#"><i class="fas fa-user"></i>Profile</a>
                             </li>
                             <li>
-                                <a href="{{route('logout')}}"><i class="fas fa-sign-in-alt me-2"></i>Log Out</a>
+                                <a href="{{ route('logout') }}"><i class="fas fa-sign-in-alt me-2"></i>Log Out</a>
                             </li>
                         @endauth
                     </ul>
@@ -59,8 +59,9 @@
                     <a href="#" class="header-item">
                         <i class="fas fa-heart me-2"></i><span id="header-favorite">0</span>
                     </a>
-                    <a href="{{route('cart.list')}}" class="header-item">
-                        <i class="fas fa-shopping-bag me-2"></i><span id="header-qty" class="me-3">{{ Cart::getTotalQuantity()}}</span>
+                    <a href="{{ route('cart.list') }}" class="header-item">
+                        <i class="fas fa-shopping-bag me-2"></i><span id="header-qty"
+                            class="me-3">{{ Cart::getTotalQuantity() }}</span>
                         <i class="fas fa-money-bill-wave me-2"></i><span id="header-price">$4,000</span>
                     </a>
                 </div>
@@ -76,21 +77,32 @@
                     <div class="collapse navbar-collapse" id="mainNav">
                         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="index.html"><b>Home</b> <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             @foreach (\App\Models\Categorie::latest()->get() as $item)
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="electronics"
                                         data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">{{ $item->name }}</a>
+                                        aria-expanded="false"><b>{{ $item->name }}</b></a>
                                     <div class="dropdown-menu" aria-labelledby="electronics">
                                         @foreach ($item->subcategories as $item)
-                                            <a class="dropdown-item" href="">{{ $item->name }}</a>
+                                            <a class="dropdown-item" href=""><b>{{ $item->name }}</b></a>
                                         @endforeach
                                     </div>
                                 </li>
                             @endforeach
-
+                            @auth
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="electronics"
+                                        data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false"><b>{{ Auth::user()->name }}</b></a>
+                                    <div class="dropdown-menu" aria-labelledby="electronics">
+                                        <a class="dropdown-item" href="#"><b>profile</b></a>
+                                        <a class="dropdown-item" href="#"><b>my orders</b> </a>
+                                    </div>
+                                </li>
+                            @endauth
                         </ul>
                     </div>
                 </nav>
