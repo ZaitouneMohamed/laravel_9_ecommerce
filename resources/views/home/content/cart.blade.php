@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-12 text-right">
                                 <button class="btn btn-outline-secondary me-3" type="submit">Update</button>
-                                <a href="#" class="btn btn-outline-success">Checkout</a>
+                                <a href="{{route('add_new_order')}}" class="btn btn-outline-success">Checkout</a>
                             </div>
                         </form>
                     </div>
