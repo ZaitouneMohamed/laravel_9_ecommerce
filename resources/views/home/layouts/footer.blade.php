@@ -1,119 +1,180 @@
-<div class="col-12 align-self-end">
-    <!-- Footer -->
-    <footer class="row">
-        <div class="col-12 bg-dark text-white pb-3 pt-5">
-            <div class="row">
-                <div class="col-lg-2 col-sm-4 text-center text-sm-left mb-sm-0 mb-3">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="footer-logo">
-                                <a href="index.html">E-Commerce</a>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <address>
-                                221B Baker Street<br>
-                                London, England
-                            </address>
-                        </div>
-                        <div class="col-12">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        </div>
+    <!-- Start Instagram Feed  -->
+    <div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-01.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-8 text-center text-sm-left mb-sm-0 mb-3">
-                    <div class="row">
-                        <div class="col-12 text-uppercase">
-                            <h4>Who are we?</h4>
-                        </div>
-                        <div class="col-12 text-justify">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet vel
-                                ligula vel sodales. Aenean vel ullamcorper purus, ac pharetra arcu. Nam enim
-                                velit, ultricies eu orci nec, aliquam efficitur sem. Quisque in sapien a sem
-                                vestibulum volutpat at eu nibh. Suspendisse eget est metus. Maecenas mollis
-                                quis nisl ac malesuada. Donec gravida tortor massa, vitae semper leo
-                                sagittis a. Donec augue turpis, rutrum vitae augue ut, venenatis auctor
-                                nulla. Sed posuere at erat in consequat. Nunc congue justo ut ante sodales,
-                                bibendum blandit augue finibus.</p>
-                        </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-02.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-sm-3 col-5 ms-lg-auto ms-sm-0 ms-auto mb-sm-0 mb-3">
-                    <div class="row">
-                        <div class="col-12 text-uppercase">
-                            <h4>Quick Links</h4>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-03.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-04.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-06.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-07.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-08.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-09.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Instagram Feed  -->
+
+
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="footer-top-box">
+							<h3>Business Time</h3>
+							<ul class="list-time">
+								<li>Monday - Friday: 08.00am to 05.00pm</li> <li>Saturday: 10.00am to 08.00pm</li> <li>Sunday: <span>Closed</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="footer-top-box">
+							<h3>Newsletter</h3>
+							<form class="newsletter-box">
+								<div class="form-group">
+									<input class="" type="email" name="Email" placeholder="Email Address*" />
+									<i class="fa fa-envelope"></i>
+								</div>
+								<button class="btn hvr-hover" type="submit">Submit</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="footer-top-box">
+							<h3>Social Media</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<ul>
+                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            </ul>
+						</div>
+					</div>
+				</div>
+				<hr>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>About Freshshop</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
                         </div>
-                        <div class="col-12">
-                            <ul class="footer-nav">
-                                <li>
-                                    <a href="#">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">Privacy Policy</a>
-                                </li>
-                                <li>
-                                    <a href="#">Terms & Conditions</a>
-                                </li>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Our Sitemap</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Delivery Information</a></li>
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-1 col-sm-2 col-4 me-auto mb-sm-0 mb-3">
-                    <div class="row">
-                        <div class="col-12 text-uppercase text-underline">
-                            <h4>Help</h4>
-                        </div>
-                        <div class="col-12">
-                            <ul class="footer-nav">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contact Us</h4>
+                            <ul>
                                 <li>
-                                    <a href="#">FAQs</a>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
                                 </li>
                                 <li>
-                                    <a href="#">Shipping</a>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
                                 </li>
                                 <li>
-                                    <a href="#">Returns</a>
-                                </li>
-                                <li>
-                                    <a href="#">Track Order</a>
-                                </li>
-                                <li>
-                                    <a href="#">Report Fraud</a>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 text-center text-sm-left">
-                    <div class="row">
-                        <div class="col-12 text-uppercase">
-                            <h4>Newsletter</h4>
-                        </div>
-                        <div class="col-12">
-                            <form action="#">
-                                <div class="mb-3">
-                                    <input type="text" class="form-control"
-                                        placeholder="Enter your email..." required>
-                                </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-outline-light text-uppercase">Subscribe</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- Footer -->
-</div>
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+            <a href="https://html.design/">html design</a></p>
+    </div>
+    <!-- End copyright  -->
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>

@@ -1,116 +1,165 @@
-<div class="col-12">
-    <header class="row">
-        <!-- Top Nav -->
-        <div class="col-12 bg-dark py-2 d-md-block d-none">
-            <div class="row">
-                <div class="col-auto me-auto">
-                    <ul class="top-nav">
-                        <li>
-                            <a href="tel:+123-456-7890"><i class="fa fa-phone-square me-2"></i>+123-456-7890</a>
-                        </li>
-                        <li>
-                            <a href="mailto:mail@ecom.com"><i class="fa fa-envelope me-2"></i>mail@ecom.com</a>
-                        </li>
-                    </ul>
+<!-- Start Main Top -->
+<div class="main-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="custom-select-box">
+                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                        <option>¥ JPY</option>
+                        <option>$ USD</option>
+                        <option>€ EUR</option>
+                    </select>
                 </div>
-                <div class="col-auto">
-                    <ul class="top-nav">
-                        @guest
-                            <li>
-                                <a href="/register"><i class="fas fa-user-edit me-2"></i>Register</a>
-                            </li>
-                            <li>
-                                <a href="/login"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
-                            </li>
-                        @endguest
-                        @auth
-                            <li>
-                                <a href="#"><i class="fas fa-user"></i>Profile</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('logout') }}"><i class="fas fa-sign-in-alt me-2"></i>Log Out</a>
-                            </li>
-                        @endauth
+                <div class="right-phone-box">
+                    <p>Call US :- <a href="#"> +11 900 800 100</a></p>
+                </div>
+                <div class="our-link">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
+                        <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
+                        <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <!-- Top Nav -->
-
-        <!-- Header -->
-        <div class="col-12 bg-white pt-4">
-            <div class="row">
-                <div class="col-lg-auto">
-                    <div class="site-logo text-center text-lg-left">
-                        <a href="index.html">E-Commerce</a>
-                    </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="login-box">
+                    @guest
+                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                            <option>Register Here</option>
+                            <option>Sign In</option>
+                        </select>
+                    @endguest
+                    @auth
+                        <p>{{ auth()->user()->name }}</p>
+                    @endauth
                 </div>
-                <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
-                    <form action="#">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="search" class="form-control border-dark" placeholder="Search..." required>
-                                <button class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-auto text-center text-lg-left header-item-holder">
-                    <a href="#" class="header-item">
-                        <i class="fas fa-heart me-2"></i><span id="header-favorite">0</span>
-                    </a>
-                    <a href="{{ route('cart.list') }}" class="header-item">
-                        <i class="fas fa-shopping-bag me-2"></i><span id="header-qty"
-                            class="me-3">{{ Cart::getTotalQuantity() }}</span>
-                        <i class="fas fa-money-bill-wave me-2"></i><span id="header-price">$4,000</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Nav -->
-            <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white col-12">
-                    <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#mainNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="mainNav">
-                        <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html"><b>Home</b> <span
-                                        class="sr-only">(current)</span></a>
+                <div class="text-slid-box">
+                    <div id="offer-box" class="carouselTicker">
+                        <ul class="offer-box">
+                            <li>
+                                <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT80
                             </li>
-                            @foreach (\App\Models\Categorie::latest()->get() as $item)
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="electronics"
-                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false"><b>{{ $item->name }}</b></a>
-                                    <div class="dropdown-menu" aria-labelledby="electronics">
-                                        @foreach ($item->subcategories as $item)
-                                            <a class="dropdown-item" href=""><b>{{ $item->name }}</b></a>
-                                        @endforeach
-                                    </div>
-                                </li>
-                            @endforeach
-                            @auth
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="electronics"
-                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false"><b>{{ Auth::user()->name }}</b></a>
-                                    <div class="dropdown-menu" aria-labelledby="electronics">
-                                        <a class="dropdown-item" href="#"><b>profile</b></a>
-                                        <a class="dropdown-item" href="#"><b>my orders</b> </a>
-                                    </div>
-                                </li>
-                            @endauth
+                            <li>
+                                <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT30
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 50%! Shop Now 
+                            </li>
                         </ul>
                     </div>
-                </nav>
+                </div>
             </div>
-            <!-- Nav -->
-
         </div>
-        <!-- Header -->
+    </div>
+</div>
+<!-- End Main Top -->
 
-    </header>
+<!-- Start Main Top -->
+<header class="main-header">
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+        <div class="container">
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+                <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="shop.html">Sidebar Shop</a></li>
+                            <li><a href="shop-detail.html">Shop Detail</a></li>
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="my-account.html">My Account</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li class="side-menu">
+                        <a href="#">
+                            <i class="fa fa-shopping-bag"></i>
+                            <span class="badge">
+                                {{ Cart::getTotalQuantity() }}
+                            </span>
+                            <p>My Cart</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+        </div>
+        <!-- Start Side Menu -->
+        <div class="side">
+            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+            <li class="cart-box">
+                <ul class="cart-list">
+                    <li>
+                        <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                        <h6><a href="#">Delica omtantur </a></h6>
+                        <p>1x - <span class="price">$80.00</span></p>
+                    </li>
+                    <li>
+                        <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                        <h6><a href="#">Omnes ocurreret</a></h6>
+                        <p>1x - <span class="price">$60.00</span></p>
+                    </li>
+                    <li>
+                        <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                        <h6><a href="#">Agam facilisis</a></h6>
+                        <p>1x - <span class="price">$40.00</span></p>
+                    </li>
+                    <li class="total">
+                        <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                        <span class="float-right"><strong>Total</strong>: $180.00</span>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <!-- End Side Menu -->
+    </nav>
+    <!-- End Navigation -->
+</header>
+<!-- End Main Top -->
+<div class="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
 </div>
