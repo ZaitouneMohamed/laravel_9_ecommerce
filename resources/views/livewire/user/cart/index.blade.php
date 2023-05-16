@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-main table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Images</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($this->Cards as $item)
+                        <tr>
+                            <td class="thumbnail-img">
+                                <a href="#">
+                                    <img class="img-fluid"
+                                        src="{{ asset('assets/landing/images/img-pro-01.jpg') }}"
+                                        alt="" />
+                                </a>
+                            </td>
+                            <td class="name-pr">
+                                <a href="#">
+                                    {{ Str::limit($item->name, 10, '...') }}
+                                </a>
+                            </td>
+                            <td class="price-pr">
+                                <p>
+                                    {{ $item->price }}
+                                </p>
+                            </td>
+                            <td class="quantity-box">
+                                <input type="number" size="4"
+                                    value="{{ $item->quantity }}" min="0" step="1"
+                                    class="c-input-text qty text" width="100px"><br>
+                                <button class="btn btn-success" wire:click="increaseQantity({{$item->id}})">+</button>
+                                <button class="btn btn-danger" wire:click="decreaseQantity({{$item->id}})">-</button>
+                            </td>
+                            <td class="total-pr">
+                                <p>
+                                    {{ $item->price * $item->quantity }}
+                                </p>
+                            </td>
+                            <td class="remove-pr">
+                                    <button wire:click="DeleteItem({{ $item->id }})" class="btn btn-link text-danger">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col-lg-6 col-sm-6">
+        <div class="coupon-box">
+            <div class="input-group input-group-sm">
+                <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code"
+                    type="text">
+                <div class="input-group-append">
+                    <button class="btn btn-theme" type="button">Apply Coupon</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+        <div class="update-box">
+            <input value="Update Cart" type="submit" wire:click="UpdateCart()" >
+        </div>
+    </div>
+</div>
