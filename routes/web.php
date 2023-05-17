@@ -5,8 +5,8 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\User\CartController;
-use App\Http\Controllers\User\OrdersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +41,7 @@ Route::get('/admin/login', function () {
 
 Route::post('cart/store', [CartController::class, 'addToCart'])->name('cart.store')->middleware("auth");
 Route::get('cart', [CartController::class, 'cartlist'])->name('cart.list')->middleware("auth");
-Route::post('add_order', [OrdersController::class, 'add_new_order'])->name('add_new_order')->middleware("auth");
+Route::post('add_order', [ControllersOrdersController::class, 'add_new_order'])->name('add_new_order')->middleware("auth");
 Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.remove.item');
 
 Route::post("login_form" , [AuthController::class , 'login'])->name("login.function");
@@ -55,5 +55,6 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection",'role
     Route::resource("categories" , CategoriesController::class );
     Route::resource("SubCategories" , SubCategoriesController::class );
     Route::resource("products" , ProductsController::class );
+    Route::get('orders', [OrdersController::class, 'OrdersList'])->name('OrdersList');
 });
 
