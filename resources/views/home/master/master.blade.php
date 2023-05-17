@@ -14,6 +14,7 @@
     <link rel="stylesheet" href=" {{ asset('assets/landing/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href=" {{ asset('assets/landing/css/style.css') }} ">
     <link rel="stylesheet" href=" {{ asset('assets/landing/css/responsive.css') }} ">
+    @livewireStyles
     <link rel="stylesheet" href=" {{ asset('assets/landing/css/custom.css') }} ">
 </head>
 
@@ -25,16 +26,16 @@
 
 
 
-    
 
-    
+
+    @livewireScripts
     <script src="{{ asset('assets/landing/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('assets/landing/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/landing/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/landing/js/jquery.superslides.min.js') }}"></script>
     <script src="{{ asset('assets/landing/js/bootstrap-select.js') }}"></script>
     <script src="{{ asset('assets/landing/js/inewsticker.js') }}"></script>
-    <script src="{{ asset('assets/landing/js/bootsnav.js.') }}"></script>
+    <script src="{{ asset('assets/landing/js/bootsnav.js') }}"></script>
     <script src="{{ asset('assets/landing/js/images-loded.min.js') }}"></script>
     <script src="{{ asset('assets/landing/js/isotope.min.js') }}"></script>
     <script src="{{ asset('assets/landing/js/owl.carousel.min.js') }}"></script>
