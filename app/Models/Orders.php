@@ -12,6 +12,7 @@ class Orders extends Model
         "order_number","customar_name",
         "customar_number","customar_email",
         "category","sub_categorie",
-        "product","qty",
+        "product","qty","adresse","delivery_date",
+        "branch","payement_methode","delivery_time",
     ];
 }

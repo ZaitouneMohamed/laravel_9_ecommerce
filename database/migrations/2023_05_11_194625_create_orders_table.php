@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string("customar_name");
             $table->string("customar_number");
             $table->string("customar_email");
+            $table->string("adresse");
+            $table->date("delivery_date");
+            $table->string("delivery_time");
+            $table->string("branch");
+            $table->string("payement_methode");
             $table->string("category");
             $table->string("sub_categorie");
             $table->string("product");
