@@ -24,7 +24,7 @@ class Index extends Component
     public function increaseQantity($id)
     {
         \Cart::update($id, array(
-            'quantity' => 1,
+            'quantity' => +1,
         ));
         $this->getCardsProperty();
     }
