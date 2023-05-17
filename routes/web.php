@@ -41,7 +41,7 @@ Route::get('/admin/login', function () {
 
 Route::post('cart/store', [CartController::class, 'addToCart'])->name('cart.store')->middleware("auth");
 Route::get('cart', [CartController::class, 'cartlist'])->name('cart.list')->middleware("auth");
-Route::get('add_order', [OrdersController::class, 'add_new_order'])->name('add_new_order')->middleware("auth");
+Route::post('add_order', [OrdersController::class, 'add_new_order'])->name('add_new_order')->middleware("auth");
 Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.remove.item');
 
 Route::post("login_form" , [AuthController::class , 'login'])->name("login.function");
