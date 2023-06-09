@@ -33,9 +33,10 @@
                                 </p>
                             </td>
                             <td class="quantity-box">
-                                <input type="number" size="4"
+                                <p>{{ $item->quantity }}</p>
+                                {{-- <input type="number" size="4"
                                     value="{{ $item->quantity }}" min="0" step="1"
-                                    class="c-input-text qty text" width="100px"><br>
+                                    class="c-input-text qty text" width="100px"><br> --}}
                                 <button class="btn btn-success" wire:click="increaseQantity({{$item->id}})">+</button>
                                 <button class="btn btn-danger" wire:click="decreaseQantity({{$item->id}})">-</button>
                             </td>

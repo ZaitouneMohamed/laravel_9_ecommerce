@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Orders;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -14,7 +15,7 @@ class OrdersController extends Controller
         return view('admin.content.orders',compact('orders'));
     }
     public function add_new_order(Request $request)
-    {  
+    {
         $cartItems = \Cart::getContent();
         $order_number = DB::table('orders')->latest()->first();
         if ($order_number) {
