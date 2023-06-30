@@ -10,4 +10,8 @@ class NavCart extends Component
     {
         return view('livewire.user.cart.nav-cart');
     }
+    public function DeleteItem($id)
+    {
+        \Cart::remove($id);
+    }
 }
