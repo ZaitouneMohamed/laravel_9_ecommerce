@@ -1,122 +1,96 @@
-<!-- Start Main Top -->
-<div class="main-top">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                {{-- <div class="custom-select-box">
-                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                        <option>¥ JPY</option>
-                        <option>$ USD</option>
-                        <option>€ EUR</option>
-                    </select>
-                </div> --}}
-                <div class="right-phone-box">
-                    <p>Call US :- <a href="#"> +11 900 800 100</a></p>
+<header class="header_area">
+    <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+        <!-- Classy Menu -->
+        <nav class="classy-navbar" id="essenceNav">
+            <!-- Logo -->
+            <a class="nav-brand" href="/"><img src="{{ asset('assets/landing/img/core-img/logo.png') }}" alt=""></a>
+            <!-- Navbar Toggler -->
+            <div class="classy-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+            </div>
+            <!-- Menu -->
+            <div class="classy-menu">
+                <!-- close btn -->
+                <div class="classycloseIcon">
+                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                 </div>
-                <div class="our-link">
+                <!-- Nav Start -->
+                <div class="classynav">
                     <ul>
-                        @guest
-                            <li><a href="/login"><i class="fas fa-location-arrow"></i>Login</a></li>
-                        @endguest
-                        @auth
-                            <li><a href="#"><i class="fas fa-location-arrow"></i>Profile</a></li>
-                        @endauth
-                        <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                        <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                        <li><a href="#">Shop</a>
+                            <div class="megamenu">
+                                @foreach (\App\Models\Categorie::all() as $item)
+                                    <ul class="single-mega cn-col-4">
+                                        <li class="title">{{$item->name}}</li>
+                                        @foreach ($item->subcategories as $item)
+                                            <li><a href="shop.html">{{$item->name}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                @endforeach
+                                <div class="single-mega cn-col-4">
+                                    <img src="{{ asset('assets/landing/img/bg-img/bg-6.jpg') }}" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="shop.html">Shop</a></li>
+                                <li><a href="single-product-details.html">Product Details</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="single-blog.html">Single Blog</a></li>
+                                <li><a href="regular-page.html">Regular Page</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
+                <!-- Nav End -->
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="text-slid-box">
-                    <div id="offer-box" class="carouselTicker">
-                        <ul class="offer-box">
-                            <li>
-                                <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT80
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT30
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        </nav>
+
+        <!-- Header Meta Data -->
+        <div class="header-meta d-flex clearfix justify-content-end">
+            <!-- Search Area -->
+            <div class="search-area">
+                <form action="#" method="post">
+                    <input type="search" name="search" id="headerSearch" placeholder="Type for search">
+                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+            </div>
+            <!-- Favourite Area -->
+            <div class="favourite-area">
+                <a href="#"><img src="{{ asset('assets/landing/img/core-img/heart.svg') }}" alt=""></a>
+            </div>
+            <!-- User Login Info -->
+            <div class="user-login-info">
+                <a href="#"><img src="{{ asset('assets/landing/img/core-img/user.svg') }}" alt=""></a>
+            </div>
+            <!-- Cart Area -->
+            <div class="cart-area">
+                <a href="#" id="essenceCartBtn"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}" alt=""> <livewire:user.cart.cart-count /></a>
             </div>
         </div>
+
     </div>
-</div>
-<!-- End Main Top -->
-
-<!-- Start Main Top -->
-<header class="main-header">
-    <!-- Start Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-        <div class="container">
-            <!-- Start Header Navigation -->
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
-                    aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="/"><img src="{{ asset('assets/landing/images/logo.png') }} "
-                        class="logo" alt=""></a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbar-menu">
-                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="shop.html">Sidebar Shop</a></li>
-                            <li><a href="shop-detail.html">Shop Detail</a></li>
-                            <li><a href="cart.html">Cart</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="my-account.html">My Account</a></li>
-                            <li><a href="wishlist.html">Wishlist</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-
-            <!-- Start Atribute Navigation -->
-
-            <livewire:user.cart.icon />
-            <!-- End Atribute Navigation -->
-        </div>
-        <!-- Start Side Menu -->
-        <livewire:user.cart.nav-cart />
-        <!-- End Side Menu -->
-    </nav>
-    <!-- End Navigation -->
 </header>
-<!-- End Main Top -->
-<div class="top-search">
-    <div class="container">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Search">
-            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-        </div>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Right Side Cart Area ##### -->
+<div class="cart-bg-overlay"></div>
+
+<div class="right-side-cart-area">
+
+    <!-- Cart Button -->
+    <div class="cart-button">
+        <a href="#" id="rightSideCart"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}" alt="">
+            <livewire:user.cart.cart-count />
+        </a>
     </div>
+    <livewire:user.cart.nav-cart />
+
+
 </div>
