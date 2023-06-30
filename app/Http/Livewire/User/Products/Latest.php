@@ -14,13 +14,11 @@ class Latest extends Component
     }
     public function getProductsProperty()
     {
-        return Product::latest()->take(8)->get();
+        return Product::latest()->take(6)->get();
     }
     public function AddToCard($id)
     {
-        // $this->product_id = $id;
         $product = Product::find($id);
-        // $this->product_id = $product->title;
         \Cart::add([
             'id' => $id,
             'name' => $product->title,
@@ -28,6 +26,6 @@ class Latest extends Component
             'image' => $product->image,
             'quantity' => 1
         ]);
-
+        session()->flash('message', 'Post successfully updated.');
     }
 }

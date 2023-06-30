@@ -1,4 +1,4 @@
-<div class="products-box">
+{{-- <div class="products-box">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -26,15 +26,6 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right"
                                             title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                {{-- <form action="{{route('cart.store')}}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    @method("post")
-                                    <input type="hidden" value="{{ $item->id }}" name="id">
-                                    <input type="hidden" value="{{ $item->title }}" name="name">
-                                    <input type="hidden" value="{{ $item->price }}" name="price">
-                                    <input type="hidden" value="{{ $item->image }}" name="image">
-                                    <input type="hidden" value="1" name="quantity">
-                                </form> --}}
                                 <button class="cart" wire:click="AddToCard({{ $item->id }})">Add to Cart</button>
                             </div>
                         </div>
@@ -48,4 +39,68 @@
 
         </div>
     </div>
-</div>
+</div> --}}
+
+
+
+<section class="new_arrivals_area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>Latest Products</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="popular-products-slides owl-carousel">
+                    @foreach ($this->Products as $item)
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                {{-- <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt=""> --}}
+                                <img src="{{$item->image}}" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src="{{ asset('assets/landing/img/product-img/product-2.jpg') }}"
+                                    alt="">
+                                <!-- Favourite -->
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span>{{ $item->subcategorie->categorie->name }}</span>
+                                <a href="single-product-details.html">
+                                    <h6>{{ Str::limit($item->title, 15, '...') }}</h6>
+                                </a>
+                                <p class="product-price">${{ $item->price }}</p>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <button wire:click="AddToCard({{ $item->id }})" class="btn essence-btn">Add
+                                            to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{{route('ProductList')}}" class="btn essence-btn">
+                <i class="fa fa-eye" ></i>
+                SHOW MORE
+            </a>
+        </div>
+
+    </div>
+</section>
