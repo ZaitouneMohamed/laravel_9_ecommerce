@@ -55,6 +55,9 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection",'role
     Route::get('/', function () {
         return view('admin.index');
     });
+    Route::get('/timeslot', function () {
+        return view('admin.content.timeslot.index');
+    });
     Route::resource("categories" , CategoriesController::class );
     Route::resource("SubCategories" , SubCategoriesController::class );
     Route::resource("products" , ProductsController::class );
