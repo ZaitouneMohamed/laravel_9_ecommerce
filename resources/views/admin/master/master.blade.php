@@ -103,20 +103,86 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
+                                    Orders
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.OrdersList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All</p>
+                                        <span class="right badge badge-success">{{ \App\Models\Orders::count() }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.OrdersList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Confirmed</p>
+                                        <span class="right badge badge-success">{{ \App\Models\Orders::count() }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.OrdersList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Out Of Delivery</p>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\Orders::count() }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.OrdersList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Delivred</p>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\Orders::count() }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.OrdersList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Returned</p>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\Orders::count() }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.OrdersList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Failed</p>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\Orders::count() }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.OrdersList') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Canceled</p>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\Orders::count() }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
                                     Categories
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.categories.index')}}" class="nav-link">
+                                    <a href="{{ route('admin.categories.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>List</p>
-                                        <span class="right badge badge-success">{{ \App\Models\Categorie::count() }}</span>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\Categorie::count() }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.categories.create')}}" class="nav-link">
+                                    <a href="{{ route('admin.categories.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create</p>
                                     </a>
@@ -133,14 +199,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.SubCategories.index')}}" class="nav-link">
+                                    <a href="{{ route('admin.SubCategories.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>List</p>
-                                        <span class="right badge badge-success">{{ \App\Models\SubCategorie::count() }}</span>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\SubCategorie::count() }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.SubCategories.create')}}" class="nav-link">
+                                    <a href="{{ route('admin.SubCategories.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create</p>
                                     </a>
@@ -157,14 +224,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.products.index')}}" class="nav-link">
+                                    <a href="{{ route('admin.products.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>List</p>
-                                        <span class="right badge badge-success">{{ \App\Models\Product::count() }}</span>
+                                        <span
+                                            class="right badge badge-success">{{ \App\Models\Product::count() }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.products.create')}}" class="nav-link">
+                                    <a href="{{ route('admin.products.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create</p>
                                     </a>
@@ -172,10 +240,10 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.OrdersList')}}" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-times" aria-hidden="true"></i>
                                 <p>
-                                    Orders
+                                    Time Slot
                                 </p>
                             </a>
                         </li>
@@ -193,6 +261,9 @@
             </div>
         </div>
         <!-- REQUIRED SCRIPTS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+        </script>
 
         <!-- jQuery -->
         <script src="{{ asset('assets/adminlte/plugins/jquery/jquery.min.js') }}"></script>

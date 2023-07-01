@@ -24,7 +24,7 @@ class AuthController extends Controller
             "password" =>Hash::make($request->password)
         ])->assignRole('user');
         Auth::login($user);
-        return redirect('/');
+        return redirect()->intended('/');
     }
     public function login(Request $request)
     {
@@ -34,11 +34,11 @@ class AuthController extends Controller
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (auth()->user()->HasRole('admin')) {
-                return redirect('/admin');
+                return redirect()->intended('/admin');
             } else {
-                return redirect('/');
+                return redirect()->intended('/');
             }
-            
+
         }else {
             return redirect()->back();
         }
