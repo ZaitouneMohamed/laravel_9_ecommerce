@@ -11,7 +11,7 @@ class OrdersController extends Controller
 {
     public function OrdersList()
     {
-        $orders = Orders::latest();
+        $orders = Orders::latest()->get()->unique('order_number');
         return view('admin.content.orders',compact('orders'));
     }
     public function add_new_order(Request $request)
@@ -38,9 +38,12 @@ class OrdersController extends Controller
                 "payement_methode" => $request->payement_methode,
                 "adresse" => $request->adresse,
                 "product" => $product->title,
+                "product_price" => $product->price,
                 "sub_categorie" => $subcategorie->name,
                 "category" => $categorie,
-                "qty" => $item->quantity
+                "qty" => $item->quantity,
+                "total" => $item->quantity * $product->price,
+                "statue" => 1
             ]);
         }
         \Cart::clear();

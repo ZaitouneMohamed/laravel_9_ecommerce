@@ -27,7 +27,10 @@ return new class extends Migration
             $table->string("category");
             $table->string("sub_categorie");
             $table->string("product");
-            $table->string("qty");
+            $table->decimal("product_price");
+            $table->integer("qty");
+            $table->decimal("total");
+            $table->integer("statue");
             $table->timestamps();
         });
     }
