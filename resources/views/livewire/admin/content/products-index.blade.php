@@ -8,8 +8,8 @@
         {{-- <a href="{{route('admin.Products.create')}}" class="card-title">add new Pro</a> --}}
     </div>
     <!-- /.card-header -->
-    <div class="card-body">
-        <table class="table table-bordered">
+    <div class="table-responsive text-nowrap">
+        <table class="table ">
             <thead>
                 <tr>
                     <th style="width: 10px">#</th>
@@ -38,16 +38,20 @@
                         <td>{{ $item->SubCategorie->name }}</td>
                         <td>
                             @if ($item->prenium == 1)
-                                <button class="btn btn-success" wire:click="preniumToogle({{ $item->id }})" >prenium</button>
+                                <button class="btn btn-success"
+                                    wire:click="preniumToogle({{ $item->id }})">prenium</button>
                             @else
-                                <button class="btn btn-danger" wire:click="preniumToogle({{ $item->id }})" >not prenium</button>    
+                                <button class="btn btn-danger" wire:click="preniumToogle({{ $item->id }})">not
+                                    prenium</button>
                             @endif
                         </td>
                         <td>
                             @if ($item->active == 1)
-                                <button class="btn btn-success" wire:click="activeToogle({{ $item->id }})">Active</button>
+                                <button class="btn btn-success"
+                                    wire:click="activeToogle({{ $item->id }})">Active</button>
                             @else
-                                <button class="btn btn-danger" wire:click="activeToogle({{ $item->id }})">not active</button>    
+                                <button class="btn btn-danger" wire:click="activeToogle({{ $item->id }})">not
+                                    active</button>
                             @endif
                         </td>
                         <td>
@@ -60,9 +64,11 @@
                 @endforeach
             </tbody>
         </table>
+
     </div>
-    <!-- /.card-body -->
-    {{-- <div class="card-footer clearfix">
-        {{ $products->links() }}
-    </div> --}}
 </div>
+<!-- /.card-body -->
+<div class="card-footer clearfix">
+        {{ $products->links() }}
+    </div>
+{{-- </div> --}}

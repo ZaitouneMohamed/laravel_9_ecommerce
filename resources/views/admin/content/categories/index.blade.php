@@ -1,47 +1,49 @@
 @extends('admin.master.master')
 
 @section('content')
+    <h1>Catagories List ({{ $categories->count() }}) </h1>
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title">Categories : ({{ $categories->count() }})</h1>
+            <a href="{{route('admin.categories.create')}}" class="btn btn-success">add new categorie</a>
         </div>
-        <!-- /.card-header -->
         <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Name</th>
                         <th>sub Categories</th>
                         <th>image</th>
-                        <th style="width: 40px">Action</th>
+                        <th style="width: 40px">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($categories as $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td> {{ Str::limit($item->name, 10, '...') }}</td>
-                            <td>{{ $item->subcategories->count() }}</td>
-                            <td> <img width="70px" height="50px" src="{{ $item->image }}" alt=""> </td>
-                            <td>
-                                <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
-                                @if ($item->subcategories->count() == 0)
-                                    <form action="{{ route('admin.categories.destroy', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
-                                    </form>
-                                @endif
-                            </td>
+                            <<td>{{ $item->id }}</td>
+                                <td> {{ Str::limit($item->name, 10, '...') }}</td>
+                                <td>{{ $item->subcategories->count() }}</td>
+                                <td> <img width="70px" height="50px" src="{{ $item->image }}" alt=""> </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                    class="bx bx-edit-alt me-1"></i>
+                                                Edit</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                    class="bx bx-trash me-1"></i>
+                                                Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer clearfix">
-            {{ $categories->links() }}
         </div>
     </div>
 @endsection

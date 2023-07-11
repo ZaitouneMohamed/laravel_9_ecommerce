@@ -28,9 +28,13 @@ class HomeController extends Controller
         return view('admin.content.products', compact("products"));
     }
 
-    public function TimeSlot()
+    public function SwitchActiveModeForTimeSlot($id)
     {
-        $times = TimeSlot::all();
-        return view('')
+        $timeSlot = TimeSlot::find($id);
+        $timeSlot->active = !$timeSlot->active;
+        $timeSlot->save();
+        return redirect()->back()->with([
+            "success" => "time slot updated sucessfly"
+        ]);
     }
 }

@@ -19,7 +19,7 @@ class Orders extends Model
     public function getStatueAttribute($value)
     {
         if ($value == 1) {
-            return '<span class="badge badge-success rounded-pill d-inline">confirmed</span>';
+            return '<span class="badge bg-label-success me-1">confirmed</span>';
         } elseif ($value == 2) {
             return "confirmed";
         } else {

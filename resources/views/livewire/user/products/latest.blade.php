@@ -63,8 +63,8 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                {{-- <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt=""> --}}
-                                <img src="{{$item->image}}" alt="">
+                                <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt="">
+                                {{-- <img src="{{$item->image}}" alt=""> --}}
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="{{ asset('assets/landing/img/product-img/product-2.jpg') }}"
                                     alt="">

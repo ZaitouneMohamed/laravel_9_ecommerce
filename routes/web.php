@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
+use App\Http\Controllers\Admin\TimesSlotController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\User\CartController;
@@ -61,6 +62,8 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection",'role
     Route::resource("categories" , CategoriesController::class );
     Route::resource("SubCategories" , SubCategoriesController::class );
     Route::resource("products" , ProductsController::class );
+    Route::resource("TimeSlot" , TimesSlotController::class );
     Route::get('orders', [OrdersController::class, 'OrdersList'])->name('OrdersList');
+    Route::get('updateActiveTimeSlot/{id}', [HomeController::class, 'SwitchActiveModeForTimeSlot'])->name('SwitchActiveModeForTimeSlot');
 });
 
