@@ -69,27 +69,15 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 alert fade show border">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="4:00 pm - 8:00 pm"
-                                            name="delivery_time" id="time_slot_1" checked>
-                                        <label class="form-check-label" for="time_slot_1">
-                                            4:00 pm - 8:00 pm
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="2:00 pm - 4:00 pm"
-                                            name="delivery_time" id="time_slot_2">
-                                        <label class="form-check-label" for="time_slot_2">
-                                            2:00 pm - 4:00 pm
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="11:00 am - 12:30 pm"
-                                            name="delivery_time" id="time_slot_3">
-                                        <label class="form-check-label" for="time_slot_3">
-                                            11:00 am - 12:30 pm
-                                        </label>
-                                    </div>
+                                    @foreach (\App\Models\TimeSlot::where('active', 1)->get() as $item)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="{{ $item->FullTime }}"
+                                                name="delivery_time" id="time_slot_1" checked>
+                                            <label class="form-check-label" for="time_slot_1">
+                                                {{ $item->FullTime }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
