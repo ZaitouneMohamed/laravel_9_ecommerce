@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\TestMail;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail as FacadesMail;
+use Illuminate\Support\Facades\Mail;
 
 class TestCommand extends Command
 {
@@ -26,12 +27,19 @@ class TestCommand extends Command
      *
      * @return int
      */
+    public function __construct()
+    {
+        parent::__construct();
+    }
     public function handle()
     {
-        // Mail::to('dwm23-zaitoune@ifiag.com')->send(new TestMail());
-        FacadesMail::send('Mail.Test',  function ($message) {
-            $message->to("dwm23-zaitoune@ifiag.com");
-            $message->subject('Reset Password');
+        $recipient = 'dwm23-zaitoune@ifiag.com';
+        $subject = 'Demo Email';
+        $content = 'Hello there! This is a demo email sent from Laravel.';
+
+        Mail::raw($content, function ($message) use ($recipient, $subject) {
+            $message->to($recipient);
+            $message->subject($subject);
         });
 
         $this->info('Email sent successfully!');
