@@ -29,7 +29,7 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        Mail::to('recipient@example.com')->send(new TestMail());
+        Mail::to('dwm23-zaitoune@ifiag.com')->send(new TestMail());
 
         $this->info('Email sent successfully!');
     }
