@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\TestMail;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class TestCommand extends Command
 {
@@ -29,7 +28,11 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        Mail::to('dwm23-zaitoune@ifiag.com')->send(new TestMail());
+        // Mail::to('dwm23-zaitoune@ifiag.com')->send(new TestMail());
+        FacadesMail::send('Mail.Test',  function ($message) {
+            $message->to("dwm23-zaitoune@ifiag.com");
+            $message->subject('Reset Password');
+        });
 
         $this->info('Email sent successfully!');
     }
