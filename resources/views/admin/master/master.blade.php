@@ -333,6 +333,7 @@
             <div class="container-xxl flex-grow-1 container-p-y">
                 @include('messages.success')
                 @include('messages.error')
+                @include('messages.any')
                 @yield('content')
             <!-- Content wrapper -->
             </div>
