@@ -48,6 +48,7 @@ Route::post('add_order', [OrdersController::class, 'add_new_order'])->name('add_
 Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.remove.item');
 
 Route::get('products', [HomeCotroller::class, 'ProductList'])->name('ProductList');
+Route::get('getSubCategories', [HomeController::class, 'getSubCategories'])->name('getSubCategories');
 
 Route::post("login_form", [AuthController::class, 'login'])->name("login.function");
 Route::post("register_form", [AuthController::class, 'register'])->name("register.function");

@@ -37,4 +37,11 @@ class HomeController extends Controller
             "success" => "time slot updated sucessfly"
         ]);
     }
+
+    public function getSubCategories(Request $request)
+    {
+        $categorie = $request->categorie;
+        $subcategories = SubCategorie::where('categorie_id', $categorie)->get();
+        return response()->json($subcategories);
+    }
 }

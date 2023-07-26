@@ -38,11 +38,14 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Icons. Uncomment required icon fonts -->
         <link rel="stylesheet" href=" {{ asset('assets/admin/assets/vendor/fonts/boxicons.css') }}" />
 
@@ -357,6 +360,7 @@
 
         <!-- Core JS -->
         <!-- build:js assets/vendor/js/core.js -->
+        @yield('scripts')
         <script src="{{ asset('assets/admin/assets/vendor/libs/jquery/jquery.js') }}"></script>
         <script src="{{ asset('assets/admin/assets/vendor/libs/popper/popper.js') }}"></script>
         <script src="{{ asset('assets/admin/assets/vendor/js/bootstrap.js') }}"></script>
