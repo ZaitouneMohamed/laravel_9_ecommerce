@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\TimesSlotController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\auth\ForgetPasswordController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeCotroller;
@@ -35,7 +36,7 @@ Route::get('/login', function () {
 })->name("login");
 Route::get('/register', function () {
     return view('home.auth.register');
-})->name("login");
+})->name("register");
 
 Route::get('/admin/login', function () {
     return view('admin.auth.login');
@@ -48,22 +49,28 @@ Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.re
 
 Route::get('products', [HomeCotroller::class, 'ProductList'])->name('ProductList');
 
-Route::post("login_form" , [AuthController::class , 'login'])->name("login.function");
-Route::post("register_form" , [AuthController::class , 'register'])->name("register.function");
-Route::get("logout" , [AuthController::class , 'logout'])->name("logout");
+Route::post("login_form", [AuthController::class, 'login'])->name("login.function");
+Route::post("register_form", [AuthController::class, 'register'])->name("register.function");
+Route::get("logout", [AuthController::class, 'logout'])->name("logout");
 
-Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection",'role:admin'])->group(function () {
+Route::controller(ForgetPasswordController::class)->group(function () {
+    Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.get');
+    Route::post('forget-password',  'submitForgetPasswordForm')->name('forget.password.post');
+    Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.get');
+    Route::post('reset-password', 'submitResetPasswordForm')->name('reset.password.post');
+});
+
+Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'role:admin'])->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     });
     Route::get('/timeslot', function () {
         return view('admin.content.timeslot.index');
     });
-    Route::resource("categories" , CategoriesController::class );
-    Route::resource("SubCategories" , SubCategoriesController::class );
-    Route::resource("products" , ProductsController::class );
-    Route::resource("TimeSlot" , TimesSlotController::class );
+    Route::resource("categories", CategoriesController::class);
+    Route::resource("SubCategories", SubCategoriesController::class);
+    Route::resource("products", ProductsController::class);
+    Route::resource("TimeSlot", TimesSlotController::class);
     Route::get('orders', [OrdersController::class, 'OrdersList'])->name('OrdersList');
     Route::get('updateActiveTimeSlot/{id}', [HomeController::class, 'SwitchActiveModeForTimeSlot'])->name('SwitchActiveModeForTimeSlot');
 });
-

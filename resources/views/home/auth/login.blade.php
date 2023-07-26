@@ -30,6 +30,9 @@
                                 </div>
                             </div>
                             <div class="mb-3">
+                                <a href="{{route('forget.password.get')}}">Reset Password</a>
+                            </div>
+                            <div class="mb-3">
                                 <button type="submit" class="btn btn-outline-dark">Login</button>
                             </div>
                         </form>
