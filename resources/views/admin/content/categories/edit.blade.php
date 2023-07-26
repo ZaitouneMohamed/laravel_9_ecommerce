@@ -3,16 +3,16 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Add New Categorie</h3>
+            <h3 class="card-title">update Categorie</h3>
         </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <form method="POST" action="{{route('admin.categories.store')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.categories.update', $categorie->id) }}" enctype="multipart/form-data">
             @csrf
+            @method("put")
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Enter name">
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name"
+                        value="{{ $categorie->name }}" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Image</label>

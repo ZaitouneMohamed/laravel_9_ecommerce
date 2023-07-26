@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Categorie\CreateCategorieRequest;
+use App\Http\Requests\Admin\Categorie\UpdateCategorieRequest;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Categorie::latest()->paginate(10);
-        return view('admin.content.categories.index',compact("categories"));
+        return view('admin.content.categories.index', compact("categories"));
     }
 
     /**
@@ -35,14 +37,14 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategorieRequest $request)
     {
-        $this->validate($request,[
-            "name" => "required"
-        ]);
+        $image = $request->image;
+        $image_name = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('images/categories'), $image_name);
         Categorie::create([
             "name" => $request->name,
-            "image" => "https://via.placeholder.com/640x480.png/003344?text=est"
+            "image" => $image_name
         ]);
         return redirect()->route("admin.categories.index")->with([
             "success" => "categorie added successfly"
@@ -68,7 +70,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categorie = Categorie::findOrFail($id);
+        return view('admin.content.categories.edit', compact("categorie"));
     }
 
     /**
@@ -78,9 +81,29 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategorieRequest $request, $id)
     {
-        //
+        $categorie = Categorie::findOrFail($id);
+        if ($request->has("image")) {
+            $image = $categorie->image;
+            $image_path = public_path('images/categories/' . $image);
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+            $new_image = $request->image;
+            $image_name = time() . '_' . $new_image->getClientOriginalName();
+            $new_image->move(public_path('images/categories'), $image_name);
+            $categorie->update([
+                "image" => $image_name
+            ]);
+        }
+        $data = $request->validated();
+        $categorie->update([
+            "name" => $request->name
+        ]);
+        return redirect()->route('admin.categories.index')->with([
+            "success" => "categorie updated successfly"
+        ]);
     }
 
     /**
@@ -91,7 +114,13 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Categorie::find($id)->delete();
+        $categorie = Categorie::find($id);
+        $image = $categorie->image;
+        $image_path = public_path('images/categories/' . $image);
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+        $categorie->delete();
         return redirect()->route("admin.categories.index")->with([
             "success" => "categorie deleted successfly"
         ]);
