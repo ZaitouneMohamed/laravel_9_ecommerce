@@ -2,7 +2,7 @@
     <div class="card-header">
         <h3 class="card-title">Add New Product</h3>
     </div>
-    <form method="POST" enctype="multipart/form-data" action="{{ route('admin.products.store')}}" method="POST">
+    <form method="POST" enctype="multipart/form-data" action="{{ route('admin.products.store') }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -30,21 +30,20 @@
                 <input type="file" class="form-control" id="exampleInputEmail1" name="image"
                     placeholder="Enter image">
             </div>
-            <div class="form-group">
-                <div class="form-group">
+            <div class="row">
+                <div class="col-6">
+
                     <label for="exampleSelectBorder">Select Categorie</label>
-                    <select class="custom-select form-control-border" wire:change="updateSubCategoriesOptions"
-                        wire:model="categorie" id="exampleSelectBorder">
+                    <select class="form-select" wire:change="updateSubCategoriesOptions" wire:model="categorie"
+                        id="exampleSelectBorder">
                         @foreach ($categories as $item)
                             <option value="{{ $item->id }}"> {{ $item->name }} </option>
                         @endforeach
                     </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="exampleSelectBorder">Select Categorie</label>
-                    <select class="custom-select form-control-border" name="sub_categorie" id="exampleSelectBorder">
+                <div class="col-6">
+                    <label for="exampleSelectBorder">Select sub Categorie</label>
+                    <select class="form-select" name="sub_categorie" id="exampleSelectBorder">
                         @if (isset($subcategories))
                             @foreach ($subcategories as $item)
                                 <option value="{{ $item->id }}"> {{ $item->name }} </option>

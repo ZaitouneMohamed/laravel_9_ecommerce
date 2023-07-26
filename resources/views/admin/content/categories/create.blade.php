@@ -18,11 +18,8 @@
                     <label for="exampleInputFile">Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                            <input type="file" name="image" class="form-control" id="exampleInputFile">
                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
                         </div>
                     </div>
                 </div>

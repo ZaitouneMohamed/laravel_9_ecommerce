@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="exampleSelectBorder">Select Categorie</label>
-                        <select class="custom-select form-control-border" name="categorie" id="exampleSelectBorder">
+                        <select class="form-select" name="categorie" id="exampleSelectBorder">
                             @foreach ($categories as $item)
                                 <option value="{{$item->id}}"> {{ $item->name }} </option>
                             @endforeach
