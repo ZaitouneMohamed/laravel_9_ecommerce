@@ -22,11 +22,11 @@ class UsersSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make("password"),
         ])->assignRole('admin');
-        User::create([
-            'name' => "user",
-            'email' => "user@user.com",
-            'email_verified_at' => now(),
-            'password' => Hash::make("password"),
-        ])->assignRole('user');
+        // User::create([
+        //     'name' => "user",
+        //     'email' => "user@user.com",
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make("password"),
+        // ])->assignRole('user');
     }
 }
