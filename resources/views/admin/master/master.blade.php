@@ -331,11 +331,8 @@
 
             <!-- Content wrapper -->
             <div class="container-xxl flex-grow-1 container-p-y">
-                @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible">
-                        {{ session()->get('success') }}
-                    </div>
-                @endif
+                @include('messages.success')
+                @include('messages.error')
                 @yield('content')
             <!-- Content wrapper -->
             </div>
