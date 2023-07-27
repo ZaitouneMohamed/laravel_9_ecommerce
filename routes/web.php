@@ -33,10 +33,10 @@ Route::get('/login', function () {
         return redirect('/');
     }
     return view('home.auth.login');
-})->name("login");
+})->name("login")->middleware("guest");
 Route::get('/register', function () {
     return view('home.auth.register');
-})->name("register");
+})->name("register")->middleware("guest");
 
 Route::get('/admin/login', function () {
     return view('admin.auth.login');
