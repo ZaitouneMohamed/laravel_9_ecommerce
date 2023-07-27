@@ -20,7 +20,7 @@
                 <tbody>
                     @foreach ($categories as $item)
                         <tr>
-                            <<td>{{ $item->id }}</td>
+                            <td>{{ $item->id }}</td>
                                 <td> {{ $item->name, 10 }}</td>
                                 <td>{{ $item->subcategories->count() }}</td>
                                 <td> <img width="70px" height="50px"
