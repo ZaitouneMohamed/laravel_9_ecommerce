@@ -28,8 +28,88 @@
 
         {{-- @method("post") --}}
         <div class="container">
-            <livewire:user.cart.index />
-            <form action="{{ route('add_new_order') }}" method="post">
+            <div class="alert alert-primary alert-dismissible fade show" id="success-message" style="display: none;"
+                role="alert">
+                qty updated successfly
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Images</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $total = 0 @endphp
+                                @if (session('cart'))
+                                    @foreach (session('cart') as $id => $item)
+                                        <tr rowId="{{ $id }}">
+                                            <td class="thumbnail-img">
+                                                <a href="#">
+                                                    <img class="img-fluid"
+                                                        src="{{ asset('assets/landing/images/img-pro-01.jpg') }}"
+                                                        alt="" />
+                                                </a>
+                                            </td>
+                                            <td class="name-pr">
+                                                <a href="#">
+                                                    {{ Str::limit($item['title'], 10, '...') }}
+                                                </a>
+                                            </td>
+                                            <td class="price-pr">
+                                                <p>
+                                                    {{ $item['price'] }}
+                                                </p>
+                                            </td>
+                                            <td class="quantity-box">
+                                                <input min="1" type="number" id="{{ $item['id'] }}"
+                                                    value="{{ $item['quantity'] }}"
+                                                    onblur="edit({{ $item['id'] }},{{ $item['price'] }})">
+                                            </td>
+                                            <td class="total-pr">
+                                                <p id="total{{ $id }}">
+                                                    {{ $item['price'] * $item['quantity'] }}
+                                                </p>
+                                            </td>
+                                            <td class="remove-pr">
+                                                <button class="btn btn-link text-danger delete-product">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $total += $item['price'] * $item['quantity'];
+                                        @endphp
+                                    @endforeach
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5" class="text-right">
+                                                <a href="/" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                                                <button class="btn btn-danger">Checkout</button>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                @else
+                                    <h1>your card is empty</h1>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <form
+            {{-- action="{{ route('add_new_order') }}" --}}
+            method="post">
                 @csrf
                 <div class="row my-5">
                     <div class="col-lg-3 col-sm-12">
@@ -82,7 +162,34 @@
                             </div>
                         </div>
                     </div>
-                    <livewire:user.cart.order-summuary />
+                    <div class="col-lg-3 col-sm-12">
+                        <div class="order-box">
+                            <h3>Order summary</h3>
+                            <div class="d-flex">
+                                <h4>Total</h4>
+                                <div class="ml-auto font-weight-bold"><span id="total"></span></div>
+                            </div>
+                            <div class="d-flex">
+                                <h4>Discount</h4>
+                                <div class="ml-auto font-weight-bold"> $ 0 </div>
+                            </div>
+                            <hr class="my-1">
+                            <div class="d-flex">
+                                <h4>Coupon Discount</h4>
+                                <div class="ml-auto font-weight-bold"> $ 0 </div>
+                            </div>
+                            <div class="d-flex">
+                                <h4>Shipping Cost</h4>
+                                <div class="ml-auto font-weight-bold"> Free </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex gr-total">
+                                <h5>Grand Total</h5>
+                                <div class="ml-auto h5" id="grandtotal"> $  </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
                 </div>
                 <div class="row my-5">
                     <div class="col-lg-3 col-sm-12">
@@ -150,4 +257,71 @@
         </form>
     </div>
     <!-- End Cart -->
+@endsection
+
+@section('scripts')
+    <script>
+        function getCartCount() {
+            total = document.getElementById('total');
+            grandtotal = document.getElementById('grandtotal');
+            $.ajax({
+                type: 'get',
+                url: "/getCartCount",
+                success: function(response) {
+                    var a = response.total
+                    total.innerHTML = "$" + a;
+                    grandtotal.innerHTML = "$" + response.subtotal;
+                },
+                error: function() {
+                    console.log('An error occurred .');
+                }
+            })
+        }
+
+        // document.querySelector('body').onload =
+        setInterval(() => {
+            getCartCount();
+        }, 100);
+
+        function edit(id, price) {
+            quantity = document.getElementById(id).value;
+            $.ajax({
+                type: 'PATCH',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    quantity: quantity,
+                },
+                url: "/updateCart",
+                success: function(response) {
+                    $('#success-message').show();
+                    $('#total' + id).text(quantity * price);
+                    setTimeout(() => {
+                        $('#success-message').hide();
+                    }, 3000);
+                },
+                error: function() {
+                    console.log('An error occurred .');
+                }
+            })
+        }
+
+        $(".delete-product").click(function(e) {
+            e.preventDefault();
+            var ele = $(this);
+            if (confirm("Do you really want to delete?")) {
+                $.ajax({
+                    url: '{{ route('deleteProduct') }}',
+                    method: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: ele.parents("tr").attr("rowId")
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

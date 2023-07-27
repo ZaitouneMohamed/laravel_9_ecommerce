@@ -12,6 +12,9 @@
     <title>Essence - Fashion Ecommerce Template</title>
 
     <!-- Favicon  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/71b7145720.js" crossorigin="anonymous"></script>
+
     <link rel="icon" href="{{ asset('assets/landing/img/core-img/favicon.ico') }}">
     @livewireStyles
     <!-- Core Style CSS -->
@@ -26,6 +29,7 @@
     @include('home.layouts.footer')
 
     @livewireScripts
+    @yield("scripts")
     <script src="{{ asset('assets/landing/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- Popper js -->
     <script src="{{ asset('assets/landing/js/jquery/popper.min.js') }}"></script>

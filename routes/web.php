@@ -50,6 +50,11 @@ Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.re
 Route::get('products', [HomeCotroller::class, 'ProductList'])->name('ProductList');
 Route::get('getSubCategories', [HomeController::class, 'getSubCategories'])->name('getSubCategories');
 
+Route::get('AddToCart/{id}', [CartController::class, 'addToCart'])->name('addProdustToCart');
+Route::delete('deleteProduct', [CartController::class, 'deleteProduct'])->name('deleteProduct');
+Route::patch('updateCart', [CartController::class, 'updateCart'])->name('updateCart');
+Route::get('getCartCount', [CartController::class, 'getCartCount'])->name('getCartCount');
+
 Route::post("login_form", [AuthController::class, 'login'])->name("login.function");
 Route::post("register_form", [AuthController::class, 'register'])->name("register.function");
 Route::get("logout", [AuthController::class, 'logout'])->name("logout");
