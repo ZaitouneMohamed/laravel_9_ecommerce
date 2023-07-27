@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\Order\StoreOrderRequest;
 use App\Models\Orders;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,9 +13,9 @@ class OrdersController extends Controller
     public function OrdersList()
     {
         $orders = Orders::latest()->get()->unique('order_number');
-        return view('admin.content.orders',compact('orders'));
+        return view('admin.content.orders', compact('orders'));
     }
-    public function add_new_order(Request $request)
+    public function add_new_order(StoreOrderRequest $request)
     {
         $cartItems = \Cart::getContent();
         $order_number = DB::table('orders')->latest()->first();
