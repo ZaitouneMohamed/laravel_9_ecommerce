@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\WelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,7 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             "name" => "required",
-            "email" => "required|email",
+            "email" => "required|email|unique:users,email",
             "password" => "required|confirmed"
         ]);
         $user = User::create([
@@ -24,6 +25,7 @@ class AuthController extends Controller
             "password" =>Hash::make($request->password)
         ])->assignRole('user');
         Auth::login($user);
+        $user->notify(new WelcomeEmail());
         return redirect()->intended('/');
     }
     public function login(Request $request)

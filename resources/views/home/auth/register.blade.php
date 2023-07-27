@@ -17,23 +17,23 @@
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" name="name" id="name" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" id="password" class="form-control" required>
+                            <input type="password" name="password" id="password" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="password-confirm" class="form-label">Confirm Password</label>
-                            <input type="password" id="password-confirm" class="form-control" required>
+                            <input type="password" name="password_confirmation" id="password-confirm" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <div class="form-check">
-                                <input type="checkbox" id="agree" class="form-check-input" required>
+                                <input type="checkbox" id="agree" class="form-check-input">
                                 <label for="agree" class="form-check-label ml-2">I agree to Terms and Conditions</label>
                             </div>
                         </div>
