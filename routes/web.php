@@ -37,7 +37,7 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('home.auth.register');
 })->name("register")->middleware("guest");
-
+Route::permanentRedirect('/home', '/');
 Route::get('/admin/login', function () {
     return view('admin.auth.login');
 })->name("admin.login");
