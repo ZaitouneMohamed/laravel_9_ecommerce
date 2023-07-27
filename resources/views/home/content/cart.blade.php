@@ -281,7 +281,7 @@
         // document.querySelector('body').onload =
         setInterval(() => {
             getCartCount();
-        }, 100);
+        }, 1000);
 
         function edit(id, price) {
             quantity = document.getElementById(id).value;
