@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="#">pPages</a>
+                        <li><a href="#">Pages</a>
                             <ul class="dropdown">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="shop.html">Shop</a></li>
