@@ -63,10 +63,12 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt="">
+                                {{-- <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt=""> --}}
+                                <img src="{{ asset('images/products') }}/{{ $item->pictures->first()->url }}"
+                                    alt="">
                                 {{-- <img src="{{$item->image}}" alt=""> --}}
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="{{ asset('assets/landing/img/product-img/product-2.jpg') }}"
+                                <img class="hover-img" src="{{ asset('images/products') }}/{{ $item->pictures->last()->url }}"
                                     alt="">
                                 <!-- Favourite -->
                                 <div class="product-favourite">
@@ -96,8 +98,8 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="{{route('ProductList')}}" class="btn essence-btn">
-                <i class="fa fa-eye" ></i>
+            <a href="{{ route('ProductList') }}" class="btn essence-btn">
+                <i class="fa fa-eye"></i>
                 SHOW MORE
             </a>
         </div>

@@ -11,9 +11,12 @@ class Product extends Model
     protected $fillable = [
         "title", "slug", "description",
         "price", "old_price",
-        "prenium", "active",
-        "image", "sub_categorie_id"
+        "prenium", "active", "sub_categorie_id"
     ];
+    public function pictures()
+    {
+        return $this->hasMany(Picture::class);
+    }
     public function SubCategorie()
     {
         return $this->belongsTo(SubCategorie::class);

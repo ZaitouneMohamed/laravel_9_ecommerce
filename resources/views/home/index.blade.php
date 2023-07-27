@@ -27,7 +27,7 @@
                     <!-- Single Catagory -->
                     <div class="col-12 col-sm-6 col-md-4">
                         <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
-                            style="background-image: url(assets/landing/img/bg-img/bg-2.jpg);">
+                            style="background-image: url({{ asset('images/categories') }}/{{$item->image}});">
                             <div class="catagory-content">
                                 <a href="#">{{ $item->name }}</a>
                             </div>

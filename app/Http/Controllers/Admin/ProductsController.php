@@ -43,24 +43,28 @@ class ProductsController extends Controller
             "title" => "required",
             "description" => "required",
             "price" => "required",
-            "image" => "required",
+            "images" => "required|max:2048",
             "old_price" => "required",
             "sub_categorie" => "required"
         ]);
-        if ($request->has('image')) {
-            $file = $request ->image;
-            $image_name = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('images/products'),$image_name);
-        }
-        Product::create([
+        $product = Product::create([
             "title" => $request->title,
             "description" => $request->description,
             "slug" => Str::slug($request->title),
             "price" => $request->price,
             "old_price" => $request->old_price,
-            "image" => $image_name,
             "sub_categorie_id" => $request->sub_categorie
         ]);
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $picture) {
+                $image_name = time() . '_' . $picture->getClientOriginalName();
+                $picture->move(public_path('images/products'),$image_name);
+                $product->pictures()->create([
+                    'url' => $image_name,
+                ]);
+            }
+        }
+
         return redirect()->route('admin.products.index')->with([
             "success" => "produc added successfly"
         ]);

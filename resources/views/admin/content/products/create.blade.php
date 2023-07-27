@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">image</label>
-                    <input type="file" class="form-control" id="exampleInputEmail1" name="image"
+                    <input type="file" class="form-control" id="exampleInputEmail1" accept="image/*" multiple name="images[]"
                         placeholder="Enter image">
                 </div>
                 <div class="row">
