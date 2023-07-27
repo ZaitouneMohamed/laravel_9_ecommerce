@@ -3,7 +3,8 @@
         <!-- Classy Menu -->
         <nav class="classy-navbar" id="essenceNav">
             <!-- Logo -->
-            <a class="nav-brand" href="/"><img src="{{ asset('assets/landing/img/core-img/logo.png') }}" alt=""></a>
+            <a class="nav-brand" href="/"><img src="{{ asset('assets/landing/img/core-img/logo.png') }}"
+                    alt=""></a>
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
                 <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -21,9 +22,9 @@
                             <div class="megamenu">
                                 @foreach (\App\Models\Categorie::all() as $item)
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">{{$item->name}}</li>
+                                        <li class="title">{{ $item->name }}</li>
                                         @foreach ($item->subcategories as $item)
-                                            <li><a href="shop.html">{{$item->name}}</a></li>
+                                            <li><a href="shop.html">{{ $item->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 @endforeach
@@ -32,20 +33,23 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="shop.html">Shop</a></li>
-                                <li><a href="single-product-details.html">Product Details</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="single-blog.html">Single Blog</a></li>
-                                <li><a href="regular-page.html">Regular Page</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        @guest
+                            <li><a href="#">account</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                </ul>
+                            </li>
+                        @endguest
+                        @auth
+                            <li><a href="#">{{ Auth::user()->name }}</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                </ul>
+                            </li>
+                        @endauth
+                        {{-- <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li> --}}
                     </ul>
                 </div>
                 <!-- Nav End -->
@@ -71,7 +75,10 @@
             </div>
             <!-- Cart Area -->
             <div class="cart-area">
-                <a href="#" id="essenceCartBtn"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}" alt=""> <livewire:user.cart.cart-count /></a>
+                <a href="#" id="essenceCartBtn"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}"
+                        alt="">
+                    <livewire:user.cart.cart-count />
+                </a>
             </div>
         </div>
 
@@ -86,11 +93,33 @@
 
     <!-- Cart Button -->
     <div class="cart-button">
-        <a href="#" id="rightSideCart"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}" alt="">
-            <livewire:user.cart.cart-count />
+        <a href="#" id="rightSideCart"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}"
+                alt="">
+            <span id="cartCount">
+            </span>
         </a>
     </div>
     <livewire:user.cart.nav-cart />
 
 
 </div>
+
+<script>
+    function getCartCountNavbar() {
+        cart = document.querySelector("#cartCount");
+        $.ajax({
+            type: 'get',
+            url: "/getCartCount",
+            success: function(response) {
+                cart.innerHTML = response.count;
+            },
+            error: function() {
+                console.log('An error occurred .');
+            }
+        })
+    }
+
+    setInterval(() => {
+        getCartCountNavbar();
+    }, 500);
+</script>

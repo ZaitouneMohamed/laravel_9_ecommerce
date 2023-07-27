@@ -41,12 +41,15 @@ class CartController extends Controller
     public function getCartCount()
     {
         $total = 0;
+        $count = 0;
         foreach (session('cart') as $id => $item) {
             $total += $item['price'] * $item['quantity'];
+            $count++;
         };
         return response()->json([
             "total" => $total,
-            "subtotal" => $total + 30
+            "subtotal" => $total + 30,
+            "count" => $count
         ]);
     }
 
