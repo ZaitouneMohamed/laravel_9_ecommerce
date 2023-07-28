@@ -53,6 +53,14 @@ class CartController extends Controller
         ]);
     }
 
+    public function getCartContent()
+    {
+        $cartItems = session('cart');
+        return response()->json([
+            "content" => $cartItems
+        ]);
+    }
+
     public function deleteProduct(Request $request)
     {
         if ($request->id) {

@@ -32,7 +32,7 @@
     @yield("scripts")
     <script src="{{ asset('assets/landing/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- Popper js -->
-    <script src="{{ asset('assets/landing/js/jquery/popper.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/landing/js/jquery/popper.min.js') }}"></script> --}}
     <!-- Bootstrap js -->
     <script src="{{ asset('assets/landing/js/bootstrap.min.js') }}"></script>
     <!-- Plugins js -->

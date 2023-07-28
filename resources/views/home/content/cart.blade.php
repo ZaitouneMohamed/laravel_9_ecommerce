@@ -89,17 +89,18 @@
                                             $total += $item['price'] * $item['quantity'];
                                         @endphp
                                     @endforeach
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="5" class="text-right">
-                                                <a href="/" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                                                <button class="btn btn-danger">Checkout</button>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                @else
-                                    <h1>your card is empty</h1>
-                                @endif
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5" class="text-right">
+                                        <a href="/" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continue
+                                            Shopping</a>
+                                        <button class="btn btn-danger">Checkout</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        @else
+                            <h1>your card is empty</h1>
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -107,9 +108,7 @@
             </div>
 
 
-            <form
-            {{-- action="{{ route('add_new_order') }}" --}}
-            method="post">
+            <form action="{{ route('add_new_order') }}" method="post">
                 @csrf
                 <div class="row my-5">
                     <div class="col-lg-3 col-sm-12">
@@ -185,7 +184,7 @@
                             <hr>
                             <div class="d-flex gr-total">
                                 <h5>Grand Total</h5>
-                                <div class="ml-auto h5" id="grandtotal"> $  </div>
+                                <div class="ml-auto h5" id="grandtotal"> $ </div>
                             </div>
                             <hr>
                         </div>

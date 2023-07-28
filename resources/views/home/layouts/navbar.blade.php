@@ -79,7 +79,6 @@
             <div class="cart-area">
                 <a href="#" id="essenceCartBtn"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}"
                         alt="">
-                    <livewire:user.cart.cart-count />
                 </a>
             </div>
         </div>
@@ -101,7 +100,28 @@
             </span>
         </a>
     </div>
-    <livewire:user.cart.nav-cart />
+    <div class="cart-content d-flex">
+
+        <!-- Cart List Area -->
+        <div class="cart-list">
+            <livewire:user.cart.nav-cart />
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-amount-summary">
+
+            <h2>Summary</h2>
+            <ul class="summary-table">
+                <li><span>subtotal:</span> <span id="total">$</span></li>
+                <li><span>delivery:</span> <span>30</span></li>
+                <li><span>discount:</span> <span>0%</span></li>
+                <li><span>total:</span> <span id="subtotal"></span></li>
+            </ul>
+            <div class="checkout-btn mt-100">
+                <a href="{{ route('cart.list') }}" class="btn essence-btn">check out</a>
+            </div>
+        </div>
+    </div>
 
 
 </div>
@@ -109,11 +129,15 @@
 <script>
     function getCartCountNavbar() {
         cart = document.querySelector("#cartCount");
+        total = document.querySelector("#total");
+        subtotal = document.querySelector("#subtotal");
         $.ajax({
             type: 'get',
             url: "/getCartCount",
             success: function(response) {
                 cart.innerHTML = response.count;
+                total.innerHTML = "$" + response.total;
+                subtotal.innerHTML = response.subtotal;
             },
             error: function() {
                 console.log('An error occurred .');

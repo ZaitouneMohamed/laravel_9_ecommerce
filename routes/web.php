@@ -56,11 +56,11 @@ Route::controller(CartController::class)->group(function () {
     Route::delete('deleteProduct',  'deleteProduct')->name('deleteProduct');
     Route::patch('updateCart',  'updateCart')->name('updateCart');
     Route::get('getCartCount',  'getCartCount')->name('getCartCount');
+    Route::get('getCartContent',  'getCartContent')->name('getCartContent');
 });
 
 Route::controller(OrdersController::class)->group(function () {
     Route::post('add_order', 'add_new_order')->name('add_new_order')->middleware("auth");
-    Route::get('orders', 'OrdersList')->name('OrdersList');
 });
 
 Route::controller(ProfileController::class)->middleware("auth")->name("user.")->group(function () {
@@ -100,4 +100,6 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
     Route::resource("products", ProductsController::class);
     Route::resource("branch", BranchController::class);
     Route::resource("TimeSlot", TimesSlotController::class);
+    Route::get('orders', [OrdersController::class,'OrdersList'])->name('OrdersList');
+
 });

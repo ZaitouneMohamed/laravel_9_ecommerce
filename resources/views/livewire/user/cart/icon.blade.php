@@ -5,7 +5,7 @@
             <a href="#">
                 <i class="fa fa-shopping-bag"></i>
                 <span class="badge">
-                    {{ Cart::getTotalQuantity() }}
+                    7
                 </span>
                 <p>My Cart</p>
             </a>
