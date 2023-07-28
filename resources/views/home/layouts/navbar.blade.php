@@ -45,6 +45,7 @@
                             <li><a href="#">{{ Auth::user()->FullName }}</a>
                                 <ul class="dropdown">
                                     <li><a href="{{ route('user.profile') }}">Profile</a></li>
+                                    <li><a href="#">orders</a></li>
                                     <li><a href="{{ route('logout') }}">Log Out</a></li>
                                 </ul>
                             </li>
