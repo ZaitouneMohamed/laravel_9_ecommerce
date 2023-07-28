@@ -11,6 +11,7 @@ use App\Http\Controllers\auth\ForgetPasswordController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeCotroller;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,30 +36,50 @@ Route::get('/login', function () {
     }
     return view('home.auth.login');
 })->name("login")->middleware("guest");
+
 Route::get('/register', function () {
     return view('home.auth.register');
 })->name("register")->middleware("guest");
+
 Route::permanentRedirect('/home', '/');
+
 Route::get('/admin/login', function () {
     return view('admin.auth.login');
 })->name("admin.login");
 
-Route::post('cart/store', [CartController::class, 'addToCart'])->name('cart.store')->middleware("auth");
-Route::get('cart', [CartController::class, 'cartlist'])->name('cart.list')->middleware("auth");
-Route::post('add_order', [OrdersController::class, 'add_new_order'])->name('add_new_order')->middleware("auth");
-Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.remove.item');
 
-Route::get('products', [HomeCotroller::class, 'ProductList'])->name('ProductList');
-Route::get('getSubCategories', [HomeController::class, 'getSubCategories'])->name('getSubCategories');
+Route::controller(CartController::class)->group(function () {
+    Route::post('cart/store', 'addToCart')->name('cart.store')->middleware("auth");
+    Route::get('cart', 'cartlist')->name('cart.list')->middleware("auth");
+    Route::post('cart/remove', 'removeCart')->name('cart.remove.item');
+    Route::get('AddToCart/{id}', 'addToCart')->name('addProdustToCart');
+    Route::delete('deleteProduct',  'deleteProduct')->name('deleteProduct');
+    Route::patch('updateCart',  'updateCart')->name('updateCart');
+    Route::get('getCartCount',  'getCartCount')->name('getCartCount');
+});
 
-Route::get('AddToCart/{id}', [CartController::class, 'addToCart'])->name('addProdustToCart');
-Route::delete('deleteProduct', [CartController::class, 'deleteProduct'])->name('deleteProduct');
-Route::patch('updateCart', [CartController::class, 'updateCart'])->name('updateCart');
-Route::get('getCartCount', [CartController::class, 'getCartCount'])->name('getCartCount');
+Route::controller(OrdersController::class)->group(function () {
+    Route::post('add_order', 'add_new_order')->name('add_new_order')->middleware("auth");
+    Route::get('orders', 'OrdersList')->name('OrdersList');
+});
 
-Route::post("login_form", [AuthController::class, 'login'])->name("login.function");
-Route::post("register_form", [AuthController::class, 'register'])->name("register.function");
-Route::get("logout", [AuthController::class, 'logout'])->name("logout");
+Route::controller(ProfileController::class)->middleware("auth")->name("user.")->group(function () {
+    Route::get("profile", "index")->name("profile");
+    Route::post("update_profile", "UpdateProfile")->name("update.profile");
+});
+
+Route::controller(HomeController::class)->group(function () {
+    Route::get('products',  'ProductList')->name('ProductList');
+    Route::get('getSubCategories',  'getSubCategories')->name('getSubCategories');
+    Route::get('updateActiveTimeSlot/{id}', 'SwitchActiveModeForTimeSlot')->name('SwitchActiveModeForTimeSlot');
+});
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post("login_form",  'login')->name("login.function");
+    Route::post("register_form", 'register')->name("register.function");
+    Route::get("logout",  'logout')->name("logout");
+});
+
 
 Route::controller(ForgetPasswordController::class)->group(function () {
     Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.get');
@@ -79,6 +100,4 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
     Route::resource("products", ProductsController::class);
     Route::resource("branch", BranchController::class);
     Route::resource("TimeSlot", TimesSlotController::class);
-    Route::get('orders', [OrdersController::class, 'OrdersList'])->name('OrdersList');
-    Route::get('updateActiveTimeSlot/{id}', [HomeController::class, 'SwitchActiveModeForTimeSlot'])->name('SwitchActiveModeForTimeSlot');
 });
