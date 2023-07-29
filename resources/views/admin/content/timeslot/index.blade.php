@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($times as $item)
+                    @forelse ($times as $item)
                         <tr>
                             <<td>{{ $item->id }}</td>
                                 <td>
@@ -72,7 +72,7 @@
                                     </div>
                                 </td>
                         </tr>
-                    @endforeach
+                    @endforelse
                 </tbody>
             </table>
         </div>

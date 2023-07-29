@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $item)
+                    @forelse ($products as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ Str::limit($item->title, 10, '...') }}</td>
@@ -65,7 +65,7 @@
                                 @endif --}}
                             </td>
                         </tr>
-                    @endforeach
+                    @endforelse
                 </tbody>
             </table>
 

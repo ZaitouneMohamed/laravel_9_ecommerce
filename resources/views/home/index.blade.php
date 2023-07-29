@@ -23,7 +23,7 @@
         <div class="container">
             <h1 class="text text-center">Shop By Categories</h1><br>
             <div class="row justify-content-center">
-                @foreach (\App\Models\Categorie::latest()->take(3)->get() as $item)
+                @forelse (\App\Models\Categorie::latest()->take(3)->get() as $item)
                     <!-- Single Catagory -->
                     <div class="col-12 col-sm-6 col-md-4">
                         <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforelse
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        @foreach (App\Models\Product::latest()->take(6)->get() as $item)
+                        @forelse (App\Models\Product::latest()->take(6)->get() as $item)
                             <!-- Single Product -->
                             <div class="single-product-wrapper">
                                 <!-- Product Image -->
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @endforelse
                     </div>
                 </div>
             </div>

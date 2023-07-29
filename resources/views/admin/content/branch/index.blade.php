@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($branches as $item)
+                    @forelse ($branches as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td> {{ $item->name }}</td>
@@ -49,7 +49,7 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforelse
                 </tbody>
             </table>
         </div>

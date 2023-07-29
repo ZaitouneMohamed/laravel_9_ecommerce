@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subcategories as $item)
+                    @forelse ($subcategories as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td> {{ Str::limit($item->name, 10, '...') }}</td>
@@ -31,7 +31,7 @@
                                 @endif --}}
                             </td>
                         </tr>
-                    @endforeach
+                    @endforelse
                 </tbody>
             </table>
         </div>

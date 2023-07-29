@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $item)
+                    @forelse ($categories as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
                                 <td> {{ $item->name, 10 }}</td>
@@ -49,7 +49,7 @@
                                     </div>
                                 </td>
                         </tr>
-                    @endforeach
+                    @endforelse
                 </tbody>
             </table>
         </div>
