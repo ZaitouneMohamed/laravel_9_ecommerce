@@ -18,6 +18,7 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
+                        <li><a href="/">Welcome</a></li>
                         <li><a href="#">Shop</a>
                             <div class="megamenu">
                                 @foreach (\App\Models\Categorie::all() as $item)
@@ -79,6 +80,7 @@
             <div class="cart-area">
                 <a href="#" id="essenceCartBtn"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}"
                         alt="">
+                        <span class="cartCount"></span>
                 </a>
             </div>
         </div>
@@ -128,7 +130,7 @@
 
 <script>
     function getCartCountNavbar() {
-        cart = document.querySelector("#cartCount");
+        cart = document.querySelector(".cartCount");
         total = document.querySelector("#total");
         subtotal = document.querySelector("#subtotal");
         $.ajax({

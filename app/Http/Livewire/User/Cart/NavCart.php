@@ -12,6 +12,13 @@ class NavCart extends Component
     }
     public function DeleteItem($id)
     {
-        \Cart::remove($id);
+        if($id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$id])) {
+                unset($cart[$id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product successfully deleted.');
+        }
     }
 }
