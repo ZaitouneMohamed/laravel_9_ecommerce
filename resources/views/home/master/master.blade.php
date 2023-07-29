@@ -25,11 +25,14 @@
 <body>
     <!-- ##### Header Area Start ##### -->
     @include('home.layouts.navbar')
+    @include('messages.success')
+    @include('messages.error')
+    @include('messages.any')
     @yield('content')
     @include('home.layouts.footer')
 
     @livewireScripts
-    @yield("scripts")
+    @yield('scripts')
     <script src="{{ asset('assets/landing/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- Popper js -->
     {{-- <script src="{{ asset('assets/landing/js/jquery/popper.min.js') }}"></script> --}}
