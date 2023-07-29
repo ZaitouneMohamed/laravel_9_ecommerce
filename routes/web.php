@@ -13,6 +13,8 @@ use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeCotroller;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ShopController;
+use App\Models\Categorie;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home.index');
+    $categories = Categorie::latest()->take(3)->get();
+    $products = Product::latest()->take(6)->get();
+    return view('home.index',compact("products","categories"));
 });
 
 Route::get('/login', function () {

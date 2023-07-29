@@ -23,17 +23,20 @@
         <div class="container">
             <h1 class="text text-center">Shop By Categories</h1><br>
             <div class="row justify-content-center">
-                @forelse (\App\Models\Categorie::latest()->take(3)->get() as $item)
-                    <!-- Single Catagory -->
-                    <div class="col-12 col-sm-6 col-md-4">
-                        <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
-                            style="background-image: url({{ asset('images/categories') }}/{{ $item->image->url }});">
-                            <div class="catagory-content">
-                                <a href="#">{{ $item->name }}</a>
+                @if ($categories)
+                    @forelse ($categories as $item)
+                        <!-- Single Catagory -->
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
+                                style="background-image: url({{ asset('images/categories') }}/{{ $item->image->url }});">
+                                <div class="catagory-content">
+                                    <a href="#">{{ $item->name }}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforelse
+                    @endforelse
+                @else
+                @endif
             </div>
         </div>
     </div>
@@ -57,43 +60,47 @@
             <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-                        @forelse (App\Models\Product::latest()->take(6)->get() as $item)
-                            <!-- Single Product -->
-                            <div class="single-product-wrapper">
-                                <!-- Product Image -->
-                                <div class="product-img">
-                                    {{-- <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt=""> --}}
-                                    <img src="{{ asset('images/products') }}/{{ $item->images->first()->url }}"
-                                        alt="">
-                                    {{-- <img src="{{$item->image}}" alt=""> --}}
-                                    <!-- Hover Thumb -->
-                                    <img class="hover-img"
-                                        src="{{ asset('images/products') }}/{{ $item->images->last()->url }}"
-                                        alt="">
-                                    <!-- Favourite -->
-                                    <div class="product-favourite">
-                                        <a href="#" class="favme fa fa-heart"></a>
+                        @if ($products)
+                            @forelse ($products as $item)
+                                <!-- Single Product -->
+                                <div class="single-product-wrapper">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        {{-- <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt=""> --}}
+                                        <img src="{{ asset('images/products') }}/{{ $item->images->first()->url }}"
+                                            alt="">
+                                        {{-- <img src="{{$item->image}}" alt=""> --}}
+                                        <!-- Hover Thumb -->
+                                        <img class="hover-img"
+                                            src="{{ asset('images/products') }}/{{ $item->images->last()->url }}"
+                                            alt="">
+                                        <!-- Favourite -->
+                                        <div class="product-favourite">
+                                            <a href="#" class="favme fa fa-heart"></a>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Product Description -->
-                                <div class="product-description">
-                                    <span>{{ $item->subcategorie->categorie->name }}</span>
-                                    <a href="single-product-details.html">
-                                        <h6>{{ Str::limit($item->title, 15, '...') }}</h6>
-                                    </a>
-                                    <p class="product-price">${{ $item->price }}</p>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <span>{{ $item->subcategorie->categorie->name }}</span>
+                                        <a href="single-product-details.html">
+                                            <h6>{{ Str::limit($item->title, 15, '...') }}</h6>
+                                        </a>
+                                        <p class="product-price">${{ $item->price }}</p>
 
-                                    <!-- Hover Content -->
-                                    <div class="hover-content">
-                                        <!-- Add to Cart -->
-                                        <div class="add-to-cart-btn">
-                                            <button onclick="AddToCart({{ $item->id }})" class="btn essence-btn">Add
-                                                to Cart</button>
+                                        <!-- Hover Content -->
+                                        <div class="hover-content">
+                                            <!-- Add to Cart -->
+                                            <div class="add-to-cart-btn">
+                                                <button onclick="AddToCart({{ $item->id }})"
+                                                    class="btn essence-btn">Add
+                                                    to Cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforelse
+                            @endforelse
+                        @else
+                        @endif
                     </div>
                 </div>
             </div>
