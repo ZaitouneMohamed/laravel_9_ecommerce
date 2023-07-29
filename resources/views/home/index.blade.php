@@ -24,7 +24,7 @@
             <h1 class="text text-center">Shop By Categories</h1><br>
             <div class="row justify-content-center">
                 @if ($categories)
-                    @forelse ($categories as $item)
+                    @foreach ($categories as $item)
                         <!-- Single Catagory -->
                         <div class="col-12 col-sm-6 col-md-4">
                             <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endforelse
+                    @endforeach
                 @else
                 @endif
             </div>
@@ -61,7 +61,7 @@
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
                         @if ($products)
-                            @forelse ($products as $item)
+                            @foreach ($products as $item)
                                 <!-- Single Product -->
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforelse
+                            @endforeach
                         @else
                         @endif
                     </div>
