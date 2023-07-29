@@ -18,38 +18,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($categories as $item)
-                        <tr>
-                            <td>{{ $item->id }}</td>
-                                <td> {{ $item->name, 10 }}</td>
-                                <td>{{ $item->subcategories->count() }}</td>
-                                <td> <img width="70px" height="50px"
-                                        src="{{ asset('images/categories') }}/{{ $item->Image->url }}" alt=""> </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                                href="{{ route('admin.categories.edit', $item->id) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i>
-                                                Edit</a>
-                                            <a class="dropdown-item"
-                                                onclick="document.getElementById({{ $item->id }}).submit();"><i
-                                                    class="bx bx-trash me-1"></i>
-                                                Delete</a>
-                                            <form id="{{ $item->id }}"
-                                                action="{{ route('admin.categories.destroy', $item->id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                            </form>
+                    @if ($categories)
+                        @foreach ($categories as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                    <td> {{ $item->name, 10 }}</td>
+                                    <td>{{ $item->subcategories->count() }}</td>
+                                    <td> <img width="70px" height="50px"
+                                            src="{{ asset('images/categories') }}/{{ $item->Image->url }}" alt=""> </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item"
+                                                    href="{{ route('admin.categories.edit', $item->id) }}"><i
+                                                        class="bx bx-edit-alt me-1"></i>
+                                                    Edit</a>
+                                                <a class="dropdown-item"
+                                                    onclick="document.getElementById({{ $item->id }}).submit();"><i
+                                                        class="bx bx-trash me-1"></i>
+                                                    Delete</a>
+                                                <form id="{{ $item->id }}"
+                                                    action="{{ route('admin.categories.destroy', $item->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                        </tr>
-                    @endforelse
+                                    </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

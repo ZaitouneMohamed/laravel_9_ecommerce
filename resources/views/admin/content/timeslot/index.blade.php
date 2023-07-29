@@ -38,41 +38,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($times as $item)
-                        <tr>
-                            <<td>{{ $item->id }}</td>
-                                <td>
-                                    <input style="background: white !important; border: none !important; " type="time"
-                                        value="{{ $item->begin }}" disabled="">
-                                </td>
-                                <td>
-                                    <input style="background: white !important; border: none !important; " type="time"
-                                        value="{{ $item->end }}" disabled="">
-                                </td>
-                                <td style="padding: 10px;border: 1px solid;cursor: pointer">
-                                    <a href="{{ route('admin.SwitchActiveModeForTimeSlot', $item->id) }}"
-                                        style="color: black">
-                                        {!! $item->Statue !!}
-                                    </a>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="bx bx-edit-alt me-1"></i>
-                                                Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="bx bx-trash me-1"></i>
-                                                Delete</a>
+                    @if ($times)
+                        @foreach ($times as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                    <td>
+                                        <input style="background: white !important; border: none !important; " type="time"
+                                            value="{{ $item->begin }}" disabled="">
+                                    </td>
+                                    <td>
+                                        <input style="background: white !important; border: none !important; " type="time"
+                                            value="{{ $item->end }}" disabled="">
+                                    </td>
+                                    <td style="padding: 10px;border: 1px solid;cursor: pointer">
+                                        <a href="{{ route('admin.SwitchActiveModeForTimeSlot', $item->id) }}"
+                                            style="color: black">
+                                            {!! $item->Statue !!}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                        class="bx bx-edit-alt me-1"></i>
+                                                    Edit</a>
+                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                        class="bx bx-trash me-1"></i>
+                                                    Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                        </tr>
-                    @endforelse
+                                    </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
