@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreProductRequest;
 use App\Models\Product;
+use App\Services\ImagesServices;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -14,6 +16,12 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $imagesservices;
+
+    public function __construct(ImagesServices $ImagesServices)
+    {
+        $this->imagesservices = $ImagesServices;
+    }
     public function index()
     {
         $products = Product::latest()->paginate(10);
@@ -36,17 +44,8 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        // dd($request->all());
-        $this->validate($request, [
-            "title" => "required",
-            "description" => "required",
-            "price" => "required",
-            "images" => "required|max:2048",
-            "old_price" => "required",
-            "sub_categorie" => "required"
-        ]);
         $product = Product::create([
             "title" => $request->title,
             "description" => $request->description,
@@ -54,14 +53,13 @@ class ProductsController extends Controller
             "price" => $request->price,
             "old_price" => $request->old_price,
             "sub_categorie_id" => $request->sub_categorie,
-            "categorie_id" => $request->categorie
+            "categorie_id" => $request->categorie_id
         ]);
         if ($request->has('images')) {
             foreach ($request->file('images') as $picture) {
-                $image_name = time() . '_' . $picture->getClientOriginalName();
-                $picture->move(public_path('images/products'),$image_name);
+                $image = $this->imagesservices->uploadImage($picture,"products");
                 $product->pictures()->create([
-                    'url' => $image_name,
+                    'url' => $image,
                 ]);
             }
         }
