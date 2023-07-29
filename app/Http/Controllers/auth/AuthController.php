@@ -23,19 +23,27 @@ class AuthController extends Controller
         ])->assignRole('user');
         Auth::login($user);
         $user->notify(new WelcomeEmail());
-        return redirect()->intended('/');
+        return redirect()->intended('/')->with([
+            "success" =>__("Registration successful. You can now log-in.")
+        ]);
     }
 
     public function login(LoginRequest $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (auth()->user()->HasRole('admin')) {
-                return redirect()->intended('/admin');
+                return redirect()->intended('/admin')->with([
+                    "success" => __("welcome to Admin Dashboard"),
+                ]);
             } else {
-                return redirect()->intended('/');
+                return redirect()->intended('/')->with([
+                    "success" => __("You are logged in successfully")
+                ]);
             }
         } else {
-            return redirect()->back();
+            return redirect()->back()->with([
+                "error" => __('Invalid credentials')
+            ]);
         }
     }
     public function logout()

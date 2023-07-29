@@ -27,7 +27,7 @@
                     <!-- Single Catagory -->
                     <div class="col-12 col-sm-6 col-md-4">
                         <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
-                            style="background-image: url({{ asset('images/categories') }}/{{ $item->image }});">
+                            style="background-image: url({{ asset('images/categories') }}/{{ $item->image->url }});">
                             <div class="catagory-content">
                                 <a href="#">{{ $item->name }}</a>
                             </div>
@@ -63,12 +63,12 @@
                                 <!-- Product Image -->
                                 <div class="product-img">
                                     {{-- <img src="{{ asset('assets/landing/img/product-img/product-1.jpg') }}" alt=""> --}}
-                                    <img src="{{ asset('images/products') }}/{{ $item->pictures->first()->url }}"
+                                    <img src="{{ asset('images/products') }}/{{ $item->images->first()->url }}"
                                         alt="">
                                     {{-- <img src="{{$item->image}}" alt=""> --}}
                                     <!-- Hover Thumb -->
                                     <img class="hover-img"
-                                        src="{{ asset('images/products') }}/{{ $item->pictures->last()->url }}"
+                                        src="{{ asset('images/products') }}/{{ $item->images->last()->url }}"
                                         alt="">
                                     <!-- Favourite -->
                                     <div class="product-favourite">
