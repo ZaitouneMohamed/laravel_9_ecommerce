@@ -250,7 +250,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><button class="ml-auto btn hvr-hover">Checkout</button>
+                <div class="col-12 d-flex shopping-box"><button type="submit" class="ml-auto btn hvr-hover">Checkout</button>
                 </div>
         </div>
         </form>

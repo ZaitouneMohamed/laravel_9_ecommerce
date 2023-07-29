@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\Order\StoreOrderRequest;
+use App\Models\Categorie;
 use App\Models\Orders;
 use App\Models\Product;
+use App\Models\SubCategorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +19,8 @@ class OrdersController extends Controller
     }
     public function add_new_order(StoreOrderRequest $request)
     {
-        $cartItems = \Cart::getContent();
+        // $cartItems = \Cart::getContent();
+        $cartItems = session("cart");
         $order_number = DB::table('orders')->latest()->first();
         if ($order_number) {
             $order_number = $order_number->order_number + 1;
@@ -25,12 +28,14 @@ class OrdersController extends Controller
             $order_number = 10000;
         }
         foreach ($cartItems as $item) {
-            $product = Product::find($item->id);
-            $subcategorie = $product->SubCategorie;
-            $categorie = $subcategorie->categorie->name;
+            $product = Product::find($item['id']);
+            $categorie_id = $product->categorie_id;
+            $categorie = Categorie::find($categorie_id)->name;
+            $subcategorie_id = $product->sub_categorie_id;
+            $subcategorie = SubCategorie::find($subcategorie_id)->name;
             Orders::create([
                 "order_number" => $order_number,
-                "customar_name" => auth()->user()->name,
+                "customar_name" => auth()->user()->fullname,
                 "customar_number" => "070022555458",
                 "customar_email" => auth()->user()->email,
                 "delivery_date" => $request->delivery_date,
@@ -40,14 +45,15 @@ class OrdersController extends Controller
                 "adresse" => $request->adresse,
                 "product" => $product->title,
                 "product_price" => $product->price,
-                "sub_categorie" => $subcategorie->name,
+                "sub_categorie" => $subcategorie,
                 "category" => $categorie,
-                "qty" => $item->quantity,
-                "total" => $item->quantity * $product->price,
+                "qty" => $item['quantity'],
+                "total" => $item['quantity'] * $product->price,
                 "statue" => 1
             ]);
         }
-        \Cart::clear();
+        // dd($product);
+        session()->forget('cart');
         return redirect('/')->with([
             "success" => "order have been confirmed"
         ]);
