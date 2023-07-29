@@ -23,9 +23,9 @@
                             <div class="megamenu">
                                 @foreach (\App\Models\Categorie::all() as $item)
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">{{ $item->name }}</li>
+                                        <li class="title"><a href="{{route('shop.categorie',$item->id)}}">{{ $item->name }}</a></li>
                                         @foreach ($item->subcategories as $item)
-                                            <li><a href="shop.html">{{ $item->name }}</a></li>
+                                            <li><a href="{{route('shop.subcategorie',$item->id)}}">{{ $item->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 @endforeach

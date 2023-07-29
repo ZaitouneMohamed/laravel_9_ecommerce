@@ -12,6 +12,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeCotroller;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -59,6 +60,11 @@ Route::controller(CartController::class)->group(function () {
     Route::get('getCartContent',  'getCartContent')->name('getCartContent');
 });
 
+Route::controller(ShopController::class)->name('shop.')->group(function () {
+    Route::get('Categorie/{id}', 'getProductOfCategorie')->name("categorie");
+    Route::get('categorie/{id}', 'getProductOfSubCategorie')->name("subcategorie");
+});
+
 Route::controller(OrdersController::class)->group(function () {
     Route::post('add_order', 'add_new_order')->name('add_new_order')->middleware("auth");
 });
@@ -100,6 +106,5 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
     Route::resource("products", ProductsController::class);
     Route::resource("branch", BranchController::class);
     Route::resource("TimeSlot", TimesSlotController::class);
-    Route::get('orders', [OrdersController::class,'OrdersList'])->name('OrdersList');
-
+    Route::get('orders', [OrdersController::class, 'OrdersList'])->name('OrdersList');
 });
