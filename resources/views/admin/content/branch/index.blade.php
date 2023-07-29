@@ -20,36 +20,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($branches as $item)
-                        <tr>
-                            <td>{{ $item->id }}</td>
-                            <td> {{ $item->name }}</td>
-                            <td> {{ $item->attitude }}</td>
-                            <td> {{ $item->longtitude }}</td>
-                            <td> {{ $item->distance }}</td>
-                            <td> {{ $item->charge_delivery }}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i>
-                                            Edit</a>
-                                        <a class="dropdown-item"
-                                            onclick="document.getElementById({{ $item->id }}).submit();"><i
-                                                class="bx bx-trash me-1"></i>
-                                            Delete</a>
-                                        <form id="{{ $item->id }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
+                    @if ($branches)
+                        @foreach ($branches as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td> {{ $item->name }}</td>
+                                <td> {{ $item->attitude }}</td>
+                                <td> {{ $item->longtitude }}</td>
+                                <td> {{ $item->distance }}</td>
+                                <td> {{ $item->charge_delivery }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i>
+                                                Edit</a>
+                                            <a class="dropdown-item"
+                                                onclick="document.getElementById({{ $item->id }}).submit();"><i
+                                                    class="bx bx-trash me-1"></i>
+                                                Delete</a>
+                                            <form id="{{ $item->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforelse
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
