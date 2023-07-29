@@ -59,4 +59,3 @@ class OrdersController extends Controller
         ]);
     }
 }
-composer dump-autoload
