@@ -53,7 +53,8 @@ class ProductsController extends Controller
             "slug" => Str::slug($request->title),
             "price" => $request->price,
             "old_price" => $request->old_price,
-            "sub_categorie_id" => $request->sub_categorie
+            "sub_categorie_id" => $request->sub_categorie,
+            "categorie_id" => $request->categorie
         ]);
         if ($request->has('images')) {
             foreach ($request->file('images') as $picture) {

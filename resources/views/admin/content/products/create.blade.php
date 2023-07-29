@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="exampleSelectBorder">Select Categorie</label>
-                        <select class="form-select" id="categorie">
+                        <select class="form-select" id="categorie" name="categorie_id">
                             @foreach (\App\Models\Categorie::all() as $item)
                                 <option value="{{ $item->id }}"> {{ $item->name }} </option>
                             @endforeach
