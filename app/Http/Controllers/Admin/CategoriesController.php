@@ -58,9 +58,9 @@ class CategoriesController extends Controller
         ]);
         $new_image = new Image(["url" => $image]);
 
-        $categorie->Images()->save($new_image);
+        $categorie->Image()->save($new_image);
 
-        $categorie->images()->create([
+        $categorie->image()->create([
             'url' => $new_image,
         ]);
         return redirect()->route("admin.categories.index")->with([
