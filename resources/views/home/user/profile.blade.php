@@ -29,9 +29,12 @@
                         </div>
                         <div class="col-3">
                             <input class="form-control" value="{{ Auth::user()->phone }}" type="text" name="phone"
-                                id="">
+                                id=""><br><br>
+                            <input type="submit" value="Edite Profile"class="btn btn-success">
                         </div>
-                        <input type="submit" value="Edite Profile" style="margin-left: 990px" class="btn btn-success">
+                        <div class="col-3">
+
+                        </div>
                     </div>
                 </form>
             </div>
@@ -39,7 +42,16 @@
         <br><br><br>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Adresse De Livraison</h4>
+                <div class="row">
+                    <div class="col-9">
+                        <h4 class="card-title">Adresse De Livraison</h4>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            data-bs-whatever="@mdo">Add New Adresse</button>
+                    </div>
+                </div>
+
             </div>
             <div class="card-body">
                 <div class="account-content">
@@ -75,6 +87,55 @@
                         @endforelse
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Adresse</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{route('user.createadresse')}}" method="POST">
+                <div class="modal-body">
+                        @csrf
+                        @method("post")
+                        <div class="mb-3">
+                            {{-- <label for="recipient-name" class="form-label">type :</label> --}}
+                            <select class="form-select" name="type">
+                                <option selected>shose a type</option>
+                                <option value="Home">Home</option>
+                                <option value="office">office</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            {{-- <label for="message-text" class="form-label">name:</label> --}}
+                            <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                        </div>
+                        <div class="mb-3">
+                            {{-- <label for="message-text" class="form-label">name:</label> --}}
+                            <input type="text" name="phone" class="form-control" id="exampleFormControlInput1"
+                                placeholder="phone number">
+                        </div>
+                        <div class="mb-3">
+                            {{-- <label for="message-text" class="form-label">name:</label> --}}
+                            <select class="form-select" name="city">
+                                <option selected>shose a type</option>
+                                <option value="Home">Home</option>
+                                <option value="office">office</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            {{-- <label for="message-text" class="form-label">name:</label> --}}
+                            <textarea class="form-control" name="adresse" id="message-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

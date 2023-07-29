@@ -72,12 +72,13 @@ Route::controller(OrdersController::class)->group(function () {
 Route::controller(ProfileController::class)->middleware("auth")->name("user.")->group(function () {
     Route::get("profile", "index")->name("profile");
     Route::post("update_profile", "UpdateProfile")->name("update.profile");
+    Route::post("AddNewAdresse", "AddNewAdresse")->name("createadresse");
 });
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('products',  'ProductList')->name('ProductList');
     Route::get('getSubCategories',  'getSubCategories')->name('getSubCategories');
-    Route::get('updateActiveTimeSlot/{id}', 'SwitchActiveModeForTimeSlot')->name('SwitchActiveModeForTimeSlot');
+    Route::get('updateActiveTimeSlot/{id}', 'SwitchActiveModeForTimeSlot')->name('admin.SwitchActiveModeForTimeSlot');
 });
 
 Route::controller(AuthController::class)->group(function () {
