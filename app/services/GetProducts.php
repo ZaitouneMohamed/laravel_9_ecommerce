@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\GetProducts;
+namespace App\Services;
 
 use App\Models\Product;
 
