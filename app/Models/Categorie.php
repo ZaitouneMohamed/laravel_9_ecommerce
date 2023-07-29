@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Categorie extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        "name", "image"
+        "name",
     ];
 
     public function subcategories()
     {
         return $this->hasMany(SubCategorie::class);
+    }
+    public function Image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

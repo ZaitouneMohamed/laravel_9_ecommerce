@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Categorie\CreateCategorieRequest;
 use App\Http\Requests\Admin\Categorie\UpdateCategorieRequest;
 use App\Models\Categorie;
+use App\Models\Image;
+use App\Services\ImagesServices;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -15,6 +17,13 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $imagesservices;
+
+    public function __construct(ImagesServices $ImagesServices)
+    {
+        $this->imagesservices = $ImagesServices;
+    }
+
     public function index()
     {
         $categories = Categorie::latest()->paginate(10);
@@ -39,12 +48,20 @@ class CategoriesController extends Controller
      */
     public function store(CreateCategorieRequest $request)
     {
-        $image = $request->image;
-        $image_name = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('images/categories'), $image_name);
-        Categorie::create([
+        $picture = $request->image;
+
+        $image = $this->imagesservices->uploadImage($picture, "categories");
+
+        $categorie = Categorie::create([
             "name" => $request->name,
-            "image" => $image_name
+            "image" => $image
+        ]);
+        $new_image = new Image(["url" => $image]);
+
+        $categorie->Images()->save($new_image);
+
+        $categorie->images()->create([
+            'url' => $new_image,
         ]);
         return redirect()->route("admin.categories.index")->with([
             "success" => "categorie added successfly"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProductRequest;
+use App\Models\Image;
 use App\Models\Product;
 use App\Services\ImagesServices;
 use Illuminate\Support\Str;
@@ -57,10 +58,15 @@ class ProductsController extends Controller
         ]);
         if ($request->has('images')) {
             foreach ($request->file('images') as $picture) {
-                $image = $this->imagesservices->uploadImage($picture,"products");
-                $product->pictures()->create([
-                    'url' => $image,
-                ]);
+                $image = $this->imagesservices->uploadImage($picture, "products");
+
+                $new_image = new Image(["url" => $image]);
+
+                $product->Images()->save($new_image);
+
+                // $product->Images()->create([
+                //     'url' => $new_image,
+                // ]);
             }
         }
 

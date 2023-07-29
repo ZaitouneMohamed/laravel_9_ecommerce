@@ -38,7 +38,7 @@
                             <td> {{ Str::limit($item->description, 10, '...') }}</td>
                             <td>{{ $item->price }}</td>
                             <td>{{ $item->old_price }}</td>
-                            <td> {{ $item->pictures->count() }}</td>
+                            <td> {{ $item->images->count() }}</td>
                             <td>{{ $item->SubCategorie->name }}</td>
                             <td>
                                 @if ($item->prenium == 1)
