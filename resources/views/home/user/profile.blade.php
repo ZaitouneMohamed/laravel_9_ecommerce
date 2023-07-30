@@ -61,22 +61,22 @@
                                 <div class="profile-card address  active ">
                                     <h6>
                                         <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">Mohammed</font>
+                                            <font style="vertical-align: inherit;">{{ $item->name }}</font>
                                         </font>
                                     </h6>
                                     <h6>
                                         <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">0700260091</font>
+                                            <font style="vertical-align: inherit;">{{ $item->phone_number }}</font>
                                         </font>
                                     </h6>
                                     <p>
                                         <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">maison</font>
+                                            <font style="vertical-align: inherit;">{{ $item->adresse }}</font>
                                         </font>
                                     </p>
                                     <p>
                                         <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">الدار البيضاءMA</font>
+                                            <font style="vertical-align: inherit;">{{$item->city}}</font>
                                         </font>
                                     </p>
                                     <p> </p>
@@ -97,10 +97,10 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">New Adresse</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('user.createadresse')}}" method="POST">
-                <div class="modal-body">
+                <form action="{{ route('user.createadresse') }}" method="POST">
+                    <div class="modal-body">
                         @csrf
-                        @method("post")
+                        @method('post')
                         <div class="mb-3">
                             {{-- <label for="recipient-name" class="form-label">type :</label> --}}
                             <select class="form-select" name="type">
@@ -111,7 +111,8 @@
                         </div>
                         <div class="mb-3">
                             {{-- <label for="message-text" class="form-label">name:</label> --}}
-                            <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                            <input type="text" name="name" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name">
                         </div>
                         <div class="mb-3">
                             {{-- <label for="message-text" class="form-label">name:</label> --}}
