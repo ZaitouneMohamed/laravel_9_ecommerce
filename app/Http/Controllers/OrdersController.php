@@ -8,6 +8,7 @@ use App\Models\Orders;
 use App\Models\Product;
 use App\Models\SubCategorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
@@ -35,9 +36,7 @@ class OrdersController extends Controller
             $subcategorie = SubCategorie::find($subcategorie_id)->name;
             Orders::create([
                 "order_number" => $order_number,
-                "customar_name" => auth()->user()->fullname,
-                "customar_number" => "070022555458",
-                "customar_email" => auth()->user()->email,
+                "user_id" => auth()->user()->id,
                 "delivery_date" => $request->delivery_date,
                 "delivery_time" => $request->delivery_time,
                 "branch" => $request->branch,
@@ -57,5 +56,10 @@ class OrdersController extends Controller
         return redirect('/')->with([
             "success" => "order have been confirmed"
         ]);
+    }
+
+    public function MyOrdersList()
+    {
+        return view('home.content.orders');
     }
 }

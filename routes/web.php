@@ -69,8 +69,9 @@ Route::controller(ShopController::class)->name('shop.')->group(function () {
     Route::get('categorie/{id}', 'getProductOfSubCategorie')->name("subcategorie");
 });
 
-Route::controller(OrdersController::class)->group(function () {
-    Route::post('add_order', 'add_new_order')->name('add_new_order')->middleware("auth");
+Route::controller(OrdersController::class)->middleware("auth")->group(function () {
+    Route::post('add_order', 'add_new_order')->name('add_new_order');
+    Route::get('MyOrdersList', 'MyOrdersList')->name('MyOrdersList');
 });
 
 Route::controller(ProfileController::class)->middleware("auth")->name("user.")->group(function () {

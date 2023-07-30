@@ -33,7 +33,7 @@
                             <td>{{ $item->order_number }}</td>
                             <td>{{ $item->delivery_date }}</td>
                             <td>{{ $item->delivery_time }}</td>
-                            <td>{{ $item->customar_name }}</td>
+                            <td>{{ $item->user->full_name }}</td>
                             <td>{{ $item->Total }} $</td>
                             <td>{!! $item->statue !!}</td>
                             <td>

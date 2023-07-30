@@ -48,6 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Adresse::class);
     }
+    public function Orders()
+    {
+        return $this->hasMany(Orders::class);
+    }
 
     public function getFullNameAttribute()
     {
