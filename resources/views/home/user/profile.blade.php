@@ -14,12 +14,13 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="profile-image">
-                                <img @if (Auth::user()->image) src="{{ asset('images/profiles') }}/{{ Auth::user()->image->url }}"
+                                <img id="selectedImage"
+                                    @if (Auth::user()->image) src="{{ asset('images/profiles') }}/{{ Auth::user()->image->url }}"
                                     @else
                                         src="https://veryfrais.com/public/assets/front/images/user.png" @endif
                                     class="card-img" alt=""
                                     style="width: 80px;border-radius: 50%;border: 3px solid white">
-                                <input type="file" name="image" class="form-controle" id="">
+                                <input type="file" name="image" class="form-controle" id="imageInput">
                             </div>
                         </div>
                         <div class="col-3">
@@ -143,4 +144,25 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const selectedImage = document.getElementById('selectedImage');
+
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function() {
+                    selectedImage.src = reader.result;
+                };
+
+                reader.readAsDataURL(file);
+            } 
+        });
+    </script>
 @endsection
