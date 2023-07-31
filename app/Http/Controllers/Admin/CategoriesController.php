@@ -59,7 +59,7 @@ class CategoriesController extends Controller
         $new_image = new Image(["url" => $image]);
 
         $categorie->Image()->save($new_image);
-        
+
         return redirect()->route("admin.categories.index")->with([
             "success" => "categorie added successfly"
         ]);

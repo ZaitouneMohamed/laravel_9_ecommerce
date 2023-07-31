@@ -6,13 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Profile\CreateNewAdresse;
 use App\Http\Requests\User\UpdateProfileInfoRequest;
 use App\Models\Adresse;
+use App\Models\Image;
 use App\Models\User;
 use App\Notifications\UpdateProfileEmail;
+use App\Services\ImagesServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    protected $imagesservices;
+
+    public function __construct(ImagesServices $ImagesServices)
+    {
+        $this->imagesservices = $ImagesServices;
+    }
     public function index()
     {
         return view('home.user.profile');
@@ -21,6 +29,12 @@ class ProfileController extends Controller
     public function UpdateProfile(UpdateProfileInfoRequest $request)
     {
         $user = User::find(Auth::user()->id);
+        if ($request->hasFile("image")) {
+            $picture = $request->image;
+            $image = $this->imagesservices->uploadImage($picture, "profiles");
+            $new_image = new Image(["url" => $image]);
+            $user->Image()->save(['url' => $new_image]);
+        }
         $user->update([
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,

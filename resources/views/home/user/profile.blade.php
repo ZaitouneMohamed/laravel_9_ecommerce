@@ -8,7 +8,7 @@
                 <h4 class="card-title">Votre Profile</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('user.update.profile') }}" method="post">
+                <form action="{{ route('user.update.profile') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('post')
                     <div class="row">
@@ -16,7 +16,7 @@
                             <div class="profile-image">
                                 <img src="https://veryfrais.com/public/assets/front/images/user.png" class="card-img"
                                     alt="" style="width: 80px;border-radius: 50%;border: 3px solid white">
-                                <input type="file" name="" class="form-controle" id="">
+                                <input type="file" name="image" class="form-controle" id="">
                             </div>
                         </div>
                         <div class="col-3">
