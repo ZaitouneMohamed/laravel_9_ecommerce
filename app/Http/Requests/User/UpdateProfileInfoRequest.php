@@ -27,6 +27,7 @@ class UpdateProfileInfoRequest extends FormRequest
             "first_name" => "required|max:200",
             "last_name" => "required|max:200",
             "phone" => "required|max:200",
+            "image" => "image"
         ];
     }
 }

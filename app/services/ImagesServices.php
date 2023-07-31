@@ -13,9 +13,10 @@ class ImagesServices
 
     public function DeleteImageFromDirectory($image, $path)
     {
-        if (file_exists("images/$path/{$image}"))
-            unlink("images/$path/{$image}");
+        $file = "images/" . $path . '/' . $image;
+        if (file_exists(public_path($file)))
+            unlink(public_path($file));
         else
-            echo "File does not exist";
+            return "image not found";
     }
 }
