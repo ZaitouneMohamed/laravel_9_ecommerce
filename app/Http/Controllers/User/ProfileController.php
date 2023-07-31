@@ -32,8 +32,15 @@ class ProfileController extends Controller
         if ($request->hasFile("image")) {
             $picture = $request->image;
             $image = $this->imagesservices->uploadImage($picture, "profiles");
+            if (Auth::user()->image) {
+                Auth::user()->image->delete();
+                $new_image = new Image(["url" => $image]);
+                $user->Image()->save($new_image);
+                $this->imagesservices->DeleteImageFromDirectory(Auth::user()->image, "profiles");
+            }
+
             $new_image = new Image(["url" => $image]);
-            $user->Image()->save(['url' => $new_image]);
+            $user->Image()->save($new_image);
         }
         $user->update([
             "first_name" => $request->first_name,

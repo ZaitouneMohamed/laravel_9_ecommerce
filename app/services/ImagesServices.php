@@ -10,4 +10,12 @@ class ImagesServices
         $file->move(public_path('images/' . $path), $image_name);
         return $image_name;
     }
+
+    public function DeleteImageFromDirectory($image, $path)
+    {
+        if (file_exists("images/$path/{$image}"))
+            unlink("images/$path/{$image}");
+        else
+            echo "File does not exist";
+    }
 }

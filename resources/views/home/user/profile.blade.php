@@ -14,8 +14,11 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="profile-image">
-                                <img src="https://veryfrais.com/public/assets/front/images/user.png" class="card-img"
-                                    alt="" style="width: 80px;border-radius: 50%;border: 3px solid white">
+                                <img @if (Auth::user()->image) src="{{ asset('images/profiles') }}/{{ Auth::user()->image->url }}"
+                                    @else
+                                        src="https://veryfrais.com/public/assets/front/images/user.png" @endif
+                                    class="card-img" alt=""
+                                    style="width: 80px;border-radius: 50%;border: 3px solid white">
                                 <input type="file" name="image" class="form-controle" id="">
                             </div>
                         </div>
@@ -76,7 +79,7 @@
                                     </p>
                                     <p>
                                         <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">{{$item->city}}</font>
+                                            <font style="vertical-align: inherit;">{{ $item->city }}</font>
                                         </font>
                                     </p>
                                     <p> </p>
