@@ -10,6 +10,6 @@ class HomeCotroller extends Controller
 {
     public function ProductList() {
         $products = Product::paginate(15);
-        return view('home.content.products',compact('products'));
+        return view('home.content.AllProducts',compact('products'));
     }
 }

@@ -67,6 +67,7 @@ Route::controller(CartController::class)->group(function () {
 Route::controller(ShopController::class)->name('shop.')->group(function () {
     Route::get('Categorie/{id}', 'getProductOfCategorie')->name("categorie");
     Route::get('categorie/{id}', 'getProductOfSubCategorie')->name("subcategorie");
+    Route::get('AllProduct', 'AllProduct')->name("AllProduct");
 });
 
 Route::controller(OrdersController::class)->middleware("auth")->group(function () {
@@ -80,8 +81,10 @@ Route::controller(ProfileController::class)->middleware("auth")->name("user.")->
     Route::post("AddNewAdresse", "AddNewAdresse")->name("createadresse");
 });
 
-Route::controller(HomeController::class)->group(function () {
+Route::controller(HomeCotroller::class)->group(function () {
     Route::get('products',  'ProductList')->name('ProductList');
+});
+Route::controller(HomeController::class)->group(function () {
     Route::get('getSubCategories',  'getSubCategories')->name('getSubCategories');
     Route::get('updateActiveTimeSlot/{id}', 'SwitchActiveModeForTimeSlot')->name('admin.SwitchActiveModeForTimeSlot');
 });

@@ -175,9 +175,9 @@
                                     <div class="single-product-wrapper">
                                         <!-- Product Image -->
                                         <div class="product-img">
-                                            <img src="img/product-img/product-2.jpg" alt="">
+                                            <img src="{{ asset('images/products') }}/{{ $item->images->first()->url }}" alt="">
                                             <!-- Hover Thumb -->
-                                            <img class="hover-img" src="img/product-img/product-3.jpg" alt="">
+                                            <img class="hover-img" src="{{ asset('images/products') }}/{{ $item->images->last()->url }}" alt="">
 
                                             <!-- Favourite -->
                                             <div class="product-favourite">
@@ -187,17 +187,17 @@
 
                                         <!-- Product Description -->
                                         <div class="product-description">
-                                            <span>topshop</span>
+                                            <span>{{ $item->subcategorie->categorie->name }}</span>
                                             <a href="single-product-details.html">
-                                                <h6>Knot Front Mini Dress</h6>
+                                                <h6>{{ Str::limit($item->title, 15, '...') }}</h6>
                                             </a>
-                                            <p class="product-price">$80.00</p>
+                                            <p class="product-price">${{ $item->price }}</p>
 
                                             <!-- Hover Content -->
                                             <div class="hover-content">
                                                 <!-- Add to Cart -->
                                                 <div class="add-to-cart-btn">
-                                                    <a href="#" class="btn essence-btn">Add to Cart</a>
+                                                    <button onclick="AddToCart({{ $item->id }})" class="btn essence-btn">Add to Cart</button>
                                                 </div>
                                             </div>
                                         </div>
