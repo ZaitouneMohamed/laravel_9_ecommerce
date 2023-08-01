@@ -11,10 +11,10 @@ class GetProducts
         $type = $info['type'];
         $id = $info['id'];
         if ($type == "subcategorie") {
-            $products = Product::where('sub_categorie_id', $id)->get();
+            $products = Product::where('sub_categorie_id', $id)->paginate(1);
             return $products;
         } else {
-            $products = Product::where('categorie_id', $id)->get();
+            $products = Product::where('categorie_id', $id)->paginate(1);
             return $products;
         }
     }

@@ -21,7 +21,7 @@ class ShopController extends Controller
             "type" => "categorie"
         ];
         $products = $this->productsListService->GetProductsList($data);
-        dd($products);
+        return view('home.content.products',compact('products'));
     }
     public function getProductOfSubCategorie($id)
     {
@@ -30,6 +30,7 @@ class ShopController extends Controller
             "type" => "subcategorie"
         ];
         $products = $this->productsListService->GetProductsList($data);
-        dd($products);
+        return view('home.content.products',compact('products'));
+        // dd($products);
     }
 }
