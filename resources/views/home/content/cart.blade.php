@@ -24,6 +24,8 @@
     <!-- End All Title Box -->
 
     <!-- Start Cart  -->
+    @if (session('cart'))
+
     <div class="cart-box-main">
 
         {{-- @method("post") --}}
@@ -49,46 +51,46 @@
                             </thead>
                             <tbody>
                                 @php $total = 0 @endphp
-                                @if (session('cart'))
-                                    @foreach (session('cart') as $id => $item)
-                                        <tr rowId="{{ $id }}">
-                                            <td class="thumbnail-img">
-                                                <a href="#">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('assets/landing/images/img-pro-01.jpg') }}"
-                                                        alt="" />
-                                                </a>
-                                            </td>
-                                            <td class="name-pr">
-                                                <a href="#">
-                                                    {{ Str::limit($item['title'], 10, '...') }}
-                                                </a>
-                                            </td>
-                                            <td class="price-pr">
-                                                <p>
-                                                    {{ $item['price'] }}
-                                                </p>
-                                            </td>
-                                            <td class="quantity-box">
-                                                <input min="1" type="number" id="{{ $item['id'] }}"
-                                                    value="{{ $item['quantity'] }}"
-                                                    onblur="edit({{ $item['id'] }},{{ $item['price'] }})">
-                                            </td>
-                                            <td class="total-pr">
-                                                <p id="total{{ $id }}">
-                                                    {{ $item['price'] * $item['quantity'] }}
-                                                </p>
-                                            </td>
-                                            <td class="remove-pr">
-                                                <button class="btn btn-link text-danger delete-product">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        @php
-                                            $total += $item['price'] * $item['quantity'];
-                                        @endphp
-                                    @endforeach
+
+                                @foreach (session('cart') as $id => $item)
+                                    <tr rowId="{{ $id }}">
+                                        <td class="thumbnail-img">
+                                            <a href="#">
+                                                <img class="img-fluid"
+                                                    src="{{ asset('assets/landing/images/img-pro-01.jpg') }}"
+                                                    alt="" />
+                                            </a>
+                                        </td>
+                                        <td class="name-pr">
+                                            <a href="#">
+                                                {{ Str::limit($item['title'], 10, '...') }}
+                                            </a>
+                                        </td>
+                                        <td class="price-pr">
+                                            <p>
+                                                {{ $item['price'] }}
+                                            </p>
+                                        </td>
+                                        <td class="quantity-box">
+                                            <input min="1" type="number" id="{{ $item['id'] }}"
+                                                value="{{ $item['quantity'] }}"
+                                                onblur="edit({{ $item['id'] }},{{ $item['price'] }})">
+                                        </td>
+                                        <td class="total-pr">
+                                            <p id="total{{ $id }}">
+                                                {{ $item['price'] * $item['quantity'] }}
+                                            </p>
+                                        </td>
+                                        <td class="remove-pr">
+                                            <button class="btn btn-link text-danger delete-product">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @php
+                                        $total += $item['price'] * $item['quantity'];
+                                    @endphp
+                                @endforeach
                             <tfoot>
                                 <tr>
                                     <td colspan="5" class="text-right">
@@ -98,9 +100,6 @@
                                     </td>
                                 </tr>
                             </tfoot>
-                        @else
-                            <h1>your card is empty</h1>
-                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -248,6 +247,7 @@
                                     </div>
                                 @endforeach
                             @else
+                                hhhhh
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Adresse</button>
                             @endif
@@ -261,6 +261,9 @@
         </div>
         </form>
     </div>
+    @else
+    <h1 class="text text-center">your card is empty</h1>
+    @endif
     <!-- End Cart -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
