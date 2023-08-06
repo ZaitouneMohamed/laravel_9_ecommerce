@@ -16,7 +16,7 @@ class OrdersController extends Controller
     public function OrdersList()
     {
         $orders = Orders::latest()->get()->unique('order_number');
-        return view('admin.content.orders', compact('orders'));
+        return view('admin.content.orders.orders', compact('orders'));
     }
     public function add_new_order(StoreOrderRequest $request)
     {
@@ -61,5 +61,11 @@ class OrdersController extends Controller
     public function MyOrdersList()
     {
         return view('home.content.orders');
+    }
+
+    public function ViewOrder($order_number)
+    {
+        $order = Orders::where('order_number', $order_number)->get();
+        return view('admin.content.orders.view', compact('order'));
     }
 }

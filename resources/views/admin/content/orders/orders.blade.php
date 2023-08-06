@@ -43,7 +43,7 @@
                                         <i class="fa fa-gear" aria-hidden="true"></i>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                        <li><a class="dropdown-item" href="{{route('admin.ViewOrder',$item->order_number)}}">View</a></li>
                                     </ul>
                                 </div>
                             </td>

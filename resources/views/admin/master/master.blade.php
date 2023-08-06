@@ -163,7 +163,7 @@
                         <a href="{{ route('admin.OrdersList') }}" class="menu-link">
                         <div data-i18n="Account">All
                             <span class="badge bg-label-success me-1">
-                                {{ \App\Models\Orders::count() }}
+                                {{ \App\Models\Orders::groupBy('order_number')->count() }}
                             </span>
                         </div>
                         </a>

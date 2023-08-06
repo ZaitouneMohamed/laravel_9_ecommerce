@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $categories = Categorie::latest()->take(3)->get();
     $products = Product::latest()->take(6)->get();
-    return view('home.index',compact("products","categories"));
+    return view('home.index', compact("products", "categories"));
 });
 
 Route::get('/login', function () {
@@ -115,5 +115,8 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
     Route::resource("products", ProductsController::class);
     Route::resource("branch", BranchController::class);
     Route::resource("TimeSlot", TimesSlotController::class);
-    Route::get('orders', [OrdersController::class, 'OrdersList'])->name('OrdersList');
+    Route::controller(OrdersController::class)->group(function () {
+        Route::get('orders', 'OrdersList')->name('OrdersList');
+        Route::get('ViewOrder/{order_number}', 'ViewOrder')->name('ViewOrder');
+    });
 });
