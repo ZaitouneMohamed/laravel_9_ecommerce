@@ -37,7 +37,16 @@
                                         <h6>frais de livraison 30 MAD </h6>
                                     </li>
                                     <li>
-                                        <h6>Total {{ $item->sum('total') }}</h6>
+                                        @php
+                                            $total = 0;
+                                        @endphp
+                                        @foreach ($item as $order)
+                                            @php
+                                                $total += $order->qty * $order->product_price;
+                                            @endphp
+                                        @endforeach
+                                        <h6>Total @php echo $total;
+                                        @endphp</h6>
                                     </li>
                                 </ul>
                             </div>
