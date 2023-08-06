@@ -169,6 +169,24 @@
                         </a>
                     </li>
                     <li class="menu-item">
+                        <a href="{{ route('admin.OrdersList') }}" class="menu-link">
+                        <div data-i18n="Account">comfirmed
+                            <span class="badge bg-label-success me-1">
+                                {{ \App\Models\Orders::where('statue', 1)->groupBy('order_number')->count() }}
+                            </span>
+                        </div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('admin.OrdersList') }}" class="menu-link">
+                        <div data-i18n="Account">annuller
+                            <span class="badge bg-label-success me-1">
+                                {{ \App\Models\Orders::groupBy('order_number')->where('statue', 2)->count() }}
+                            </span>
+                        </div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
                         <a href="" class="menu-link">
                         <div data-i18n="Connections">Create</div>
                         </a>

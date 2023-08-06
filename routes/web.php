@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\TimesSlotController;
@@ -101,6 +102,10 @@ Route::controller(ForgetPasswordController::class)->group(function () {
     Route::post('forget-password',  'submitForgetPasswordForm')->name('forget.password.post');
     Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.get');
     Route::post('reset-password', 'submitResetPasswordForm')->name('reset.password.post');
+});
+
+Route::controller(PdfController::class)->middleware(["auth"])->group(function () {
+    Route::get("pdf/{order_number}", 'GetUserOrder');
 });
 
 Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'role:admin'])->group(function () {
