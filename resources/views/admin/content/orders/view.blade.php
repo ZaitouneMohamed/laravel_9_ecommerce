@@ -7,9 +7,9 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">order number : {{ $order->first()->order_number }}</h5>
-                    <p class="card-text">total item : {{ $order->count('product') }}</p>
-                    <p class="card-text">order time : {{ $order->first()->created_at }}</p>
-                    <p class="card-text">delivery time : {{ $order->first()->delivery_date }}</p>
+                    <h5 class="card-title">total item : {{ $order->count('product') }}</h5>
+                    <h5 class="card-title">order time : {{ $order->first()->created_at }}</h5>
+                    <h5 class="card-title">delivery time : {{ $order->first()->delivery_date }}</h5>
                 </div>
             </div>
         </div>
@@ -25,8 +25,8 @@
                             $total += $item->qty * $item->product_price;
                         @endphp
                     @endforeach
-                    <p class="card-text">Total @phpecho $total + 30;
-                    @endphp </p>
+                    <h5 class="card-title">Total : @php echo $total + 30; @endphp </h5>
+                    <h5 class="cart-text">Payement Method : {{ $order->first()->payement_methode }} </h5>
                 </div>
             </div>
         </div>
@@ -34,7 +34,18 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Delivery Adresse</h5>
-                    <p class="card-text">{{ $order->first()->adresse }}</p>
+                    <h5 class="card-title">{{ $order->first()->adresse }}</h5>
+                    {!! $order->first()->statue !!}
+                    <div class="mb-3">
+                        <label for="defaultSelect" class="form-label">Change statue</label>
+                        <select id="defaultSelect" onchange="f1()" class="form-select">
+                            <option>Default select</option>
+                            <option value="confirmed">@php $statue = "confirmed"  @endphp<a
+                                    href="{{ route('admin.ChangeStatue', ['statue', $order->first()->order_number]) }}">confirmed</a>
+                            </option>
+                            <option value="annuller">annuller</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,8 +69,6 @@
                         <th>price</th>
                         <th>qty</th>
                         <th>Total</th>
-                        <th>Order Status</th>
-                        <th style="width: 40px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,19 +79,6 @@
                             <td>{{ $item->product_price }}</td>
                             <td>{{ $item->qty }}</td>
                             <td>{{ $item->qty * $item->product_price }} $</td>
-                            <td>{!! $item->statue !!}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-gear" aria-hidden="true"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('admin.ViewOrder', $item->order_number) }}">View</a></li>
-                                    </ul>
-                                </div>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -93,4 +89,15 @@
         {{ $products->links() }}
     </div> --}}
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function f1() {
+            statue = document.getElementById('defaultSelect').value;
+            order_number = {{ $order->first()->order_number }}
+            link = "admin/ChangeStatue/" + statue +"/" + order_number
+            window.location(link);
+        }
+    </script>
 @endsection

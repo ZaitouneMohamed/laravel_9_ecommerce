@@ -118,5 +118,6 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
     Route::controller(OrdersController::class)->group(function () {
         Route::get('orders', 'OrdersList')->name('OrdersList');
         Route::get('ViewOrder/{order_number}', 'ViewOrder')->name('ViewOrder');
+        Route::get('ChangeStatue/{statue}/{order_number}', 'ChangeStatue')->name('ChangeStatue');
     });
 });

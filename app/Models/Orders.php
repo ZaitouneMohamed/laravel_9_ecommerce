@@ -24,7 +24,7 @@ class Orders extends Model
         if ($value == 1) {
             return '<span class="badge bg-label-success me-1">confirmed</span>';
         } elseif ($value == 2) {
-            return "confirmed";
+            return '<span class="badge bg-label-danger me-1">annuller</span>';
         } else {
             return "hj";
         }

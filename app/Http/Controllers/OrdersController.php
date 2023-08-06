@@ -68,4 +68,17 @@ class OrdersController extends Controller
         $order = Orders::where('order_number', $order_number)->get();
         return view('admin.content.orders.view', compact('order'));
     }
+
+    public function ChangeStatue($statue, $order_number)
+    {
+        $order = Orders::where('order_number', $order_number)->get();
+        foreach ($order as $item) {
+            $item->update([
+                "statue" => $statue
+            ]);
+        }
+        return redirect()->back()->with([
+            "success" => "statue updated successfly"
+        ]);
+    }
 }

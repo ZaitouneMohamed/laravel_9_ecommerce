@@ -79,8 +79,15 @@
             <!-- User Login Info -->
             <div class="user-login-info profile-image">
                 @auth
-                    <a href="{{ route('user.profile') }}"><img src="{{ asset('images/profiles') }}/{{ Auth::user()->image->url }}"
-                            alt="" style="border-radius: 50%"></a>
+                    @if (Auth::user()->image)
+                        <a href="{{ route('user.profile') }}"><img
+                                src="{{ asset('images/profiles') }}/{{ Auth::user()->image->url }}" alt=""
+                                style="border-radius: 50%"></a>
+                    @else
+                        <a href="{{ route('user.profile+') }}"><img src="{{ asset('assets/landing/img/core-img/user.svg') }}"
+                                alt=""></a>
+                    @endif
+
                 @endauth
                 @guest
                     <a href="{{ route('login') }}"><img src="{{ asset('assets/landing/img/core-img/user.svg') }}"
