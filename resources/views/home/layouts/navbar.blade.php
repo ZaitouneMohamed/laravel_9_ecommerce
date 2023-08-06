@@ -23,9 +23,13 @@
                             <div class="megamenu">
                                 @foreach (\App\Models\Categorie::all() as $item)
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title"><a href="{{route('shop.categorie',$item->id)}}">{{ $item->name }}</a></li>
+                                        <li class="title"><a
+                                                href="{{ route('shop.categorie', $item->id) }}">{{ $item->name }}</a>
+                                        </li>
                                         @foreach ($item->subcategories as $item)
-                                            <li><a href="{{route('shop.subcategorie',$item->id)}}">{{ $item->name }}</a></li>
+                                            <li><a
+                                                    href="{{ route('shop.subcategorie', $item->id) }}">{{ $item->name }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 @endforeach
@@ -46,7 +50,7 @@
                             <li><a href="#">{{ Auth::user()->FullName }}</a>
                                 <ul class="dropdown">
                                     <li><a href="{{ route('user.profile') }}">Profile</a></li>
-                                    <li><a href="{{route('MyOrdersList')}}">orders</a></li>
+                                    <li><a href="{{ route('MyOrdersList') }}">orders</a></li>
                                     <li><a href="{{ route('logout') }}">Log Out</a></li>
                                 </ul>
                             </li>
@@ -73,14 +77,21 @@
                 <a href="#"><img src="{{ asset('assets/landing/img/core-img/heart.svg') }}" alt=""></a>
             </div>
             <!-- User Login Info -->
-            <div class="user-login-info">
-                <a href="#"><img src="{{ asset('assets/landing/img/core-img/user.svg') }}" alt=""></a>
+            <div class="user-login-info profile-image">
+                @auth
+                    <a href="{{ route('user.profile') }}"><img src="{{ asset('images/profiles') }}/{{ Auth::user()->image->url }}"
+                            alt="" style="border-radius: 50%"></a>
+                @endauth
+                @guest
+                    <a href="{{ route('login') }}"><img src="{{ asset('assets/landing/img/core-img/user.svg') }}"
+                            alt=""></a>
+                @endguest
             </div>
             <!-- Cart Area -->
             <div class="cart-area">
                 <a href="#" id="essenceCartBtn"><img src="{{ asset('assets/landing/img/core-img/bag.svg') }}"
                         alt="">
-                        <span class="cartCount"></span>
+                    <span class="cartCount"></span>
                 </a>
             </div>
         </div>
