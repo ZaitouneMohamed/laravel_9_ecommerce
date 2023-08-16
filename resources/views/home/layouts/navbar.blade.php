@@ -84,7 +84,7 @@
                                 src="{{ asset('images/profiles') }}/{{ Auth::user()->image->url }}" alt=""
                                 style="border-radius: 50%"></a>
                     @else
-                        <a href="{{ route('user.profile+') }}"><img src="{{ asset('assets/landing/img/core-img/user.svg') }}"
+                        <a href="{{ route('user.profile') }}"><img src="{{ asset('assets/landing/img/core-img/user.svg') }}"
                                 alt=""></a>
                     @endif
 

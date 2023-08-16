@@ -13,7 +13,15 @@
             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
                 <div class="row">
                     <div class="col-12">
-                        <form method="POST" action="{{route('login.function')}}">
+                        <div class="container">
+                            <div class="container">
+                                <div class="d-flex justify-content-evenly">
+                                    <a href="{{ route('google.redirect') }}" type="submit" class="btn btn-outline-dark"><i
+                                            class="fa fa-google" aria-hidden="true"></i></a><br>
+                                </div>
+                            </div>
+                        </div><br><br>
+                        <form method="POST" action="{{ route('login.function') }}">
                             @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -30,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <a href="{{route('forget.password.get')}}">Reset Password</a>
+                                <a href="{{ route('forget.password.get') }}">Reset Password</a>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-outline-dark">Login</button>

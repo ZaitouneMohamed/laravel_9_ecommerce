@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Admin\TimesSlotController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\ForgetPasswordController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeCotroller;
@@ -107,6 +108,9 @@ Route::controller(ForgetPasswordController::class)->group(function () {
 Route::controller(PdfController::class)->middleware(["auth"])->group(function () {
     Route::get("pdf/{order_number}", 'GetUserOrder');
 });
+
+Route::get('/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'role:admin'])->group(function () {
     Route::get('/', function () {
