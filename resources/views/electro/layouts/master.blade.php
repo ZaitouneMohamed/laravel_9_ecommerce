@@ -9,6 +9,8 @@
 
     <title>Electro - HTML Ecommerce Template</title>
 
+    @livewireStyles
+
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
@@ -140,6 +142,7 @@
         // }, 500);
     </script>
     @yield("scripts")
+    @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- jQuery Plugins -->
     <script src="{{ asset('assets/electro/js/jquery.min.js') }}"></script>
