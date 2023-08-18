@@ -19,6 +19,10 @@ class Product extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value, '-');
     }
+    public function getFirstImageAttribute()
+    {
+        return asset("images/products/" . $this->images->first()->url);
+    }
     public function pictures()
     {
         return $this->hasMany(Picture::class);

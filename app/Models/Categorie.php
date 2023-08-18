@@ -21,4 +21,9 @@ class Categorie extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function getCategorieImageAttribute()
+    {
+        return asset("images/categories/" . $this->Image->url);
+    }
 }

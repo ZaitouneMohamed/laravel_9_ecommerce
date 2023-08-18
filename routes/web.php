@@ -34,7 +34,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $categories = Categorie::latest()->take(3)->get();
     $products = Product::latest()->take(6)->get();
-    return view('home.index', compact("products", "categories"));
+    return view('electro.index', compact("products", "categories"));
+});
+
+Route::get('/electro', function () {
+    $categories = Categorie::latest()->take(3)->get();
+    $products = Product::latest()->take(6)->get();
+    return view('electro.index',compact("categories","products"));
+});
+
+Route::get('/cc', function () {
+    return view('electro.checkout');
 });
 
 Route::get('/login', function () {
