@@ -10,9 +10,9 @@ class CartController extends Controller
 {
     public function cartlist()
     {
-        return view('home.content.cart');
+        return view('electro.cart');
     }
-    public function addToCart($id)
+    public function addToCart(Request $request, $id)
     {
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
@@ -21,7 +21,7 @@ class CartController extends Controller
         } else {
             $cart[$id] = [
                 "id" => $product->id,
-                "image"=> $product->FirstImage,
+                "image" => $product->FirstImage,
                 "title" => $product->title,
                 "quantity" => 1,
                 "price" => $product->price,
@@ -47,6 +47,9 @@ class CartController extends Controller
             $total += $item['price'] * $item['quantity'];
             $count++;
         };
+        if ($count === 0) {
+            $count = 0;
+        }
         return response()->json([
             "total" => $total,
             "subtotal" => $total + 30,

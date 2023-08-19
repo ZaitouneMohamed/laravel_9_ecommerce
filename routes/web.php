@@ -37,14 +37,12 @@ Route::get('/', function () {
     return view('electro.index', compact("products", "categories"));
 });
 
-Route::get('/electro', function () {
-    $categories = Categorie::latest()->take(3)->get();
-    $products = Product::latest()->take(6)->get();
-    return view('electro.index',compact("categories","products"));
-});
-
-Route::get('/cc', function () {
+Route::get('/checkout', function () {
     return view('electro.checkout');
+})->name("checkout");
+
+Route::get('/test', function () {
+    return view('electro.blank');
 });
 
 Route::get('/login', function () {
@@ -64,6 +62,7 @@ Route::get('/admin/login', function () {
     return view('admin.auth.login');
 })->name("admin.login");
 
+Route::resource("products", ProductsController::class)->only("show");
 
 Route::controller(CartController::class)->group(function () {
     Route::post('cart/store', 'addToCart')->name('cart.store')->middleware("auth");
@@ -131,7 +130,7 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
     });
     Route::resource("categories", CategoriesController::class);
     Route::resource("SubCategories", SubCategoriesController::class);
-    Route::resource("products", ProductsController::class);
+    Route::resource("products", ProductsController::class)->except("show");
     Route::resource("branch", BranchController::class);
     Route::resource("TimeSlot", TimesSlotController::class);
     Route::controller(OrdersController::class)->group(function () {

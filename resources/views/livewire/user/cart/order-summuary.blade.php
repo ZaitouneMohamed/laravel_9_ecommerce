@@ -1,32 +1,35 @@
-<div class="col-lg-3 col-sm-12" wire:poll>
-    <div class="order-box">
-        <h3>Order summary</h3>
-        <div class="d-flex">
-            <h4>Sub Total</h4>
-            <div class="ml-auto font-weight-bold"> ${{ Cart::getTotal() }} </div>
-        </div>
-        <div class="d-flex">
-            <h4>Discount</h4>
-            <div class="ml-auto font-weight-bold"> $ 0 </div>
-        </div>
-        <hr class="my-1">
-        <div class="d-flex">
-            <h4>Coupon Discount</h4>
-            <div class="ml-auto font-weight-bold"> $ 0 </div>
-        </div>
-        <div class="d-flex">
-            <h4>Tax</h4>
-            <div class="ml-auto font-weight-bold"> $ 0 </div>
-        </div>
-        <div class="d-flex">
-            <h4>Shipping Cost</h4>
-            <div class="ml-auto font-weight-bold"> Free </div>
-        </div>
-        <hr>
-        <div class="d-flex gr-total">
-            <h5>Grand Total</h5>
-            <div class="ml-auto h5"> $ {{ Cart::getTotal() + 30 }} </div>
-        </div>
-        <hr>
+<div class="col-md-5 order-details" wire:poll>
+    <div class="section-title text-center">
+        <h3 class="title">Your Order</h3>
     </div>
+    <div class="order-summary">
+        <div class="order-col">
+            <div><strong>PRODUCT</strong></div>
+            <div><strong>TOTAL</strong></div>
+        </div>
+        <div class="order-products">
+            @php
+                $total = 0;
+            @endphp
+            @if (session('cart'))
+                @foreach ( session('cart') as $id => $item )
+                    @php $total += $item["quantity"] * $item["price"]  @endphp
+                    <div class="order-col">
+                        <div>{{ $item["quantity"] }}x </span>{{ $item['title'] }}</div>
+                        <div>${{ $item["price"] }} </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div class="order-col">
+            <div>Shiping</div>
+            <div><strong>FREE</strong></div>
+        </div>
+        <div class="order-col">
+            <div><strong>TOTAL</strong></div>
+            <div><strong class="order-total">${{ $total + 30 }}</strong></div>
+        </div>
+    </div>
+    <a href="#" class="primary-btn order-submit">Place order</a>
 </div>
+

@@ -73,13 +73,14 @@
                                     <div class="cart-list">
                                         <livewire:user.cart.nav-cart />
                                     </div>
-                                    <div class="cart-summary">
+                                    {{-- <div class="cart-summary">
                                         <small>3 Item(s) selected</small>
                                         <h5 id="subtotal"></h5>
-                                    </div>
+                                    </div> --}}
                                     <div class="cart-btns">
-                                        <a href="{{route('cart.list')}}">View Cart</a>
-                                        <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="{{ route('cart.list') }}">View Cart</a>
+                                        <a href="{{ route('checkout') }}">Checkout <i
+                                                class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -112,9 +113,12 @@
             <!-- responsive-nav -->
             <div id="responsive-nav">
                 <!-- NAV -->
-                <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Hot Deals</a></li>
+                <ul class="main-nav nav navbar-nav"
+                    style="
+                display: flex;
+                flex-direction: row;
+            ">
+                    <li class=""><a href="#">Home</a></li>
                     <li><a href="#">Categories</a></li>
                     @foreach (app\Models\Categorie::take(3)->get() as $item)
                         <li><a href="#">{{ $item->name }}</a></li>
@@ -130,14 +134,12 @@
     <script type="text/javascript">
         function getCartCountNavbar() {
             cart = document.querySelector(".cartcount");
-            total = document.querySelector("#total");
             subtotal = document.querySelector("#subtotal");
             $.ajax({
                 type: 'get',
                 url: "/getCartCount",
                 success: function(response) {
-                    cart.innerHTML = response.count;
-                    total.innerHTML = "$" + response.total;
+                    cart.innerHTML = `<div class="qty cartcount">`+1+`</div>` ;
                     subtotal.innerHTML = "SUBTOTAL : "
                     response.subtotal;
                     console.log(response.count)

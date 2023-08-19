@@ -83,7 +83,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('electro.product',compact('product'));
     }
 
     /**

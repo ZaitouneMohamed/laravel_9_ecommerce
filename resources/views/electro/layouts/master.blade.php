@@ -12,6 +12,7 @@
     @livewireStyles
 
     <!-- Google font -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
         {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> --}}
@@ -26,7 +27,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/electro/css/slick-theme.css') }}" />
 
     <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/nouislider.min.css') }} " />
+    <link type="text/css" rel="stylesheet" href="{{ asset('assets/electro/css/nouislider.min.css') }} " />
 
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="{{ asset('assets/electro/css/font-awesome.min.css') }} ">
@@ -151,7 +152,6 @@
     <script src="{{ asset('assets/electro/js/nouislider.min.js') }}"></script>
     <script src="{{ asset('assets/electro/js/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('assets/electro/js/main.js') }}"></script>
-
 </body>
 
 </html>

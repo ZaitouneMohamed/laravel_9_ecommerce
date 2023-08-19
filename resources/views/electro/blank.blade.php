@@ -1,0 +1,1 @@
+@extends("electro.layouts.master")
