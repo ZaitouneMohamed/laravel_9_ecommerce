@@ -27,7 +27,7 @@ class GoogleController extends Controller
                 'last_name' => $googleUser->user['family_name'] ?? '',
                 'email' => $googleUser->email,
                 'password' => \Hash::make(rand(100000, 999999)),
-            ]);
+            ])->assignRole('user');
             // $user = User::create(['name' => $googleUser->name, 'email' => $googleUser->email, 'password' => \Hash::make(rand(100000, 999999))]);
         }
         Auth::login($user);
