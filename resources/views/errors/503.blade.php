@@ -1,5 +1,8 @@
-@extends('errors::minimal')
+@extends("electro.layouts.master")
 
-@section('title', __('Service Unavailable'))
-@section('code', '503')
-@section('message', __('Service Unavailable'))
+@section("content")
+    <div class="container">
+        <h1 class="text text-center">503 | Service Unavailable</h1>
+    </div>
+@endsection
+

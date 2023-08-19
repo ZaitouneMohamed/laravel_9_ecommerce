@@ -1,5 +1,7 @@
-@extends('errors::minimal')
+@extends('electro.layouts.master')
 
-@section('title', __('Forbidden'))
-@section('code', '403')
-@section('message', __($exception->getMessage() ?: 'Forbidden'))
+@section('content')
+    <div class="container">
+        <h1 class="text text-center">403 | {{ __($exception->getMessage() ?: 'Forbidden') }} </h1>
+    </div>
+@endsection

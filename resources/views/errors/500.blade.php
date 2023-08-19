@@ -1,5 +1,8 @@
-@extends('errors::minimal')
+@extends("electro.layouts.master")
 
-@section('title', __('Server Error'))
-@section('code', '500')
-@section('message', __('Server Error'))
+@section("content")
+    <div class="container">
+        <h1 class="text text-center">500 | Something went wrong</h1>
+    </div>
+@endsection
+

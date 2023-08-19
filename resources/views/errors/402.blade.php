@@ -1,5 +1,7 @@
-@extends('errors::minimal')
+@extends("electro.layouts.master")
 
-@section('title', __('Payment Required'))
-@section('code', '402')
-@section('message', __('Payment Required'))
+@section("content")
+    <div class="container">
+        <h1 class="text text-center">402 | Payment Required</h1>
+    </div>
+@endsection
