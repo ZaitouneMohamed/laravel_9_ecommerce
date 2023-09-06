@@ -2,156 +2,186 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title -->
+    <title>@yield("title")</title>
 
-    <title>Electro - HTML Ecommerce Template</title>
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    @livewireStyles
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../favicon.png" />
 
-    <!-- Google font -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
+        rel="stylesheet" />
 
-        {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/71b7145720.js" crossorigin="anonymous"></script>
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/font-awesome/css/fontawesome-all.min.css') }} " />
+    <link rel="stylesheet" href="../../assets/css/font-electro.css" />
 
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/electro/css/bootstrap.min.css') }} " />
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/animate.css/animate.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/hs-megamenu/src/hs.megamenu.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/fancybox/jquery.fancybox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/slick-carousel/slick/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" />
 
-    <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/electro/css/slick.css') }} " />
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/electro/css/slick-theme.css') }}" />
-
-    <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/electro/css/nouislider.min.css') }} " />
-
-    <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="{{ asset('assets/electro/css/font-awesome.min.css') }} ">
-
-    <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/electro/css/style.css') }}" />
+    <!-- CSS Electro Template -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/theme.css') }}" />
 </head>
 
 <body>
 
-
     @include("electro.layouts.sections.navbar")
 
-    @yield("BREADCRUMB")
-    {{-- <!--  -->
-    <div id="breadcrumb" class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="breadcrumb-header">Regular Page</h3>
-                    <ul class="breadcrumb-tree">
-                        <li><a href="#">Home</a></li>
-                        <li class="active">Blank</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /BREADCRUMB --> --}}
+    @yield("content")
 
-    <!-- SECTION -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                @yield("content")
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /SECTION -->
-
-    <!-- NEWSLETTER -->
-    <div id="newsletter" class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="newsletter">
-                        <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-                        <form>
-                            <input class="input" type="email" placeholder="Enter Your Email">
-                            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-                        </form>
-                        <ul class="newsletter-follow">
-                            <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /NEWSLETTER -->
+    @include("electro.layouts.sections.account-slider")
 
     @include("electro.layouts.sections.footer")
 
 
-    <script type="text/javascript">
-        alert('ghj')
-        function getCartCountNavbar() {
-            cart = document.querySelector(".cartcount");
-            total = document.querySelector("#total");
-            subtotal = document.querySelector("#subtotal");
-            $.ajax({
-                type: 'get',
-                url: "/getCartCount",
-                success: function(response) {
-                    cart.innerHTML = response.count;
-                    total.innerHTML = "$" + response.total;
-                    subtotal.innerHTML = "SUBTOTAL : " response.subtotal;
-                    console.log(response.count)
-                },
-                error: function() {
-                    console.log('An error occurred .');
-                }
-            })
-            alert("gjw9")
-        }
+    <!-- Go to Top -->
+    <a class="js-go-to u-go-to" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed"
+        data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp"
+        data-hide-effect="slideOutDown">
+        <span class="fas fa-arrow-up u-go-to__inner"></span>
+    </a>
+    <!-- End Go to Top -->
+    <script src="{{ asset('assets/electro/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/appear.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/hs-megamenu/src/hs.megamenu.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/svg-injector/dist/svg-injector.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/fancybox/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/typed.js/lib/typed.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/slick-carousel/slick/slick.js') }}"></script>
+    <script src="{{ asset('assets/electro/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/hs.core.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.countdown.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.header.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.hamburgers.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.unfold.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.focus-state.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.malihu-scrollbar.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.validation.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.fancybox.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.onscroll-animation.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.slick-carousel.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.show-animation.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.svg-injector.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.go-to.js') }}"></script>
+    <script src="{{ asset('assets/electro/js/components/hs.selectpicker.js') }}"></script>
 
-            getCartCountNavbar();
-        // setInterval(() => {
-        //     getCartCountNavbar();
-        // }, 500);
+    <!-- JS Plugins Init. -->
+    <script>
+        $(window).on("load", function() {
+            // initialization of HSMegaMenu component
+            $(".js-mega-menu").HSMegaMenu({
+                event: "hover",
+                direction: "horizontal",
+                pageContainer: $(".container"),
+                breakpoint: 767.98,
+                hideTimeOut: 0,
+            });
+        });
+
+        $(document).on("ready", function() {
+            // initialization of header
+            $.HSCore.components.HSHeader.init($("#header"));
+
+            // initialization of animation
+            $.HSCore.components.HSOnScrollAnimation.init("[data-animation]");
+
+            // initialization of unfold component
+            $.HSCore.components.HSUnfold.init($("[data-unfold-target]"), {
+                afterOpen: function() {
+                    $(this).find('input[type="search"]').focus();
+                },
+            });
+
+            // initialization of popups
+            $.HSCore.components.HSFancyBox.init(".js-fancybox");
+
+            // initialization of countdowns
+            var countdowns = $.HSCore.components.HSCountdown.init(".js-countdown", {
+                yearsElSelector: ".js-cd-years",
+                monthsElSelector: ".js-cd-months",
+                daysElSelector: ".js-cd-days",
+                hoursElSelector: ".js-cd-hours",
+                minutesElSelector: ".js-cd-minutes",
+                secondsElSelector: ".js-cd-seconds",
+            });
+
+            // initialization of malihu scrollbar
+            $.HSCore.components.HSMalihuScrollBar.init($(".js-scrollbar"));
+
+            // initialization of forms
+            $.HSCore.components.HSFocusState.init();
+
+            // initialization of form validation
+            $.HSCore.components.HSValidation.init(".js-validate", {
+                rules: {
+                    confirmPassword: {
+                        equalTo: "#signupPassword",
+                    },
+                },
+            });
+
+            // initialization of show animations
+            $.HSCore.components.HSShowAnimation.init(".js-animation-link");
+
+            // initialization of fancybox
+            $.HSCore.components.HSFancyBox.init(".js-fancybox");
+
+            // initialization of slick carousel
+            $.HSCore.components.HSSlickCarousel.init(".js-slick-carousel");
+
+            // initialization of go to
+            $.HSCore.components.HSGoTo.init(".js-go-to");
+
+            // initialization of hamburgers
+            $.HSCore.components.HSHamburgers.init("#hamburgerTrigger");
+
+            // initialization of unfold component
+            $.HSCore.components.HSUnfold.init($("[data-unfold-target]"), {
+                beforeClose: function() {
+                    $("#hamburgerTrigger").removeClass("is-active");
+                },
+                afterClose: function() {
+                    $("#headerSidebarList .collapse.show").collapse("hide");
+                },
+            });
+
+            $('#headerSidebarList [data-toggle="collapse"]').on(
+                "click",
+                function(e) {
+                    e.preventDefault();
+
+                    var target = $(this).data("target");
+
+                    if ($(this).attr("aria-expanded") === "true") {
+                        $(target).collapse("hide");
+                    } else {
+                        $(target).collapse("show");
+                    }
+                }
+            );
+
+            // initialization of unfold component
+            $.HSCore.components.HSUnfold.init($("[data-unfold-target]"));
+
+            // initialization of select picker
+            $.HSCore.components.HSSelectPicker.init(".js-select");
+        });
     </script>
-    @yield("scripts")
-    @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <!-- jQuery Plugins -->
-    <script src="{{ asset('assets/electro/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/nouislider.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/jquery.zoom.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/main.js') }}"></script>
 </body>
 
 </html>
