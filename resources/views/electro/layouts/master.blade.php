@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title -->
-    <title>@yield("title")</title>
+    <title>@yield('title')</title>
 
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8" />
@@ -13,20 +13,23 @@
     <link rel="shortcut icon" href="../../favicon.png" />
 
     <!-- Google Fonts -->
+    @livewireStyles
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
         rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{ asset('assets/electro/vendor/font-awesome/css/fontawesome-all.min.css') }} " />
-    <link rel="stylesheet" href="../../assets/css/font-electro.css" />
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/font-electro.css') }} " />
 
     <link rel="stylesheet" href="{{ asset('assets/electro/vendor/animate.css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/electro/vendor/hs-megamenu/src/hs.megamenu.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/electro/vendor/fancybox/jquery.fancybox.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/electro/vendor/slick-carousel/slick/slick.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('assets/electro/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" />
 
     <!-- CSS Electro Template -->
     <link rel="stylesheet" href="{{ asset('assets/electro/css/theme.css') }}" />
@@ -34,21 +37,22 @@
 
 <body>
 
-    @include("electro.layouts.sections.navbar")
+    @include('electro.layouts.sections.navbar')
 
-    @yield("content")
+    @yield('content')
 
-    @include("electro.layouts.sections.account-slider")
+    @include('electro.layouts.sections.account-slider')
 
-    @include("electro.layouts.sections.footer")
+    @include('electro.layouts.sections.footer')
 
 
     <!-- Go to Top -->
     <a class="js-go-to u-go-to" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed"
-        data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp"
-        data-hide-effect="slideOutDown">
+        data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp" data-hide-effect="slideOutDown">
         <span class="fas fa-arrow-up u-go-to__inner"></span>
     </a>
+    @livewireScripts
+    @yield('script')
     <!-- End Go to Top -->
     <script src="{{ asset('assets/electro/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/electro/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
@@ -58,7 +62,9 @@
     <script src="{{ asset('assets/electro/vendor/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('assets/electro/vendor/hs-megamenu/src/hs.megamenu.js') }}"></script>
     <script src="{{ asset('assets/electro/vendor/svg-injector/dist/svg-injector.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script
+        src="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}">
+    </script>
     <script src="{{ asset('assets/electro/vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('assets/electro/vendor/fancybox/jquery.fancybox.min.js') }}"></script>
     <script src="{{ asset('assets/electro/vendor/typed.js/lib/typed.min.js') }}"></script>
