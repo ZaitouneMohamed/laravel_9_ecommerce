@@ -303,18 +303,19 @@
                                                         class="text-blue font-weight-bold">{{ $item->title }}</a>
                                                 </h5>
                                                 <div class="mb-2">
-                                                    <a href="#"
-                                                        class="d-block text-center"><img class="img-fluid"
+                                                    <a href="#" class="d-block text-center"><img class="img-fluid"
                                                             src="{{ $item->FirstImage }}" width="100px" height="100px"
                                                             alt="Image Description" /></a>
                                                 </div>
                                                 <div class="flex-center-between mb-1">
                                                     <div class="prodcut-price d-flex align-items-center position-relative">
-                                                        <ins class="font-size-20 text-red text-decoration-none">{{ $item->price }}</ins>
-                                                        <del class="font-size-12 tex-gray-6 position-absolute bottom-100">${{$item->old_price}}</del>
+                                                        <ins
+                                                            class="font-size-20 text-red text-decoration-none">{{ $item->price }}</ins>
+                                                        <del
+                                                            class="font-size-12 tex-gray-6 position-absolute bottom-100">${{ $item->old_price }}</del>
                                                     </div>
                                                     <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="#"
+                                                        <a onclick="AddToCart({{ $item->id }})"
                                                             class="btn-add-cart btn-primary transition-3d-hover"><i
                                                                 class="ec ec-add-to-cart"></i></a>
                                                     </div>
@@ -7037,4 +7038,36 @@
     <!-- ========== END MAIN CONTENT ========== -->
 @endsection
 
-@section("title","Electro - Responsive Website Template")
+@section('title', 'Electro - Responsive Website Template')
+
+@section('script')
+    <script type="text/javascript">
+        function AddToCart(id) {
+            $.ajax({
+                type: 'GET',
+                url: "AddToCart/" + id,
+                success: function(response) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product added successfully'
+                    })
+                },
+                error: function() {
+                    alert('An error occurred .');
+                }
+            })
+        }
+    </script>
+@endsection
