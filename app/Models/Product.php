@@ -23,6 +23,10 @@ class Product extends Model
     {
         return asset("images/products/" . $this->images->first()->url);
     }
+    public function scopePrenium($query)
+    {
+        return $query->where("prenium", 1);
+    }
     public function pictures()
     {
         return $this->hasMany(Picture::class);
