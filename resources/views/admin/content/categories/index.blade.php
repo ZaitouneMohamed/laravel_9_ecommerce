@@ -25,7 +25,7 @@
                                     <td> {{ $item->name, 10 }}</td>
                                     <td>{{ $item->subcategories->count() }}</td>
                                     <td> <img width="70px" height="50px"
-                                            src="{{ asset('images/categories') }}/{{ $item->Image->url }}" alt=""> </td>
+                                            src="{{ $item->CategorieImage }}" alt=""> </td>
                                     <td>
                                         <div class="dropdown">
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
