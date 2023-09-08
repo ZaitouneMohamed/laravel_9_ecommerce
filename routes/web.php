@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TimesSlotController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\HomeController as ControllersHomeController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomeCotroller;
@@ -31,15 +32,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $categories = Categorie::latest()->take(3)->get();
-    $latest_products = Product::latest()->take(4)->get();
-    return view('electro.index', compact("latest_products", "categories"));
+Route::controller(ControllersHomeController::class)->group(function(){
+
+    Route::get('/',"Home")->name("home");
+    Route::get('/checkout',"checkout")->name("checkout");
 });
 
-Route::get('/checkout', function () {
-    return view('electro.checkout');
-})->name("checkout");
+
+
 
 Route::get('/test', function () {
     return view('electro.blank');
