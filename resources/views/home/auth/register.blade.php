@@ -1,6 +1,6 @@
-@extends('home.master.master')
+@extends('electro.layouts.master')
 
-@section('content')
+@section('contentt')
     <div class="col-12">
         <!-- Main Content -->
         <div class="row">
@@ -93,5 +93,120 @@
 
         </main>
         <!-- Main Content -->
+    </div>
+@endsection
+@section('content')
+    <!-- Page Introduction Wrapper -->
+    <div class="page-style-a">
+        <div class="container">
+            <div class="page-intro">
+                <h2>Account</h2>
+                <ul class="bread-crumb">
+                    <li class="has-separator">
+                        <i class="ion ion-md-home"></i>
+                        <a href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="is-marked">
+                        <a href="#">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Page Introduction Wrapper /- -->
+    <!-- Account-Page -->
+    <div class="page-account u-s-p-t-80">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Login -->
+                <div class="login-wrapper">
+                    <h2 class="account-h2 u-s-m-b-20">Register</h2>
+                    <h6 class="account-h6 u-s-m-b-30">Registering for this site allows you to access your order status and
+                        history.</h6>
+                    <div class="m-b-45">
+                        <a href="{{ route('google.redirect') }}" class="button button-outline-dark w-60"><i
+                                class="fa-brands fa-google-plus-g"></i></a>
+                    </div><br><br>
+                    <form method="POST" action="{{ route('register.function') }}">
+                        @csrf
+                        <div class="u-s-m-b-30 row">
+                            <div class="col-6">
+                                <label for="user-name-email">First name
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="user-name-email" class="text-field" name="first_name"
+                                    placeholder="First Name">
+                                @error('first_name')
+                                    <span class="text text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-6">
+                                <label for="user-name-email">last name
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="user-name-email" class="text-field" name="last_name"
+                                    placeholder="Last Name">
+                                @error('last_name')
+                                    <span class="text text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <label for="login-password">Email
+                                <span class="astk">*</span>
+                            </label>
+                            <input type="text" id="login-password" name="email" class="text-field"
+                                placeholder="Email">
+                            @error('email')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <label for="login-password">phone
+                                <span class="astk">*</span>
+                            </label>
+                            <input type="text" id="login-password" name="phone" class="text-field"
+                                placeholder="Phone">
+                            @error('email')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <label for="login-password">Password
+                                <span class="astk">*</span>
+                            </label>
+                            <input type="text" id="login-password" name="password" class="text-field"
+                                placeholder="Password">
+                            @error('password')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <label for="login-password">Confirm Password
+                                <span class="astk">*</span>
+                            </label>
+                            <input type="text" id="login-password" name="password_confirmation" class="text-field"
+                                placeholder="Repeat Password">
+                        </div>
+                        <div class="group-inline u-s-m-b-30">
+                            <div class="group-1">
+                                <input type="checkbox" class="check-box" id="remember-me-token">
+                                <label class="label-text" for="remember-me-token">Remember me</label>
+                            </div>
+                            <div class="group-2 text-right">
+                                <div class="page-anchor">
+                                    <a href="lost-password.html">
+                                        <i class="fas fa-circle-o-notch u-s-m-r-9"></i>Lost your password?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-b-45">
+                            <button class="button button-outline-secondary w-100">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

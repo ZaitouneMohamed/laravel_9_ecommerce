@@ -1,54 +1,79 @@
-@extends('home.master.master')
+@extends('electro.layouts.master')
 
 @section('content')
-    <div class="col-12">
-        <!-- Main Content -->
-        <div class="row">
-            <div class="col-12 mt-3 text-center text-uppercase">
-                <h2>Login</h2>
+    <!-- Page Introduction Wrapper -->
+    <div class="page-style-a">
+        <div class="container">
+            <div class="page-intro">
+                <h2>Account</h2>
+                <ul class="bread-crumb">
+                    <li class="has-separator">
+                        <i class="ion ion-md-home"></i>
+                        <a href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="is-marked">
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <main class="row">
-            <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="container">
-                            <div class="container">
-                                <div class="d-flex justify-content-evenly">
-                                    <a href="{{ route('google.redirect') }}" type="submit" class="btn btn-outline-dark"><i
-                                            class="fa fa-google" aria-hidden="true"></i></a><br>
-                                </div>
-                            </div>
-                        </div><br><br>
-                        <form method="POST" action="{{ route('login.function') }}">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input type="checkbox" id="remember" class="form-check-input">
-                                    <label for="remember" class="form-check-label ml-2">Remember Me</label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <a href="{{ route('forget.password.get') }}">Reset Password</a>
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-outline-dark">Login</button>
-                            </div>
-                        </form>
+    </div>
+    <!-- Page Introduction Wrapper /- -->
+    <!-- Account-Page -->
+    <div class="page-account u-s-p-t-80">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Login -->
+                <div class="login-wrapper">
+                    <h2 class="account-h2 u-s-m-b-20">Login</h2>
+                    <h6 class="account-h6 u-s-m-b-30">Welcome back! Sign in to your account.</h6>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <div class="m-b-45">
+                        <a href="{{ route('google.redirect') }}" class="button button-outline-dark w-60"><i
+                                class="fa-brands fa-google-plus-g"></i></a>
                     </div>
+                    <form method="POST" action="{{ route('login.function') }}">
+                        @csrf
+                        <div class="u-s-m-b-30">
+                            <label for="user-name-email">Username or Email
+                                <span class="astk">*</span>
+                            </label>
+                            <input type="text" id="user-name-email" class="text-field" name="email"
+                                placeholder="Email">
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <label for="login-password">Password
+                                <span class="astk">*</span>
+                            </label>
+                            <input type="text" id="login-password" name="password" class="text-field"
+                                placeholder="Password">
+                        </div>
+                        <div class="group-inline u-s-m-b-30">
+                            <div class="group-1">
+                                <input type="checkbox" class="check-box" id="remember-me-token">
+                                <label class="label-text" for="remember-me-token">Remember me</label>
+                            </div>
+                            <div class="group-2 text-right">
+                                <div class="page-anchor">
+                                    <a href="lost-password.html">
+                                        <i class="fas fa-circle-o-notch u-s-m-r-9"></i>Lost your password?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-b-45">
+                            <button class="button button-outline-secondary w-100">Login</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-        </main>
-        <!-- Main Content -->
+        </div>
     </div>
 @endsection
