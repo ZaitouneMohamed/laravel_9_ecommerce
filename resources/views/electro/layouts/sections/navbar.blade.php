@@ -134,7 +134,7 @@
                                     <i class="far fa-heart"></i>
                                 </a>
                             </li>
-                            <livewire:cart.cart-nav-bar />
+                            @include("electro.cart.navbar.count")
                         </ul>
                     </nav>
                 </div>
@@ -156,7 +156,8 @@
     </div>
     <!-- Responsive-Buttons /- -->
     <!-- Mini Cart -->
-    <livewire:cart.cart-content />
+    {{-- <livewire:cart.cart-content /> --}}
+    @include("electro.cart.navbar.content")
     <!-- Mini Cart /- -->
     <!-- Bottom-Header -->
     <div class="full-layer-bottom-header">

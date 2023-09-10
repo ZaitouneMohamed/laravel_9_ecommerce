@@ -59,10 +59,12 @@ class CartController extends Controller
 
     public function getCartContent()
     {
-        $cartItems = session('cart');
-        return response()->json([
-            "content" => $cartItems
-        ]);
+        if (session('cart')) {
+            $cartItems = array_values(session('cart'));
+            return response()->json($cartItems);
+        } else {
+            return response()->json([]);
+        }
     }
 
     public function deleteProduct(Request $request)

@@ -1,4 +1,4 @@
-<div class="mini-cart-wrapper">
+<div class="mini-cart-wrapper" wire:poll.2000ms>
     <div class="mini-cart">
         <div class="mini-cart-header">
             YOUR CART
