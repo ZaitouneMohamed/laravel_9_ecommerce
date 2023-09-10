@@ -19,12 +19,14 @@
         </div>
     </div>
 </div>
+
 <script>
     function getCartContent() {
         $.ajax({
             type: 'GET',
             url: "{{ route('getCartContent') }}",
             success: function(response) {
+                console.log(response)
                 var cart = "";
                 var total = 0;
                 if (response.length > 0) {
@@ -32,22 +34,22 @@
                         total += item.price * item.quantity
                         cart +=
                             `
-                            <li class="clearfix">
-                                <a href="single-product.html">
-                                    <img src="` + item.image + `" alt="Product">
-                                    <span class="mini-item-name">` + item.title + `</span>
-                                    <span class="mini-item-price">` + item.price + `</span>
-                                    <span class="mini-item-quantity"> x ` + item.quantity + ` </span>
-                                </a>
-                            </li>
-                            `
+                                <li class="clearfix">
+                                    <a href="single-product.html">
+                                        <img src="` + item.image + `" alt="Product">
+                                        <span class="mini-item-name">` + item.title + `</span>
+                                        <span class="mini-item-price">` + item.price + `</span>
+                                        <span class="mini-item-quantity"> x ` + item.quantity + ` </span>
+                                    </a>
+                                </li>
+                                `
                     });
+                    document.getElementById('cart_content').innerHTML = cart;
+                    document.getElementById('total_content').innerHTML = "$" + total;
                 } else {
                     cart = "<li>Your cart is empty</li>";
+                    // document.getElementById('cart_content').innerHTML = cart;
                 }
-                document.getElementById('cart_content').innerHTML = cart;
-                document.getElementById('total_content').innerHTML = "$" + total;
-                console.log(cart)
             },
             error: function() {
                 console.log('An error occurred.');
@@ -55,7 +57,9 @@
         });
     }
 
-    setInterval(() => {
-        getCartContent();
-    }, 1000);
+    window.onload = function() {
+        setInterval(() => {
+            getCartContent();
+        }, 3000); // Update the cart content every 3 seconds
+    };
 </script>
