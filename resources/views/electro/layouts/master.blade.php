@@ -1,193 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en-US">
 
 <head>
-    <!-- Title -->
-    <title>@yield('title')</title>
-
-    <!-- Required Meta Tags Always Come First -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../../favicon.png" />
-
-    <!-- Google Fonts -->
-    @livewireStyles
+    <meta charset="UTF-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Groover - Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more</title>
+    <!-- Standard Favicon -->
+    <link href="favicon.ico" rel="shortcut icon">
+    <!-- Base Google Font for Web-app -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- Google Fonts for Banners only -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
         rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/font-awesome/css/fontawesome-all.min.css') }} " />
-    <link rel="stylesheet" href="{{ asset('assets/electro/css/font-electro.css') }} " />
-
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/animate.css/animate.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/hs-megamenu/src/hs.megamenu.css') }}" />
-    <link rel="stylesheet"
-        href="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/fancybox/jquery.fancybox.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/slick-carousel/slick/slick.css') }}" />
-    <link rel="stylesheet"
-        href="{{ asset('assets/electro/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" />
-
-    <!-- CSS Electro Template -->
-    <link rel="stylesheet" href="{{ asset('assets/electro/css/theme.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/bootstrap.min.css') }} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/fontawesome.min.css') }}">
+    <!-- Ion-Icons 4 -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/ionicons.min.css') }}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/animate.min.css') }}">
+    <!-- Owl-Carousel -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/owl.carousel.min.css') }}">
+    <!-- Jquery-Ui-Range-Slider -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/jquery-ui-range-slider.min.css') }}">
+    <!-- Utility -->
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/utility.css') }}">
+    <!-- Main -->
+    @livewireStyles
+    <link rel="stylesheet" href="{{ asset('assets/electro/css/bundle.css') }}">
 </head>
 
 <body>
 
-    @include('electro.layouts.sections.navbar')
+    <!-- app -->
+    <div id="app">
+        <!-- Header -->
+        @include('electro.layouts.sections.navbar')
+        <!-- Header /- -->
 
-    @yield('content')
+        @yield('content')
 
-    @include('electro.layouts.sections.account-slider')
-
-    @include('electro.layouts.sections.footer')
-
-
-    <!-- Go to Top -->
-    <a class="js-go-to u-go-to" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed"
-        data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp" data-hide-effect="slideOutDown">
-        <span class="fas fa-arrow-up u-go-to__inner"></span>
-    </a>
+        @include('electro.layouts.sections.footer')
+        <!-- Quick-view-Modal /- -->
+    </div>
+    <!-- app /- -->
+    <!--[if lte IE 9]>
+<div class="app-issue">
+    <div class="vertical-center">
+        <div class="text-center">
+            <h1>You are using an outdated browser.</h1>
+            <span>This web app is not compatible with following browser. Please upgrade your browser to improve your security and experience.</span>
+        </div>
+    </div>
+</div>
+<style> #app {
+    display: none;
+} </style>
+<![endif]-->
+    <!-- NoScript -->
+    <noscript>
+        <div class="app-issue">
+            <div class="vertical-center">
+                <div class="text-center">
+                    <h1>JavaScript is disabled in your browser.</h1>
+                    <span>Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser to
+                        register for Groover.</span>
+                </div>
+            </div>
+        </div>
+        <style>
+            #app {
+                display: none;
+            }
+        </style>
+    </noscript>
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     @livewireScripts
-    @yield('script')
-    <!-- End Go to Top -->
-    <script src="{{ asset('assets/electro/vendor/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/bootstrap/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/appear.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/hs-megamenu/src/hs.megamenu.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/svg-injector/dist/svg-injector.min.js') }}"></script>
-    <script
-        src="{{ asset('assets/electro/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/electro/vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/fancybox/jquery.fancybox.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/typed.js/lib/typed.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/slick-carousel/slick/slick.js') }}"></script>
-    <script src="{{ asset('assets/electro/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/hs.core.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.countdown.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.header.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.hamburgers.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.unfold.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.focus-state.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.malihu-scrollbar.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.validation.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.fancybox.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.onscroll-animation.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.slick-carousel.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.show-animation.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.svg-injector.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.go-to.js') }}"></script>
-    <script src="{{ asset('assets/electro/js/components/hs.selectpicker.js') }}"></script>
-
-    <!-- JS Plugins Init. -->
+    @yield("scripts")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        $(window).on("load", function() {
-            // initialization of HSMegaMenu component
-            $(".js-mega-menu").HSMegaMenu({
-                event: "hover",
-                direction: "horizontal",
-                pageContainer: $(".container"),
-                breakpoint: 767.98,
-                hideTimeOut: 0,
-            });
-        });
-
-        $(document).on("ready", function() {
-            // initialization of header
-            $.HSCore.components.HSHeader.init($("#header"));
-
-            // initialization of animation
-            $.HSCore.components.HSOnScrollAnimation.init("[data-animation]");
-
-            // initialization of unfold component
-            $.HSCore.components.HSUnfold.init($("[data-unfold-target]"), {
-                afterOpen: function() {
-                    $(this).find('input[type="search"]').focus();
-                },
-            });
-
-            // initialization of popups
-            $.HSCore.components.HSFancyBox.init(".js-fancybox");
-
-            // initialization of countdowns
-            var countdowns = $.HSCore.components.HSCountdown.init(".js-countdown", {
-                yearsElSelector: ".js-cd-years",
-                monthsElSelector: ".js-cd-months",
-                daysElSelector: ".js-cd-days",
-                hoursElSelector: ".js-cd-hours",
-                minutesElSelector: ".js-cd-minutes",
-                secondsElSelector: ".js-cd-seconds",
-            });
-
-            // initialization of malihu scrollbar
-            $.HSCore.components.HSMalihuScrollBar.init($(".js-scrollbar"));
-
-            // initialization of forms
-            $.HSCore.components.HSFocusState.init();
-
-            // initialization of form validation
-            $.HSCore.components.HSValidation.init(".js-validate", {
-                rules: {
-                    confirmPassword: {
-                        equalTo: "#signupPassword",
-                    },
-                },
-            });
-
-            // initialization of show animations
-            $.HSCore.components.HSShowAnimation.init(".js-animation-link");
-
-            // initialization of fancybox
-            $.HSCore.components.HSFancyBox.init(".js-fancybox");
-
-            // initialization of slick carousel
-            $.HSCore.components.HSSlickCarousel.init(".js-slick-carousel");
-
-            // initialization of go to
-            $.HSCore.components.HSGoTo.init(".js-go-to");
-
-            // initialization of hamburgers
-            $.HSCore.components.HSHamburgers.init("#hamburgerTrigger");
-
-            // initialization of unfold component
-            $.HSCore.components.HSUnfold.init($("[data-unfold-target]"), {
-                beforeClose: function() {
-                    $("#hamburgerTrigger").removeClass("is-active");
-                },
-                afterClose: function() {
-                    $("#headerSidebarList .collapse.show").collapse("hide");
-                },
-            });
-
-            $('#headerSidebarList [data-toggle="collapse"]').on(
-                "click",
-                function(e) {
-                    e.preventDefault();
-
-                    var target = $(this).data("target");
-
-                    if ($(this).attr("aria-expanded") === "true") {
-                        $(target).collapse("hide");
-                    } else {
-                        $(target).collapse("show");
-                    }
-                }
-            );
-
-            // initialization of unfold component
-            $.HSCore.components.HSUnfold.init($("[data-unfold-target]"));
-
-            // initialization of select picker
-            $.HSCore.components.HSSelectPicker.init(".js-select");
-        });
+        window.ga = function() {
+            ga.q.push(arguments)
+        };
+        ga.q = [];
+        ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview')
     </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <!-- Modernizr-JS -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/vendor/modernizr-custom.min.js') }} "></script>
+    <!-- NProgress -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/nprogress.min.js') }}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery.min.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/bootstrap.min.js') }}"></script>
+    <!-- Popper -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/popper.min.js') }}"></script>
+    <!-- ScrollUp -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery.scrollUp.min.js') }}"></script>
+    <!-- Elevate Zoom -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery.elevatezoom.min.js') }}"></script>
+    <!-- jquery-ui-range-slider -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery-ui.range-slider.min.js') }}"></script>
+    <!-- jQuery Slim-Scroll -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery.slimscroll.min.js') }}"></script>
+    <!-- jQuery Resize-Select -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery.resize-select.min.js') }}"></script>
+    <!-- jQuery Custom Mega Menu -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery.custom-megamenu.min.js') }}"></script>
+    <!-- jQuery Countdown -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/jquery.custom-countdown.min.js') }}"></script>
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/owl.carousel.min.js') }}"></script>
+    <!-- Main -->
+    <script type="text/javascript" src="{{ asset('assets/electro/js/app.js') }}"></script>
 </body>
 
 </html>
