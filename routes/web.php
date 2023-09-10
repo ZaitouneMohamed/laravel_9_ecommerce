@@ -66,7 +66,7 @@ Route::resource("products", ProductsController::class)->only("show");
 
 Route::controller(CartController::class)->group(function () {
     Route::post('cart/store', 'addToCart')->name('cart.store')->middleware("auth");
-    Route::get('cart', 'cartlist')->name('cart.list')->middleware("auth");
+    Route::get('cart', 'cartlist')->name('cart.list');
     Route::post('cart/remove', 'removeCart')->name('cart.remove.item');
     Route::get('AddToCart/{id}', 'addToCart')->name('addProdustToCart');
     Route::delete('deleteProduct',  'deleteProduct')->name('deleteProduct');
