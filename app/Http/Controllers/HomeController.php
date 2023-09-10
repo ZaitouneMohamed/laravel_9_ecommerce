@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
     public function Home()
     {
-        $categories = Categorie::latest()->take(3)->get();
+        $categories = Categorie::latest()->get();
         $latest_products = Product::latest()->take(4)->get();
         $prenium_products = Product::latest()->Prenium()->take(4)->get();
         $topcategorie = $this->ProductService->GetTopCategorie();
