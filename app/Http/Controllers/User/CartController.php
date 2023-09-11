@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -55,6 +56,12 @@ class CartController extends Controller
             "subtotal" => $total + 30,
             "count" => $count
         ]);
+    }
+
+    public function CheckOut()
+    {
+        $branches = Branch::all();
+        return view('electro.checkout',compact("branches"));
     }
 
     public function getCartContent()
