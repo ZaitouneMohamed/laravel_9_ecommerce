@@ -68,6 +68,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="group-2 text-right">
+                            <div class="page-anchor">
+                                <a href="{{ route('register') }}">
+                                    <i class="fas fa-circle-o-notch u-s-m-r-9"></i>dont't have account ?</a>
+                            </div>
+                        </div>
                         <div class="m-b-45">
                             <button class="button button-outline-secondary w-100">Login</button>
                         </div>
