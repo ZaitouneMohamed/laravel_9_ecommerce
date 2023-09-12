@@ -26,7 +26,6 @@
             type: 'GET',
             url: "{{ route('getCartContent') }}",
             success: function(response) {
-                console.log(response)
                 var cart = "";
                 var total = 0;
                 if (response.length > 0) {
