@@ -27,12 +27,12 @@
                         <ul class="g-dropdown" style="width:200px">
                             @auth
                                 <li>
-                                    <a href="{{route('cart.list')}}">
+                                    <a href="{{ route('cart.list') }}">
                                         <i class="fas fa-cog u-s-m-r-9"></i>
                                         My Cart</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('cart.checkout')}}">
+                                    <a href="{{ route('cart.checkout') }}">
                                         <i class="far fa-check-circle u-s-m-r-9"></i>
                                         Checkout</a>
                                 </li>
@@ -43,7 +43,7 @@
                                 </li>
                             @else
                                 <li>
-                                    <a href="{{route('login')}}">
+                                    <a href="{{ route('login') }}">
                                         <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
                                         Login / Signup</a>
                                 </li>
