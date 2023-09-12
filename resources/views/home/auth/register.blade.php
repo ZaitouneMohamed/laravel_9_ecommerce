@@ -202,7 +202,7 @@
                             </div>
                         </div>
                         <div class="m-b-45">
-                            <button class="button button-outline-secondary w-100">Login</button>
+                            <button class="button button-outline-secondary w-100">Register</button>
                         </div>
                     </form>
                 </div>
