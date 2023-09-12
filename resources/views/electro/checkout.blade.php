@@ -360,6 +360,38 @@
                             <!-- Billing-&-Shipping-Details -->
                             <div class="col-lg-6">
                                 <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="group-inline u-s-m-b-13">
+                                            <h4 class="section-h4">Delivery Time</h4>
+                                            <div class="order-table">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="u-s-m-b-13">
+                                                            <input type="radio" class="radio-box" name="delivery_date" value="{{now()}}"
+                                                                id="delivery_date_today" checked>
+                                                            <label class="label-text" for="delivery_date_today">Today</label>
+                                                        </div>
+                                                        <div class="u-s-m-b-13">
+                                                            <input type="radio" class="radio-box" name="delivery_date"
+                                                                id="delivery_date_tomorrow">
+                                                            <label class="label-text"
+                                                                for="delivery_date_tomorrow">{{ $tomorrow }}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                    <h4 class="section-h4">Delivery Time</h4>
+                                                        @foreach (\App\Models\TimeSlot::all() as $item)
+                                                            <div class="u-s-m-b-13">
+                                                                <input type="radio" class="radio-box" name="delivery_time" value="{{ $item->FullTime }}"
+                                                                    id="delivery_time{{$item->id}}" checked>
+                                                                <label class="label-text" for="delivery_time{{$item->id}}">{{$item->FullTime}}</label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-6">
                                         <div class="group-inline u-s-m-b-13">
                                             <h4 class="section-h4">Adresse</h4>
@@ -380,24 +412,23 @@
                                                         data-bs-target="#exampleModal">
                                                         Please Add Adresse
                                                     </button>
-
                                                     <div class="modal fade" id="exampleModal" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">New
-                                                                        Adresse</h1>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <form action="{{ route('user.createadresse') }}" method="POST">
-                                                                    @csrf
-                                                                    @method('post')
+                                                            <form action="{{ route('user.createadresse') }}" method="POST">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                            New Adresse</h1>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
                                                                     <div class="modal-body">
+                                                                        @csrf
+                                                                        @method('post')
                                                                         <div class="mb-3">
-                                                                            <label for="recipient-name"
-                                                                                class="form-label">type :</label>
+                                                                            {{-- <label for="recipient-name" class="form-label">type :</label> --}}
                                                                             <select class="form-select" name="type">
                                                                                 <option selected>shose a type</option>
                                                                                 <option value="Home">Home</option>
@@ -405,26 +436,23 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="message-text"
-                                                                                class="form-label">name:</label>
+                                                                            {{-- <label for="message-text" class="form-label">name:</label> --}}
                                                                             <input type="text" name="name"
                                                                                 class="form-control"
                                                                                 id="exampleFormControlInput1"
                                                                                 placeholder="name">
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="message-text"
-                                                                                class="form-label">name:</label>
+                                                                            {{-- <label for="message-text" class="form-label">name:</label> --}}
                                                                             <input type="text" name="phone"
                                                                                 class="form-control"
                                                                                 id="exampleFormControlInput1"
                                                                                 placeholder="phone number">
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="message-text"
-                                                                                class="form-label">name:</label>
+                                                                            {{-- <label for="message-text" class="form-label">name:</label> --}}
                                                                             <select class="form-select" name="city">
-                                                                                <option selected>shose a city</option>
+                                                                                <option selected>shose a type</option>
                                                                                 <option value="Agadir">Agadir</option>
                                                                                 <option value="Al Hoceima">Al Hoceima</option>
                                                                                 <option value="Azilal">Azilal</option>
@@ -471,19 +499,18 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="message-text"
-                                                                                class="form-label">name:</label>
+                                                                            {{-- <label for="message-text" class="form-label">name:</label> --}}
                                                                             <textarea class="form-control" name="adresse" id="message-text"></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Add
-                                                                            Adresse</button>
+                                                                        <button type="submit" class="btn btn-primary">Send
+                                                                            message</button>
                                                                     </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 @endif
