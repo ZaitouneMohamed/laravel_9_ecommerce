@@ -59,7 +59,7 @@ Route::permanentRedirect('/home', '/');
 
 Route::get('/admin/login', function () {
     return view('admin.auth.login');
-})->name("admin.login");
+})->name("admin.login")->middleware("guest");
 
 Route::resource("products", ProductsController::class)->only("show");
 
