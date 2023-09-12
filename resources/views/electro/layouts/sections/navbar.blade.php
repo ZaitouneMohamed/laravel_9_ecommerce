@@ -27,23 +27,23 @@
                         <ul class="g-dropdown" style="width:200px">
                             @auth
                                 <li>
-                                    <a href="cart.html">
+                                    <a href="{{route('cart.list')}}">
                                         <i class="fas fa-cog u-s-m-r-9"></i>
                                         My Cart</a>
                                 </li>
                                 <li>
-                                    <a href="checkout.html">
+                                    <a href="{{route('cart.checkout')}}">
                                         <i class="far fa-check-circle u-s-m-r-9"></i>
                                         Checkout</a>
                                 </li>
                                 <li>
-                                    <a href="wishlist.html">
+                                    <a href="#">
                                         <i class="far fa-heart u-s-m-r-9"></i>
                                         My Wishlist</a>
                                 </li>
                             @else
                                 <li>
-                                    <a href="account.html">
+                                    <a href="{{route('login')}}">
                                         <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
                                         Login / Signup</a>
                                 </li>
