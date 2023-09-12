@@ -25,26 +25,31 @@
                             <i class="fas fa-chevron-down u-s-m-l-9"></i>
                         </a>
                         <ul class="g-dropdown" style="width:200px">
-                            <li>
-                                <a href="cart.html">
-                                    <i class="fas fa-cog u-s-m-r-9"></i>
-                                    My Cart</a>
-                            </li>
-                            <li>
-                                <a href="wishlist.html">
-                                    <i class="far fa-heart u-s-m-r-9"></i>
-                                    My Wishlist</a>
-                            </li>
-                            <li>
-                                <a href="checkout.html">
-                                    <i class="far fa-check-circle u-s-m-r-9"></i>
-                                    Checkout</a>
-                            </li>
-                            <li>
-                                <a href="account.html">
-                                    <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
-                                    Login / Signup</a>
-                            </li>
+                            @auth
+                                <li>
+                                    <a href="cart.html">
+                                        <i class="fas fa-cog u-s-m-r-9"></i>
+                                        My Cart</a>
+                                </li>
+                                <li>
+                                    <a href="checkout.html">
+                                        <i class="far fa-check-circle u-s-m-r-9"></i>
+                                        Checkout</a>
+                                </li>
+                                <li>
+                                    <a href="wishlist.html">
+                                        <i class="far fa-heart u-s-m-r-9"></i>
+                                        My Wishlist</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="account.html">
+                                        <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
+                                        Login / Signup</a>
+                                </li>
+                            @endauth
+
+
                         </ul>
                     </li>
                     <li>
@@ -83,9 +88,9 @@
             <div class="row clearfix align-items-center">
                 <div class="col-lg-3 col-md-9 col-sm-6">
                     <div class="brand-logo text-lg-center">
-                        <a href="{{route('home')}}">
-                            <img src="{{ asset('assets/electro/images/main-logo/groover-branding-1.png') }} " alt="Groover Brand Logo"
-                                class="app-brand-logo">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('assets/electro/images/main-logo/groover-branding-1.png') }} "
+                                alt="Groover Brand Logo" class="app-brand-logo">
                         </a>
                     </div>
                 </div>
@@ -134,7 +139,7 @@
                                     <i class="far fa-heart"></i>
                                 </a>
                             </li>
-                            @include("electro.cart.navbar.count")
+                            @include('electro.cart.navbar.count')
                         </ul>
                     </nav>
                 </div>
@@ -157,14 +162,14 @@
     <!-- Responsive-Buttons /- -->
     <!-- Mini Cart -->
     {{-- <livewire:cart.cart-content /> --}}
-    @include("electro.cart.navbar.content")
+    @include('electro.cart.navbar.content')
     <!-- Mini Cart /- -->
     <!-- Bottom-Header -->
     <div class="full-layer-bottom-header">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3">
-                    <div class="v-menu @if(\Route::currentRouteName() != 'home') v-close @endif">
+                    <div class="v-menu @if (\Route::currentRouteName() != 'home') v-close @endif">
                         <span class="v-title">
                             <i class="ion ion-md-menu"></i>
                             All Categories
