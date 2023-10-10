@@ -80,11 +80,16 @@
     @yield('scripts')
     <script>
         function AddToCart(id) {
+            qty = 1;
+            if (document.getElementById(id)) {
+                qty = document.getElementById(id).value;
+            };
             $.ajax({
                 type: 'GET',
                 url: "{{ route('addProdustToCart') }}",
                 data: {
-                    id: id
+                    id: id,
+                    qty: qty
                 },
                 success: function(response) {
                     const Toast = Swal.mixin({

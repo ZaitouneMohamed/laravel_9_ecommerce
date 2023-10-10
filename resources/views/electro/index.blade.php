@@ -32,7 +32,7 @@
     <div class="banner-layer">
         <div class="container">
             <div class="image-banner">
-                <a href="shop-v1-root-category.html" class="mx-auto banner-hover effect-dark-opacity">
+                <a href="#" class="mx-auto banner-hover effect-dark-opacity">
                     <img class="img-fluid" src="{{ asset('assets/electro/images/banners/bannerlayer-1.jpg') }} "
                         alt="Winter Season Banner">
                 </a>
@@ -56,7 +56,7 @@
                                     @foreach ($topcategorie->products as $item)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="single-product.html">
+                                                <a class="item-img-wrapper-link" href="{{ route('GetProduct', $item->id) }}">
                                                     <img class="img-fluid" src="{{ $item->FirstImage }}" alt="Product"
                                                         width="120px" height="120px">
                                                 </a>
@@ -66,24 +66,26 @@
                                                     </a>
                                                     <a class="item-addwishlist" href="javascript:void(0)">Add to
                                                         Wishlist</a>
-                                                    <a class="item-addCart" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
+                                                    <a class="item-addCart" onclick="AddToCart({{ $item->id }})">Add to
+                                                        Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li class="has-separator">
-                                                            <a href="shop-v1-root-category.html">Men's</a>
+                                                            <a href="#">Men's</a>
                                                         </li>
                                                         <li class="has-separator">
-                                                            <a href="shop-v2-sub-category.html">Tops</a>
+                                                            <a href="#">Tops</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-v3-sub-sub-category.html">Hoodies</a>
+                                                            <a href="#">Hoodies</a>
                                                         </li>
                                                     </ul>
                                                     <h6 class="item-title">
-                                                        <a href="single-product.html">{{ $item->title }}</a>
+                                                        <a
+                                                            href="{{ route('GetProduct', $item->id) }}">{{ $item->title }}</a>
                                                     </h6>
                                                 </div>
                                                 <div class="price-template">
@@ -347,13 +349,13 @@
     <div class="banner-image-view-more">
         <div class="container">
             <div class="image-banner u-s-m-y-40">
-                <a href="shop-v1-root-category.html" class="mx-auto banner-hover effect-dark-opacity">
+                <a href="#" class="mx-auto banner-hover effect-dark-opacity">
                     <img class="img-fluid" src="{{ asset('assets/electro/images/banners/ban-men.jpg') }} "
                         alt="Banner Image">
                 </a>
             </div>
             <div class="redirect-link-wrapper text-center u-s-p-t-25 u-s-p-b-80">
-                <a class="redirect-link" href="store-directory.html">
+                <a class="redirect-link" href="#">
                     <span>View more on this category</span>
                 </a>
             </div>
@@ -376,36 +378,37 @@
                                     @foreach ($latest_products as $item)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="single-product.html">
+                                                <a class="item-img-wrapper-link" href="{{ route('GetProduct', $item->id) }}">
                                                     <img class="img-fluid" src="{{ $item->FirstImage }}" alt="Product"
                                                         width="120px" height="120px">
                                                 </a>
                                                 <div class="item-action-behaviors">
-                                                    <a class="item-quick-look" data-toggle="modal"
-                                                        href="#quick-view">Quick
+                                                    <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick
                                                         Look
                                                     </a>
                                                     <a class="item-mail" href="javascript:void(0)">Mail</a>
                                                     <a class="item-addwishlist" href="javascript:void(0)">Add to
                                                         Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
+                                                    <a class="item-addCart" href="javascript:void(0)"
+                                                        onclick="AddToCart({{ $item->id }})">Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li class="has-separator">
-                                                            <a href="shop-v1-root-category.html">Men's</a>
+                                                            <a href="#">Men's</a>
                                                         </li>
                                                         <li class="has-separator">
-                                                            <a href="shop-v2-sub-category.html">Tops</a>
+                                                            <a href="#">Tops</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-v3-sub-sub-category.html">Hoodies</a>
+                                                            <a href="#">Hoodies</a>
                                                         </li>
                                                     </ul>
                                                     <h6 class="item-title">
-                                                        <a href="single-product.html">{{ $item->title }}</a>
+                                                        <a
+                                                            href="{{ route('GetProduct', $item->id) }}">{{ $item->title }}</a>
                                                     </h6>
                                                 </div>
                                                 <div class="price-template">
@@ -454,17 +457,17 @@
                                             <div class="what-product-is">
                                                 <ul class="bread-crumb">
                                                     <li class="has-separator">
-                                                        <a href="shop-v1-root-category.html">Women's</a>
+                                                        <a href="#">Women's</a>
                                                     </li>
                                                     <li class="has-separator">
-                                                        <a href="shop-v2-sub-category.html">Tops</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                     <li>
-                                                        <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                        <a href="#">Dresses</a>
                                                     </li>
                                                 </ul>
                                                 <h6 class="item-title">
-                                                    <a href="single-product.html">Grey Nickel Special Occasion Dress</a>
+                                                    <a href="#">Grey Nickel Special Occasion Dress</a>
                                                 </h6>
                                                 <div class="item-stars">
                                                     <div class='star' title="4.5 out of 5 - based on 23 Reviews">
@@ -488,7 +491,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="image-container">
-                                            <a class="item-img-wrapper-link" href="single-product.html">
+                                            <a class="item-img-wrapper-link" href="#">
                                                 <img class="img-fluid" src="images/product/product@3x.jpg"
                                                     alt="Product">
                                             </a>
@@ -506,17 +509,17 @@
                                             <div class="what-product-is">
                                                 <ul class="bread-crumb">
                                                     <li class="has-separator">
-                                                        <a href="shop-v1-root-category.html">Women's</a>
+                                                        <a href="#">Women's</a>
                                                     </li>
                                                     <li class="has-separator">
-                                                        <a href="shop-v2-sub-category.html">Tops</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                     <li>
-                                                        <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                        <a href="#">Dresses</a>
                                                     </li>
                                                 </ul>
                                                 <h6 class="item-title">
-                                                    <a href="single-product.html">Red Carmine Winter Special Occasion
+                                                    <a href="#">Red Carmine Winter Special Occasion
                                                         Dress
                                                     </a>
                                                 </h6>
@@ -539,7 +542,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="image-container">
-                                            <a class="item-img-wrapper-link" href="single-product.html">
+                                            <a class="item-img-wrapper-link" href="#">
                                                 <img class="img-fluid" src="images/product/product@3x.jpg"
                                                     alt="Product">
                                             </a>
@@ -557,17 +560,17 @@
                                             <div class="what-product-is">
                                                 <ul class="bread-crumb">
                                                     <li class="has-separator">
-                                                        <a href="shop-v1-root-category.html">Women's</a>
+                                                        <a href="#">Women's</a>
                                                     </li>
                                                     <li class="has-separator">
-                                                        <a href="shop-v2-sub-category.html">Bottoms</a>
+                                                        <a href="#">Bottoms</a>
                                                     </li>
                                                     <li>
-                                                        <a href="shop-v3-sub-sub-category.html">Shoes</a>
+                                                        <a href="#">Shoes</a>
                                                     </li>
                                                 </ul>
                                                 <h6 class="item-title">
-                                                    <a href="single-product.html">Wax Flower with Corn Silk Heel</a>
+                                                    <a href="#">Wax Flower with Corn Silk Heel</a>
                                                 </h6>
                                                 <div class="item-stars">
                                                     <div class='star' title="4.5 out of 5 - based on 23 Reviews">
@@ -689,7 +692,8 @@
                                                     <a class="item-mail" href="javascript:void(0)">Mail</a>
                                                     <a class="item-addwishlist" href="javascript:void(0)">Add to
                                                         Wishlist</a>
-                                                    <a class="item-addCart" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
+                                                    <a class="item-addCart" onclick="AddToCart({{ $item->id }})">Add
+                                                        to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">

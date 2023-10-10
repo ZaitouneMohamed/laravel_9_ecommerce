@@ -28,4 +28,10 @@ class HomeController extends Controller
     {
         return view('electro.checkout');
     }
+
+    public function GetProduct($id)
+    {
+        $product = Product::with('Images')->find($id);
+        return view('electro.product', compact('product'));
+    }
 }

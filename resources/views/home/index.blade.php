@@ -82,7 +82,7 @@
                                     <!-- Product Description -->
                                     <div class="product-description">
                                         <span>{{ $item->subcategorie->categorie->name }}</span>
-                                        <a href="single-product-details.html">
+                                        <a href="{{route('GetProduct',$item->id)}}">
                                             <h6>{{ Str::limit($item->title, 15, '...') }}</h6>
                                         </a>
                                         <p class="product-price">${{ $item->price }}</p>

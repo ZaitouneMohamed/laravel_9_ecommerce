@@ -25,7 +25,7 @@ class CartController extends Controller
                 "id" => $product->id,
                 "image" => $product->FirstImage,
                 "title" => $product->title,
-                "quantity" => 1,
+                "quantity" => $request->qty ? $request->qty : 1,
                 "price" => $product->price,
             ];
         }

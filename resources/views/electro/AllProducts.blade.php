@@ -27,7 +27,7 @@
                             <!-- Widget Title 2 -->
                             <p class="widget-title2 mb-30">Price</p>
 
-                            
+
                             <div class="widget-desc">
                                 <div class="slider-range">
                                     <div data-min="49" data-max="360" data-unit="$"
@@ -90,7 +90,7 @@
                                         <!-- Product Description -->
                                         <div class="product-description">
                                             <span>{{ $item->subcategorie->categorie->name }}</span>
-                                            <a href="single-product-details.html">
+                                            <a href="{{route('GetProduct',$item->id)}}">
                                                 <h6>{{ Str::limit($item->title, 15, '...') }}</h6>
                                             </a>
                                             <p class="product-price">${{ $item->price }}</p>

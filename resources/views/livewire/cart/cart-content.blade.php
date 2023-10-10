@@ -12,7 +12,7 @@
                 @foreach ($cart as $item)
                     @php $total += $item['price'] * $item['quantity']; @endphp
                     <li class="clearfix">
-                        <a href="single-product.html">
+                        <a href="{{route('GetProduct',$item->id)}}">
                             <img src="{{$item['image'] }}" alt="Product">
                             <span class="mini-item-name">{{ $item['title'] }}</span>
                             <span class="mini-item-price">${{ $item['price'] }}</span>
@@ -29,7 +29,7 @@
         @endif
         <div class="mini-action-anchors">
             <a href="{{route('cart.list')}}" class="cart-anchor">View Cart</a>
-            <a href="checkout.html" class="checkout-anchor">Checkout</a>
+            <a href="{{route('cart.checkout')}}" class="checkout-anchor">Checkout</a>
         </div>
     </div>
 </div>
