@@ -64,10 +64,9 @@
                                                     <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick
                                                         Look
                                                     </a>
-                                                    <a class="item-mail" href="javascript:void(0)">Mail</a>
                                                     <a class="item-addwishlist" href="javascript:void(0)">Add to
                                                         Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
+                                                    <a class="item-addCart" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">
@@ -389,7 +388,7 @@
                                                     <a class="item-mail" href="javascript:void(0)">Mail</a>
                                                     <a class="item-addwishlist" href="javascript:void(0)">Add to
                                                         Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                                    <a class="item-addCart" href="javascript:void(0)" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">
@@ -690,7 +689,7 @@
                                                     <a class="item-mail" href="javascript:void(0)">Mail</a>
                                                     <a class="item-addwishlist" href="javascript:void(0)">Add to
                                                         Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                                    <a class="item-addCart" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">
@@ -834,45 +833,6 @@
         </div>
     </div>
     <!-- Responsive-Search /- -->
-    <!-- Newsletter-Modal -->
-    <div id="newsletter-modal" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="button dismiss-button ion ion-ios-close" data-dismiss="modal"></button>
-                <div class="modal-body u-s-p-x-0">
-                    <div class="row align-items-center u-s-m-x-0">
-                        <div class="col-lg-6 col-md-6 col-sm-12 u-s-p-x-0">
-                            <div class="newsletter-image">
-                                <a href="shop-v1-root-category.html" class="banner-hover effect-dark-opacity">
-                                    <img class="img-fluid" src="images/banners/newsletter-1.jpg" alt="Newsletter Image">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="newsletter-wrapper">
-                                <h1>New to
-                                    <span>Groover</span> ?
-                                    <br>Subscribe Newsletter
-                                </h1>
-                                <h5>Get latest product update...</h5>
-                                <form>
-                                    <div class="u-s-m-b-35">
-                                        <input type="text" class="newsletter-textfield"
-                                            placeholder="Enter Your Email">
-                                    </div>
-                                    <div class="u-s-m-b-35">
-                                        <button class="button button-primary d-block w-100">Subscribe</button>
-                                    </div>
-                                </form>
-                                <h6>Be the first for getting special deals and offers, Send directly to your inbox.</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter-Modal /- -->
     <!-- Quick-view-Modal -->
     <div id="quick-view" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
@@ -1074,36 +1034,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script type="text/javascript">
-        function AddToCart(id) {
-            $.ajax({
-                type: 'GET',
-                url: "AddToCart/" + id,
-                success: function(response) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'product added successfully'
-                    })
-                },
-                error: function() {
-                    alert('An error occurred .');
-                }
-            })
-        }
-    </script>
 @endsection

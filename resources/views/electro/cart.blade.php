@@ -9,10 +9,10 @@
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
-                        <a href="home.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="cart.html">Cart</a>
+                        <a href="/cart">Cart</a>
                     </li>
                 </ul>
             </div>
@@ -37,52 +37,7 @@
                                         <th>Subtotal</th>
                                     </tr>
                                 </thead>
-                                <tbody>@php $total = 0 @endphp
-                                    @foreach (session('cart') as $id => $item)
-                                        @php
-                                            $total += $item['price'] * $item['quantity'];
-                                        @endphp
-                                        <tr class="delete-product">
-                                            <td>
-                                                <div class="cart-anchor-image">
-                                                    <a href="single-product.html">
-                                                        <img src="{{ $item['image'] }}" alt="Product">
-                                                        <h6>{{ $item['title'] }}</h6>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="cart-price" id="prix">
-                                                    ${{ $item['price'] }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="cart-quantity">
-                                                    <div class="quantity">
-                                                        <input type="text" class="quantity-text-field"
-                                                            id="{{ $item['id'] }}" value="{{ $item['quantity'] }}"
-                                                            oninput="edit({{ $item['id'] }})">
-                                                        <a class="plus-a" data-max="1000">&#43;</a>
-                                                        <a class="minus-a" data-min="1">&#45;</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="cart-total">
-                                                    <span>
-                                                        {{ $item['price'] * $item['quantity'] }}
-                                                    </span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="action-wrapper">
-                                                    <button class="button button-outline-secondary fas fa-sync"></button>
-                                                    <button class="button button-outline-secondary fas fa-trash"
-                                                        onclick="deleteProduct({{ $item['id'] }})"></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                <tbody id="cart_body">
                                 </tbody>
                             </table>
                         </div>
@@ -118,7 +73,7 @@
                                                 <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text">${{ $total }}</span>
+                                                <span class="calc-text total"></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -134,7 +89,7 @@
                                                 <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text">${{ $total + 30 }}</span>
+                                                <span class="calc-text total"></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -152,44 +107,21 @@
     <!-- Cart-Page /- -->
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/ion-rangeslider/css/ion.rangeSlider.css') }}" />
+@endsection
+
 @section('scripts')
     <script>
-        // function getCartCount() {
-        //     total = document.getElementById('total');
-        //     grandtotal = document.getElementById('grandtotal');
-        //     $.ajax({
-        //         type: 'get',
-        //         url: "/getCartCount",
-        //         success: function(response) {
-        //             var a = response.total
-        //             total.innerHTML = "$" + a;
-        //             grandtotal.innerHTML = "$" + response.subtotal;
-        //             Toast.fire({
-        //                 icon: 'success',
-        //                 title: 'product added successfully'
-        //             })
-        //         },
-        //         error: function() {
-        //             console.log('An error occurred .');
-        //         }
-        //     })
-        // }
-        setInterval(() => {
-            // getCartCount();
-        }, 500);
-
-        function edit(id, price) {
-            quantity = document.getElementById(id).value;
-            prix = document.getElementById('prix' + id);
+        function DeleteProductFromCard(id) {
             $.ajax({
-                type: 'PATCH',
+                type: 'DELETE',
+                url: "{{ route('cart.remove.item') }}",
                 data: {
-                    _token: '{{ csrf_token() }}',
-                    id: id,
-                    quantity: quantity,
+                    id: id
                 },
-                url: "/updateCart",
                 success: function(response) {
+                    MyFunctions();
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -201,30 +133,162 @@
                             toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
                     })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product deleted successfully'
+                    })
+                    if (response === "empty") {
+                        location.reload();
+                    }
                 },
                 error: function() {
-                    console.log('An error occurred .');
+                    console.log('An error occurred.');
+                }
+            });
+        }
+        getCartContentt();
+
+        function getCartContentt() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('getCartContent') }}",
+                success: function(response) {
+                    cart_content = "";
+                    if (response.length > 0) {
+                        response.forEach(function(item) {
+                            total = item.price * item.quantity
+                            cart_content +=
+                                `
+                            <tr class="delete-product">
+                                            <td>
+                                                <div class="cart-anchor-image">
+                                                    <a href="single-product.html">
+                                                        <img src="` + item.image + `" alt="Product">
+                                                        <h6>` + item.title + `</h6>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="cart-price" id="prix">
+                                                    ` + item.price + `
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="cart-quantity">
+                                                    <div class="quantity">
+                                                        <input type="text" class="quantity-text-field"
+                                                            id="` + item.id + `" value="` + item.quantity +
+                                `" oninput="edit(` + item.id + `)"
+                                                            >
+                                                        <a class="plus-a" data-max="1000" onclick="alert('gjw9')">&#43;</a>
+                                                        <a class="minus-a" data-min="1" onclick="edit(` + item.id + `)">&#45;</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="cart-total">
+                                                    <span>
+                                                        ` + item.price * item.quantity + `
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="action-wrapper">
+                                                    <button class="button button-outline-secondary fas fa-sync"></button>
+                                                    <button class="button button-outline-secondary fas fa-trash"
+                                                        onclick="DeleteItem(` + item.id + `)"></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                            `
+                        })
+                    }
+                    document.getElementById('cart_body').innerHTML = cart_content;
+                    var totalElements = document.getElementsByClassName('total');
+                    for (var i = 0; i < totalElements.length; i++) {
+                        totalElements[i].innerHTML = total;
+                    }
+                },
+                error: function() {
+                    console.log('An error occurred.');
                 }
             })
         }
 
-        function deleteProduct(id) {
-            if (confirm("Do you really want to delete?")) {
-                $.ajax({
-                    url: '{{ route('deleteProduct') }}',
-                    method: "DELETE",
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: id
-                    },
-                    success: function(response) {
-                        window.location.reload();
-                    }
-                });
+        function edit(id) {
+            var quantity = document.getElementById(id).value;
+            if (quantity <= 0) {
+                quantity == 1
             }
+            $.ajax({
+                type: 'PATCH',
+                url: "{{ route('updateCart') }}",
+                data: {
+                    id: id,
+                    quantity: quantity
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    getCartContentt();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product updated successfully'
+                    })
+                },
+                error: function() {
+                    console.log('An error occurred.');
+                }
+            });
+        }
+
+        function DeleteItem(id) {
+            $.ajax({
+                type: 'DELETE',
+                url: "{{ route('deleteProduct') }}",
+                data: {
+                    id: id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    getCartContentt();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product deleted successfully'
+                    })
+                    if (response === "empty") {
+                        location.reload();
+                    }
+                },
+                error: function() {
+                    console.log('An error occurred.');
+                }
+            });
         }
     </script>
-@endsection
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('assets/electro/vendor/ion-rangeslider/css/ion.rangeSlider.css') }}" />
 @endsection

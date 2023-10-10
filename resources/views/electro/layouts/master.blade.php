@@ -16,18 +16,21 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <!-- Google Fonts for Banners only -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
     <!-- Bootstrap 4 -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/electro/css/bootstrap.min.css') }} ">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Font Awesome 5 -->
     <link rel="stylesheet" href="{{ asset('assets/electro/css/fontawesome.min.css') }}">
     <!-- Ion-Icons 4 -->
     <link rel="stylesheet" href="{{ asset('assets/electro/css/ionicons.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
     <!-- Animate CSS -->
     <link rel="stylesheet" href="{{ asset('assets/electro/css/animate.min.css') }}">
@@ -55,21 +58,7 @@
         @include('electro.layouts.sections.footer')
         <!-- Quick-view-Modal /- -->
     </div>
-    <!-- app /- -->
-    <!--[if lte IE 9]>
-<div class="app-issue">
-    <div class="vertical-center">
-        <div class="text-center">
-            <h1>You are using an outdated browser.</h1>
-            <span>This web app is not compatible with following browser. Please upgrade your browser to improve your security and experience.</span>
-        </div>
-    </div>
-</div>
-<style> #app {
-    display: none;
-} </style>
-<![endif]-->
-    <!-- NoScript -->
+
     <noscript>
         <div class="app-issue">
             <div class="vertical-center">
@@ -88,9 +77,89 @@
     </noscript>
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     @livewireScripts
-    @yield("scripts")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @yield('scripts')
     <script>
+        function AddToCart(id) {
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('addProdustToCart') }}",
+                data: {
+                    id: id
+                },
+                success: function(response) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product added successfully'
+                    })
+                },
+                error: function() {
+                    alert('An error occurred .');
+                }
+            })
+            allFunctions();
+        }
+
+        function getcartCount() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('getCartCount') }}",
+                success: function(response) {
+                    console.log("cart count " + response.count);
+                    document.getElementById('count').innerHTML = response.count
+                    document.getElementById('total').innerHTML = response.total
+                },
+                error: function() {
+                    console.log('An error occurred .');
+                }
+            })
+        }
+
+        function getCartContent() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('getCartContent') }}",
+                success: function(response) {
+                    var cart = "";
+                    var total = 0;
+                    if (response.length > 0) {
+                        response.forEach(function(item) {
+                            total += item.price * item.quantity
+                            cart +=
+                                `
+                                <li class="clearfix">
+                                    <a href="#">
+                                        <img src="` + item.image + `" alt="Product">
+                                        <span class="mini-item-name">` + item.title + `</span>
+                                        <span class="mini-item-price">` + item.price + `</span>
+                                        <span class="mini-item-quantity"> x ` + item.quantity + ` </span>
+                                    </a>
+                                </li>
+                                `
+                        });
+                        document.getElementById('cart_content').innerHTML = cart;
+                        document.getElementById('total_content').innerHTML = "$" + total;
+                    } else {
+                        cart = "<li>Your cart is empty</li>";
+                        // document.getElementById('cart_content').innerHTML = cart;
+                    }
+                },
+                error: function() {
+                    console.log('An error occurred.');
+                }
+            });
+        }
+
         window.ga = function() {
             ga.q.push(arguments)
         };
@@ -98,11 +167,18 @@
         ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto');
         ga('send', 'pageview')
+        function  allFunctions() {
+            getcartCount();
+            getCartContent();
+        }
+        allFunctions();
     </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     <!-- Modernizr-JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="{{ asset('assets/electro/js/vendor/modernizr-custom.min.js') }} "></script>
     <!-- NProgress -->
     <script type="text/javascript" src="{{ asset('assets/electro/js/nprogress.min.js') }}"></script>

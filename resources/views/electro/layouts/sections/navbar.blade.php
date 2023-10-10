@@ -139,7 +139,13 @@
                                     <i class="far fa-heart"></i>
                                 </a>
                             </li>
-                            @include('electro.cart.navbar.count')
+                            <li>
+                                <a id="mini-cart-trigger">
+                                    <i class="ion ion-md-basket"></i>
+                                    <span class="item-counter" id="count"></span>
+                                    <span class="item-price" id="total"><span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>

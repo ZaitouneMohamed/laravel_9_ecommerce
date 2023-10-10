@@ -124,7 +124,6 @@
 
         <!-- Cart List Area -->
         <div class="cart-list">
-            <livewire:user.cart.nav-cart />
         </div>
 
         <!-- Cart Summary -->
@@ -145,27 +144,3 @@
 
 
 </div>
-
-<script>
-    function getCartCountNavbar() {
-        cart = document.querySelector(".cartCount");
-        total = document.querySelector("#total");
-        subtotal = document.querySelector("#subtotal");
-        $.ajax({
-            type: 'get',
-            url: "/getCartCount",
-            success: function(response) {
-                cart.innerHTML = response.count;
-                total.innerHTML = "$" + response.total;
-                subtotal.innerHTML = response.subtotal;
-            },
-            error: function() {
-                console.log('An error occurred .');
-            }
-        })
-    }
-
-    setInterval(() => {
-        getCartCountNavbar();
-    }, 500);
-</script>
