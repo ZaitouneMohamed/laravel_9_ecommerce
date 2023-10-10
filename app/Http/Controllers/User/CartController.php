@@ -13,8 +13,9 @@ class CartController extends Controller
     {
         return view('electro.cart');
     }
-    public function addToCart(Request $request, $id)
+    public function addToCart(Request $request)
     {
+        $id = $request->id;
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
@@ -61,7 +62,7 @@ class CartController extends Controller
     public function CheckOut()
     {
         $branches = Branch::all();
-        return view('electro.checkout',compact("branches"));
+        return view('electro.checkout', compact("branches"));
     }
 
     public function getCartContent()
@@ -82,14 +83,9 @@ class CartController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product successfully deleted.');
+            if (!session("cart")) {
+                return response()->json("empty");
+            }
         }
-    }
-    public function removeCart(Request $request)
-    {
-        \Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-
-        return redirect()->route('cart.list');
     }
 }
