@@ -92,6 +92,7 @@
                     qty: qty
                 },
                 success: function(response) {
+                    allFunctions();
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -112,7 +113,6 @@
                     alert('An error occurred .');
                 }
             })
-            allFunctions();
         }
 
         function getcartCount() {
