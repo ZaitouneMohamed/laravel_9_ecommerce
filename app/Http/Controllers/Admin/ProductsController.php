@@ -80,7 +80,8 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('electro.product', compact('product'));
+        $latest_products = Product::latest()->take(4)->get();
+        return view('electro.product', compact('product', "latest_products"));
     }
 
     /**
