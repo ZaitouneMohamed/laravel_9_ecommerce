@@ -98,25 +98,24 @@ class CategoriesController extends Controller
     public function update(UpdateCategorieRequest $request, $id)
     {
         $categorie = Categorie::findOrFail($id);
-        if ($request->has("image")) {
-            $image = $categorie->image;
-            $image_path = public_path('images/categories/' . $image);
-            if (file_exists($image_path)) {
-                unlink($image_path);
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'image',
+        ]);
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            try {
+                $this->imagesservices->deleteImageFromDirectory($categorie->Image->url, 'categories');
+            } catch (\Exception $e) {
             }
-            $new_image = $request->image;
-            $image_name = time() . '_' . $new_image->getClientOriginalName();
-            $new_image->move(public_path('images/categories'), $image_name);
-            $categorie->update([
-                "image" => $image_name
-            ]);
+            $newImage = $this->imagesservices->uploadImage($request->file('image'), 'categories');
+            $categorie->image->update(['url' => $newImage]);
         }
-        $data = $request->validated();
         $categorie->update([
-            "name" => $request->name
+            'name' => $request->name,
         ]);
         return redirect()->route('admin.categories.index')->with([
-            "success" => "categorie updated successfly"
+            'success' => 'Category updated successfully',
         ]);
     }
 
@@ -129,13 +128,10 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $categorie = Categorie::find($id);
-        $image = $categorie->image;
-        $image_path = public_path('images/categories/' . $image);
-        if (file_exists($image_path)) {
-            unlink($image_path);
-        }
+        $image = $categorie->Image;
+        $image = $this->imagesservices->DeleteImageFromDirectory($image->url, "categories");
         $categorie->delete();
-        return redirect()->route("admin.categories.index")->with([
+        return redirect()->route('admin.categories.index')->with([
             "success" => "categorie deleted successfly"
         ]);
     }

@@ -63,10 +63,6 @@ class ProductsController extends Controller
                 $new_image = new Image(["url" => $image]);
 
                 $product->Images()->save($new_image);
-
-                // $product->Images()->create([
-                //     'url' => $new_image,
-                // ]);
             }
         }
 
@@ -84,7 +80,7 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('electro.product',compact('product'));
+        return view('electro.product', compact('product'));
     }
 
     /**
@@ -95,7 +91,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.content.products.edit', compact('product'));
     }
 
     /**
@@ -107,7 +104,26 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $picture) {
+                $image = $this->imagesservices->uploadImage($picture, "products");
+                $newImage = new Image(["url" => $image]);
+                $product->images()->save($newImage);
+            }
+        }
+        $product->update([
+            "title" => $request->title,
+            "description" => $request->description,
+            "slug" => Str::slug($request->title),
+            "price" => $request->price,
+            "old_price" => $request->old_price,
+            "sub_categorie_id" => $request->sub_categorie,
+        ]);
+
+        return redirect()->route('admin.products.index')->with([
+            "success" => "Product updated successfully",
+        ]);
     }
 
     /**
