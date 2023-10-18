@@ -48,35 +48,8 @@
                                         Login / Signup</a>
                                 </li>
                             @endauth
-
-
                         </ul>
                     </li>
-                    <li>
-                        <a>USD
-                            <i class="fas fa-chevron-down u-s-m-l-9"></i>
-                        </a>
-                        <ul class="g-dropdown" style="width:90px">
-                            <li>
-                                <a href="#" class="u-c-brand">($) USD</a>
-                            </li>
-                            <li>
-                                <a href="#">(£) GBP</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a>ENG
-                            <i class="fas fa-chevron-down u-s-m-l-9"></i>
-                        </a>
-                        <ul class="g-dropdown" style="width:70px">
-                            <li>
-                                <a href="#" class="u-c-brand">ENG</a>
-                            </li>
-                            <li>
-                                <a href="#">ARB</a>
-                            </li>
-                        </ul>
                 </ul>
             </nav>
         </div>
@@ -95,34 +68,12 @@
                     </div>
                 </div>
                 <div class="col-lg-6 u-d-none-lg">
-                    <form class="form-searchbox">
+                    <form class="form-searchbox" action="{{ route('Search') }}" method="POST">
+                        @csrf
+                        @method('GET')
                         <label class="sr-only" for="search-landscape">Search</label>
-                        <input id="search-landscape" type="text" class="text-field" placeholder="Search everything">
-                        <div class="select-box-position">
-                            <div class="select-box-wrapper select-hide">
-                                <label class="sr-only" for="select-category">Choose category for search</label>
-                                <select class="select-box" id="select-category">
-                                    <option selected="selected" value="">
-                                        All
-                                    </option>
-                                    <option value="">Men's Clothing</option>
-                                    <option value="">Women's Clothing
-                                    </option>
-                                    <option value="">Toys Hobbies & Robots
-                                    </option>
-                                    <option value="">Mobiles & Tablets
-                                    </option>
-                                    <option value="">Consumer Electronics
-                                    </option>
-                                    <option value="">Books & Audible
-                                    </option>
-                                    <option value="">Beauty & Health
-                                    </option>
-                                    <option value="">Furniture Home & Office
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        <input id="search-landscape" type="text" class="text-field" name="word"
+                            placeholder="Search everything">
                         <button id="btn-search" type="submit" class="button button-primary fas fa-search"></button>
                     </form>
                 </div>
@@ -198,13 +149,12 @@
                                                         <div class="col-lg-4">
                                                             <ul class="v-level-2">
                                                                 <li>
-                                                                    <a
-                                                                        href="shop-v2-sub-category.html">{{ $item->name }}</a>
+                                                                    <a href="#">{{ $item->name }}</a>
                                                                     <ul>
                                                                         @foreach ($item->products as $item)
                                                                             <li>
                                                                                 <a
-                                                                                    href="shop-v3-sub-sub-category.html">{{ $item->title }}</a>
+                                                                                    href="{{ route('products.show', $item->id) }}">{{ $item->title }}</a>
                                                                             </li>
                                                                         @endforeach
                                                                     </ul>
@@ -230,132 +180,13 @@
                 <div class="col-lg-9">
                     <ul class="bottom-nav g-nav u-d-none-lg">
                         <li>
-                            <a href="custom-deal-page.html">New Arrivals
-                                <span class="superscript-label-new">NEW</span>
+                            <a href="{{ route('home') }}">Home
+                                {{-- <span class="superscript-label-new">NEW</span> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="custom-deal-page.html">Exclusive Deals
-                                <span class="superscript-label-hot">HOT</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="custom-deal-page.html">Flash Deals
-                            </a>
-                        </li>
-                        <li class="mega-position">
-                            <a>Pages
-                                <i class="fas fa-chevron-down u-s-m-l-9"></i>
-                            </a>
-                            <div class="mega-menu mega-3-colm">
-                                <ul>
-                                    <li class="menu-title">Home & Static Pages</li>
-                                    <li>
-                                        <a href="home.html" class="u-c-brand">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">About</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Contact</a>
-                                    </li>
-                                    <li>
-                                        <a href="faq.html">FAQ</a>
-                                    </li>
-                                    <li>
-                                        <a href="store-directory.html">Store Directory</a>
-                                    </li>
-                                    <li>
-                                        <a href="terms-and-conditions.html">Terms & Conditions</a>
-                                    </li>
-                                    <li>
-                                        <a href="404.html">404</a>
-                                    </li>
-                                    <li class="menu-title">Single Product Page</li>
-                                    <li>
-                                        <a href="single-product.html">Single Product Fullwidth</a>
-                                    </li>
-                                    <li class="menu-title">Blog</li>
-                                    <li>
-                                        <a href="blog.html">Blog Page</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-detail.html">Blog Details</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li class="menu-title">Ecommerce Pages</li>
-                                    <li>
-                                        <a href="shop-v2-sub-category.html">Shop</a>
-                                    </li>
-                                    <li>
-                                        <a href="cart.html">Cart</a>
-                                    </li>
-                                    <li>
-                                        <a href="checkout.html">Checkout</a>
-                                    </li>
-                                    <li>
-                                        <a href="account.html">My Account</a>
-                                    </li>
-                                    <li>
-                                        <a href="wishlist.html">Wishlist</a>
-                                    </li>
-                                    <li>
-                                        <a href="track-order.html">Track your Order</a>
-                                    </li>
-                                    <li class="menu-title">Cart Variations</li>
-                                    <li>
-                                        <a href="cart-empty.html">Cart Ver 1 Empty</a>
-                                    </li>
-                                    <li>
-                                        <a href="cart.html">Cart Ver 2 Full</a>
-                                    </li>
-                                    <li class="menu-title">Wishlist Variations</li>
-                                    <li>
-                                        <a href="wishlist-empty.html">Wishlist Ver 1 Empty</a>
-                                    </li>
-                                    <li>
-                                        <a href="wishlist.html">Wishlist Ver 2 Full</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li class="menu-title">Shop Variations</li>
-                                    <li>
-                                        <a href="shop-v1-root-category.html">Shop Ver 1 Root Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-v2-sub-category.html">Shop Ver 2 Sub Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-v3-sub-sub-category.html">Shop Ver 3 Sub Sub Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-v4-filter-as-category.html">Shop Ver 4 Filter as Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-v5-product-not-found.html">Shop Ver 5 Product Not Found</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-v6-search-results.html">Shop Ver 6 Search Results</a>
-                                    </li>
-                                    <li class="menu-title">My Account Variation</li>
-                                    <li>
-                                        <a href="lost-password.html">Lost Your Password ?</a>
-                                    </li>
-                                    <li class="menu-title">Checkout Variation</li>
-                                    <li>
-                                        <a href="confirmation.html">Checkout Confirmation</a>
-                                    </li>
-                                    <li class="menu-title">Custom Deals Page</li>
-                                    <li>
-                                        <a href="custom-deal-page.html">Custom Deal Page</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="custom-deal-page.html">Super Sale
-                                <span class="superscript-label-discount">-15%</span>
+                            <a href="{{ route('shop.AllProduct') }}">products
+                                {{-- <span class="superscript-label-hot">HOT</span> --}}
                             </a>
                         </li>
                     </ul>

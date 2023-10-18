@@ -34,4 +34,9 @@ class HomeController extends Controller
         $product = Product::with('Images')->find($id);
         return view('electro.product', compact('product'));
     }
+    public function Search(Request $request)
+    {
+        $products = Product::where('title', 'LIKE', '%' . $request->word . '%')->paginate(15);
+        return view('electro.AllProducts', compact("products"));
+    }
 }
