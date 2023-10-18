@@ -36,6 +36,7 @@ Route::controller(ControllersHomeController::class)->group(function(){
     Route::get('/',"Home")->name("home");
     Route::get('/checkout',"checkout")->name("checkout");
     Route::get('/product/{id}',"GetProduct")->name("GetProduct");
+    Route::get('/Search',"Search")->name("Search");
 });
 
 

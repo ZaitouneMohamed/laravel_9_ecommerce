@@ -56,7 +56,8 @@
                                     @foreach ($topcategorie->products as $item)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="{{ route('GetProduct', $item->id) }}">
+                                                <a class="item-img-wrapper-link"
+                                                    href="{{ route('GetProduct', $item->id) }}">
                                                     <img class="img-fluid" src="{{ $item->FirstImage }}" alt="Product"
                                                         width="120px" height="120px">
                                                 </a>
@@ -378,7 +379,8 @@
                                     @foreach ($latest_products as $item)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="{{ route('GetProduct', $item->id) }}">
+                                                <a class="item-img-wrapper-link"
+                                                    href="{{ route('GetProduct', $item->id) }}">
                                                     <img class="img-fluid" src="{{ $item->FirstImage }}" alt="Product"
                                                         width="120px" height="120px">
                                                 </a>
@@ -680,7 +682,8 @@
                                     @foreach ($prenium_products as $item)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="single-product.html">
+                                                <a class="item-img-wrapper-link"
+                                                    href="{{ route('products.show', $item->id) }}">
                                                     <img class="img-fluid" src="{{ $item->FirstImage }}" alt="Product"
                                                         width="120px" height="120px">
                                                 </a>
