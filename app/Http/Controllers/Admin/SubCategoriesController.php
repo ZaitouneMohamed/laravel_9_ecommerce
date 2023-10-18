@@ -46,7 +46,7 @@ class SubCategoriesController extends Controller
             "name" => $request->name,
             "categorie_id" => $request->categorie
         ]);
-        return redirect()->route('admin.SubCategories.index');  
+        return redirect()->route('admin.SubCategories.index');
     }
 
     /**
@@ -68,7 +68,9 @@ class SubCategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Scategorie = SubCategorie::findOrFail($id);
+        $categories = Categorie::all();
+        return view('admin.content.subcategories.edit',compact('Scategorie','categories'));
     }
 
     /**
@@ -80,7 +82,19 @@ class SubCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Scategorie = SubCategorie::findOrFail($id);
+        $this->validate($request,[
+            "name" => "required"
+        ]);
+        if ($Scategorie) {
+            $Scategorie->update([
+                "name" => $request->name,
+                "categorie_id" => $request->categorie
+            ]);
+        }
+        return redirect()->route('admin.SubCategories.index')->with([
+            "success" => "sub categorie update with success"
+        ]);
     }
 
     /**
@@ -91,6 +105,9 @@ class SubCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Scategorie = SubCategorie::findOrFail($id)->delete();
+        return redirect()->route('admin.SubCategories.index')->with([
+            "success" => "sub categorie update with success"
+        ]);
     }
 }

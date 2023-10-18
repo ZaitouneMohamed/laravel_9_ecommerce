@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header">
             <h1 class="card-title">Sub Categories : ({{ $subcategories->count() }})</h1>
-            <a href="{{route('admin.SubCategories.create')}}" class="btn btn-success">create sub categorie</a>
+            <a href="{{ route('admin.SubCategories.create') }}" class="btn btn-success">create sub categorie</a>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
@@ -22,14 +22,19 @@
                         @foreach ($subcategories as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td> {{ Str::limit($item->name, 10, '...') }}</td>
+                                <td> {{ $item->name }}</td>
                                 <td>{{ $item->categorie->name }}</td>
                                 <td>{{ $item->products->count() }}</td>
-                                <td>
-                                    <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
-                                    {{-- @if ($item->subcategories->count() == 0)
-                                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
-                                    @endif --}}
+                                <td class="d-flex">
+                                    <a href="{{ route('admin.SubCategories.edit', $item->id) }}" class="btn btn-warning"><i
+                                            class="nav-icon fas fa-edit"></i></a>
+                                    @if ($item->products->count() == 0)
+                                        <form action="{{ route('admin.SubCategories.destroy', $item->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" style="margin-left: 8px"><i class="nav-icon fas fa-trash"></i></button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
