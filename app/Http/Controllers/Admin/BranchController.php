@@ -15,7 +15,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches = Branch::all();
+        $branches = Branch::paginate(15);
         return view('admin.content.branch.index',compact("branches"));
     }
 
@@ -26,7 +26,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.content.branch.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            "name" => "required|unique:branches,name|max:200",
+            "charge_delivery" => "required|max:100"
+        ]);
+        $data=$request->except("_token");
+        Branch::create($data);
+        return redirect()->route('admin.branch.index')->with([
+            "success" => "branch added with success"
+        ]);
     }
 
     /**
@@ -59,7 +67,8 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
-        //
+        $branch = Branch::findOrFail($id);
+        return view('admin.content.branch.edit',compact("branch"));
     }
 
     /**
@@ -71,7 +80,16 @@ class BranchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $branch = Branch::findOrFail($id);
+        $this->validate($request,[
+            "name" => "required|max:200",
+            "charge_delivery" => "required|max:100"
+        ]);
+        $data=$request->except("_token");
+        $branch->update($data);
+        return redirect()->route('admin.branch.index')->with([
+            "success" => "branch update with success"
+        ]);
     }
 
     /**
@@ -82,6 +100,9 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $branch = Branch::findOrFail($id)->delete();
+        return redirect()->route('admin.branch.index')->with([
+            "success" => "branch delete with success"
+        ]);
     }
 }

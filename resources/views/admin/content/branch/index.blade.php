@@ -12,9 +12,6 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Name</th>
-                        <th>attitude</th>
-                        <th>logtitude</th>
-                        <th>distance</th>
                         <th>charge delivery</th>
                         <th style="width: 40px">Actions</th>
                     </tr>
@@ -25,29 +22,16 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td> {{ $item->name }}</td>
-                                <td> {{ $item->attitude }}</td>
-                                <td> {{ $item->longtitude }}</td>
-                                <td> {{ $item->distance }}</td>
                                 <td> {{ $item->charge_delivery }}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i>
-                                                Edit</a>
-                                            <a class="dropdown-item"
-                                                onclick="document.getElementById({{ $item->id }}).submit();"><i
-                                                    class="bx bx-trash me-1"></i>
-                                                Delete</a>
-                                            <form id="{{ $item->id }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                            </form>
-                                        </div>
-                                    </div>
+                                <td class="d-flex">
+                                    <a href="{{ route('admin.branch.edit', $item->id) }}" class="btn btn-warning"><i
+                                            class="nav-icon fas fa-edit"></i></a>
+                                    <form action="{{ route('admin.branch.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger" style="margin-left: 8px"><i
+                                                class="nav-icon fas fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -55,5 +39,6 @@
                 </tbody>
             </table>
         </div>
+        {{ $branches->links() }}
     </div>
 @endsection
