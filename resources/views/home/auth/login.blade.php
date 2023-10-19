@@ -27,15 +27,6 @@
                 <div class="login-wrapper">
                     <h2 class="account-h2 u-s-m-b-20">Login</h2>
                     <h6 class="account-h6 u-s-m-b-30">Welcome back! Sign in to your account.</h6>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <div class="m-b-45">
                         <a href="{{ route('google.redirect') }}" class="button button-outline-dark w-60"><i
                                 class="fa-brands fa-google-plus-g"></i></a>
@@ -48,6 +39,9 @@
                             </label>
                             <input type="text" id="user-name-email" class="text-field" name="email"
                                 placeholder="Email">
+                            @error('email')
+                                <span class="alert alert-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="u-s-m-b-30">
                             <label for="login-password">Password
@@ -55,6 +49,9 @@
                             </label>
                             <input type="text" id="login-password" name="password" class="text-field"
                                 placeholder="Password">
+                            @error('password')
+                                <span class="alert alert-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="group-inline u-s-m-b-30">
                             <div class="group-1">
