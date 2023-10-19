@@ -45,7 +45,7 @@
                         <!-- Coupon -->
                         <div class="coupon-continue-checkout u-s-m-b-60">
                             <div class="coupon-area">
-                                <h6>Enter your coupon code if you have one.</h6>
+                                <h6>Enter your coupon code if you have one. <span style="color: red">(NOT WORKING NOW)</span> </h6>
                                 <div class="coupon-field">
                                     <label class="sr-only" for="coupon-code">Apply Coupon</label>
                                     <input id="coupon-code" type="text" class="text-field" placeholder="Coupon Code">
@@ -64,7 +64,7 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th colspan="2">Cart Totals</th>
+                                            <th colspan="2">Cart Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -73,7 +73,7 @@
                                                 <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text total"></span>
+                                                <span class="calc-text total" id="total_in_cart"></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -89,7 +89,7 @@
                                                 <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text total"></span>
+                                                <span class="calc-text sub_total" id="sub_total"></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -180,8 +180,6 @@
                                                             id="` + item.id + `" value="` + item.quantity +
                                 `" oninput="edit(` + item.id + `)"
                                                             >
-                                                        <a class="plus-a" data-max="1000" onclick="alert('gjw9')">&#43;</a>
-                                                        <a class="minus-a" data-min="1" onclick="edit(` + item.id + `)">&#45;</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -204,10 +202,8 @@
                         })
                     }
                     document.getElementById('cart_body').innerHTML = cart_content;
-                    var totalElements = document.getElementsByClassName('total');
-                    for (var i = 0; i < totalElements.length; i++) {
-                        totalElements[i].innerHTML = total;
-                    }
+                    document.getElementById('total_in_cart').innerHTML = total;
+                    document.getElementById('sub_total').innerHTML = total + 30;
                 },
                 error: function() {
                     console.log('An error occurred.');

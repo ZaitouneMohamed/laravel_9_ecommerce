@@ -351,11 +351,21 @@
     </div>
     <!-- Page Introduction Wrapper /- -->
     <!-- Checkout-Page -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="page-checkout u-s-p-t-80">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <form>
+                    <form action="{{route('add_new_order')}}" method="POST">
+                        @csrf
                         <div class="row">
                             <!-- Billing-&-Shipping-Details -->
                             <div class="col-lg-6">
@@ -367,9 +377,11 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="u-s-m-b-13">
-                                                            <input type="radio" class="radio-box" name="delivery_date" value="{{now()}}"
-                                                                id="delivery_date_today" checked>
-                                                            <label class="label-text" for="delivery_date_today">Today</label>
+                                                            <input type="radio" class="radio-box" name="delivery_date"
+                                                                value="{{ now() }}" id="delivery_date_today"
+                                                                checked>
+                                                            <label class="label-text"
+                                                                for="delivery_date_today">Today</label>
                                                         </div>
                                                         <div class="u-s-m-b-13">
                                                             <input type="radio" class="radio-box" name="delivery_date"
@@ -379,12 +391,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                    <h4 class="section-h4">Delivery Time</h4>
+                                                        <h4 class="section-h4">Delivery Time</h4>
                                                         @foreach (\App\Models\TimeSlot::all() as $item)
                                                             <div class="u-s-m-b-13">
-                                                                <input type="radio" class="radio-box" name="delivery_time" value="{{ $item->FullTime }}"
-                                                                    id="delivery_time{{$item->id}}" checked>
-                                                                <label class="label-text" for="delivery_time{{$item->id}}">{{$item->FullTime}}</label>
+                                                                <input type="radio" class="radio-box"
+                                                                    name="delivery_time" value="{{ $item->FullTime }}"
+                                                                    id="delivery_time{{ $item->id }}" checked>
+                                                                <label class="label-text"
+                                                                    for="delivery_time{{ $item->id }}">{{ $item->FullTime }}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -515,6 +529,25 @@
                                                     </div>
                                                 @endif
                                             @endauth
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 ">
+                                        <div class="group-inline u-s-m-b-13">
+                                            <h4 class="section-h4">Payement Method</h4>
+                                            <div class="order-table">
+                                                    <div class="u-s-m-b-13">
+                                                        <input type="radio" class="radio-box" name="payement_methode"
+                                                            value="livraison" id="livraison" checked >
+                                                        <label class="label-text"
+                                                            for="livraison">A LA LIVRAISON</label>
+                                                    </div>
+                                                    <div class="u-s-m-b-13">
+                                                        <input type="radio" class="radio-box" name="payement_methode"
+                                                            value="cart" id="cart" >
+                                                        <label class="label-text"
+                                                            for="cart">CART</label>
+                                                    </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 ">

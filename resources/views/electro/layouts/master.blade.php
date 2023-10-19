@@ -120,7 +120,6 @@
                 type: 'GET',
                 url: "{{ route('getCartCount') }}",
                 success: function(response) {
-                    console.log("cart count " + response.count);
                     document.getElementById('count').innerHTML = response.count
                     document.getElementById('total').innerHTML = response.total
                 },
