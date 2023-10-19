@@ -186,11 +186,6 @@
                         </div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
-                        <div data-i18n="Connections">Create</div>
-                        </a>
-                    </li>
                     </ul>
                 </li>
                 {{--  --}}
