@@ -23,9 +23,14 @@ class Product extends Model
     {
         return asset("images/products/" . $this->images->first()->url);
     }
+    // get prenium products
     public function scopePrenium($query)
     {
         return $query->where("prenium", 1);
+    }
+    public function scopeActive($query)
+    {
+        return $query->where("active", 1);
     }
     public function pictures()
     {

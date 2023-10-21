@@ -18,8 +18,8 @@ class HomeController extends Controller
     public function Home()
     {
         $categories = Categorie::latest()->get();
-        $latest_products = Product::latest()->take(4)->get();
-        $prenium_products = Product::latest()->Prenium()->take(4)->get();
+        $latest_products = Product::latest()->Active()->take(4)->get();
+        $prenium_products = Product::latest()->Active()->Prenium()->take(4)->get();
         $topcategorie = $this->ProductService->GetTopCategorie();
         return view('electro.index', compact("latest_products", "categories", "prenium_products", "topcategorie"));
     }

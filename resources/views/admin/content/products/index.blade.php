@@ -43,24 +43,27 @@
                                 <td>{{ $item->SubCategorie->name }}</td>
                                 <td>
                                     @if ($item->prenium == 1)
-                                        <button class="btn btn-success"
-                                            wire:click="preniumToogle({{ $item->id }})">prenium</button>
+                                        <a class="btn btn-success"
+                                            href="{{ route('admin.SwitchPreniumModeForProduct', $item->id) }}">prenium</a>
                                     @else
-                                        <button class="btn btn-danger" wire:click="preniumToogle({{ $item->id }})">not
-                                            prenium</button>
+                                        <a class="btn btn-danger"
+                                            href="{{ route('admin.SwitchPreniumModeForProduct', $item->id) }}">not
+                                            prenium</a>
                                     @endif
                                 </td>
                                 <td>
                                     @if ($item->active == 1)
-                                        <button class="btn btn-success"
-                                            wire:click="activeToogle({{ $item->id }})">Active</button>
+                                        <a class="btn btn-success"
+                                            href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Active</a>
                                     @else
-                                        <button class="btn btn-danger" wire:click="activeToogle({{ $item->id }})">not
-                                            active</button>
+                                        <a class="btn btn-danger"
+                                            href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Not
+                                            Active</a>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('admin.products.edit',$item->id)}}" class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></a>
+                                    <a href="{{ route('admin.products.edit', $item->id) }}" class="btn btn-warning"><i
+                                            class="nav-icon fas fa-edit"></i></a>
                                     {{-- @if ($item->subcategories->count() == 0)
                                         <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
                                     @endif --}}

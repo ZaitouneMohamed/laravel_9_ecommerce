@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SubCategoriesController;
+use App\Http\Controllers\Admin\SwitchController;
 use App\Http\Controllers\Admin\TimesSlotController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\ForgetPasswordController;
@@ -32,11 +33,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(ControllersHomeController::class)->group(function(){
-    Route::get('/',"Home")->name("home");
-    Route::get('/checkout',"checkout")->name("checkout");
-    Route::get('/product/{id}',"GetProduct")->name("GetProduct");
-    Route::get('/Search',"Search")->name("Search");
+Route::controller(ControllersHomeController::class)->group(function () {
+    Route::get('/', "Home")->name("home");
+    Route::get('/checkout', "checkout")->name("checkout");
+    Route::get('/product/{id}', "GetProduct")->name("GetProduct");
+    Route::get('/Search', "Search")->name("Search");
 });
 
 
@@ -123,6 +124,12 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
     });
     Route::get('/timeslot', function () {
         return view('admin.content.timeslot.index');
+    });
+    // SWITCH CONTROLLER
+    Route::controller(SwitchController::class)->group(function () {
+        Route::get('SwitchProductActive/{id}', 'SwitchActiveModeForProduct')->name("SwitchActiveModeForProduct");
+        Route::get('SwitchPreniumModeForProduct/{id}', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct");
+        Route::get('SwitchStatueOfTimeSlot/{id}', 'SwitchStatueOfTimeSlot')->name("SwitchStatueOfTimeSlot");
     });
     Route::resource("categories", CategoriesController::class);
     Route::resource("SubCategories", SubCategoriesController::class);
