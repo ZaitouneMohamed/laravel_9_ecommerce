@@ -152,10 +152,12 @@
                                                                     <a href="#">{{ $item->name }}</a>
                                                                     <ul>
                                                                         @foreach ($item->products as $item)
-                                                                            <li>
-                                                                                <a
-                                                                                    href="{{ route('products.show', $item->id) }}">{{ $item->title }}</a>
-                                                                            </li>
+                                                                            @if ($item->active)
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="{{ route('products.show', $item->id) }}">{{ $item->title }}</a>
+                                                                                </li>
+                                                                            @endif
                                                                         @endforeach
                                                                     </ul>
                                                                 </li>
