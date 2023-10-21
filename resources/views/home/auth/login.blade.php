@@ -47,7 +47,7 @@
                             <label for="login-password">Password
                                 <span class="astk">*</span>
                             </label>
-                            <input type="text" id="login-password" name="password" class="text-field"
+                            <input type="password" id="login-password" name="password" class="text-field"
                                 placeholder="Password">
                             @error('password')
                                 <span class="alert alert-danger">{{ $message }}</span>

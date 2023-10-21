@@ -1,8 +1,26 @@
-@extends('home.master.master')
+@extends('electro.layouts.master')
 
 @section('content')
+    <!-- Page Introduction Wrapper -->
+    <div class="page-style-a">
+        <div class="container">
+            <div class="page-intro">
+                <h2>Contact</h2>
+                <ul class="bread-crumb">
+                    <li class="has-separator">
+                        <i class="ion ion-md-home"></i>
+                        <a href="home.html">Home</a>
+                    </li>
+                    <li class="is-marked">
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Page Introduction Wrapper /- -->
+    <br><br>
     <div class="container">
-        <h1>Mon Profile</h1>
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Votre Profile</h4>
@@ -37,7 +55,6 @@
                             <input type="submit" value="Edite Profile"class="btn btn-success">
                         </div>
                         <div class="col-3">
-
                         </div>
                     </div>
                 </form>
@@ -61,31 +78,13 @@
                 <div class="account-content">
                     <div class="row">
                         @forelse  (Auth::user()->adresses as $item)
-                            <div class="col-md-6 col-lg-4 alert fade show">
-                                <div class="profile-card address  active ">
-                                    <h6>
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">{{ $item->name }}</font>
-                                        </font>
-                                    </h6>
-                                    <h6>
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">{{ $item->phone_number }}</font>
-                                        </font>
-                                    </h6>
-                                    <p>
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">{{ $item->adresse }}</font>
-                                        </font>
-                                    </p>
-                                    <p>
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">{{ $item->city }}</font>
-                                        </font>
-                                    </p>
-                                    <p> </p>
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $item->name }}</h5>
+                                    <h5 class="card-title">{{ $item->phone_number }}</h5>
+                                    <h5 class="card-title">{{ $item->city }}</h5>
+                                    <p class="card-text">{{ $item->adresse }}</p>
                                 </div>
-                            </div>
                         @empty
                             please add adresse
                         @endforelse
@@ -184,6 +183,9 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
     <script>
         const imageInput = document.getElementById('imageInput');
         const selectedImage = document.getElementById('selectedImage');
@@ -202,4 +204,8 @@
             }
         });
     </script>
+@endsection
+@section('style')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 @endsection

@@ -27,14 +27,14 @@
                         <ul class="g-dropdown" style="width:200px">
                             @auth
                                 <li>
-                                    <a href="{{ route('cart.list') }}">
-                                        <i class="fas fa-cog u-s-m-r-9"></i>
-                                        My Cart</a>
+                                    <a href="{{ route('user.profile') }}">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        My Profile</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('cart.checkout') }}">
-                                        <i class="far fa-check-circle u-s-m-r-9"></i>
-                                        Checkout</a>
+                                    <a href="{{ route('cart.list') }}">
+                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                        My Cart</a>
                                 </li>
                                 <li>
                                     <a href="#">
