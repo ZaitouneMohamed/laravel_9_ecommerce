@@ -191,6 +191,16 @@
                                 {{-- <span class="superscript-label-hot">HOT</span> --}}
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('about') }}">About
+                                {{-- <span class="superscript-label-hot">HOT</span> --}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">Contact
+                                {{-- <span class="superscript-label-hot">HOT</span> --}}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

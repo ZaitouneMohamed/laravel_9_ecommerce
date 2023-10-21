@@ -39,4 +39,7 @@ class HomeController extends Controller
         $products = Product::where('title', 'LIKE', '%' . $request->word . '%')->paginate(15);
         return view('electro.AllProducts', compact("products"));
     }
+    public function about() {
+        return view('electro.about');
+    }
 }
