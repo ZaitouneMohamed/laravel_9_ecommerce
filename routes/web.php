@@ -142,4 +142,11 @@ Route::prefix('admin')->name("admin.")->middleware(["AdminAuthRedirection", 'rol
         Route::get('ViewOrder/{order_number}', 'ViewOrder')->name('ViewOrder');
         Route::get('ChangeStatue/{statue}/{order_number}', 'ChangeStatue')->name('ChangeStatue');
     });
+    Route::controller(HomeController::class)->group(function() {
+        Route::post('/SetProfile', 'SetProfile')->name("SetProfile");
+        Route::post('/updatePassword', 'updatePassword')->name("updatePassword");
+    });
+    Route::get('profile', function () {
+        return view('admin.content.profile.index');
+    })->name("profile.index");
 });

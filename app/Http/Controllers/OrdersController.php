@@ -60,7 +60,8 @@ class OrdersController extends Controller
 
     public function MyOrdersList()
     {
-        return view('home.content.orders');
+        $orders = Orders::where('user_id', Auth::user()->id)->get();
+        return view('electro.orders',compact('orders'));
     }
 
     public function ViewOrder($order_number)

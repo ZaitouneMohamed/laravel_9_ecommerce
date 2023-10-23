@@ -1,7 +1,7 @@
-@extends('home.master.master')
+@extends('electro.layouts.master')
 
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
         <h1 class="text text-center">My Orders {{ Auth::user()->Orders->groupBy('order_number')->count() }}</h1>
         <div class="accordion" id="accordionExample">
             @foreach (Auth::user()->Orders->groupBy('order_number') as $item)
@@ -87,6 +87,81 @@
                     </div>
             @endforeach
         </div>
+    </div> --}}
+    <!-- Page Introduction Wrapper -->
+    <div class="page-style-a">
+        <div class="container">
+            <div class="page-intro">
+                <h2>My Orders</h2>
+                <ul class="bread-crumb">
+                    <li class="has-separator">
+                        <i class="ion ion-md-home"></i>
+                        <a href="">Home</a>
+                    </li>
+                    <li class="is-marked">
+                        <a href="">my Orders</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <!-- Page Introduction Wrapper /- -->
+    <!-- Wishlist-Page -->
+    <div class="page-wishlist u-s-p-t-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Products-List-Wrapper -->
+                    <div class="table-wrapper u-s-m-b-60">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Unit Price</th>
+                                    <th>QTY</th>
+                                    <th>Stock Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $item)
+                                    <tr>
+                                        <td>
+                                            <div class="cart-anchor-image">
+                                                <a href="single-product.html">
+                                                    <h6>{{ $item->product }} </h6>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cart-price">
+                                                MAD {{ $item->product_price }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cart-price">
+                                                {{ $item->qty }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cart-stock">
+                                                MAD {{ $item->total }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-wrapper">
+                                                <button class="button button-outline-secondary fas fa-eye"></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Products-List-Wrapper /- -->
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- Wishlist-Page /- -->
 @endsection
