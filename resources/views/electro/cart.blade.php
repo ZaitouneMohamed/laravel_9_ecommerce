@@ -45,7 +45,8 @@
                         <!-- Coupon -->
                         <div class="coupon-continue-checkout u-s-m-b-60">
                             <div class="coupon-area">
-                                <h6>Enter your coupon code if you have one. <span style="color: red">(NOT WORKING NOW)</span> </h6>
+                                <h6>Enter your coupon code if you have one. <span style="color: red">(NOT WORKING
+                                        NOW)</span> </h6>
                                 <div class="coupon-field">
                                     <label class="sr-only" for="coupon-code">Apply Coupon</label>
                                     <input id="coupon-code" type="text" class="text-field" placeholder="Coupon Code">
@@ -53,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="button-area">
-                                <a href="shop-v1-root-category.html" class="continue">Continue Shopping</a>
+                                <a href="{{ route('home') }}" class="continue">Continue Shopping</a>
                                 <a href="{{ route('cart.checkout') }}" class="checkout">Proceed to Checkout</a>
                             </div>
                         </div>
@@ -162,7 +163,7 @@
                             <tr class="delete-product">
                                             <td>
                                                 <div class="cart-anchor-image">
-                                                    <a href="single-product.html">
+                                                    <a href="#">
                                                         <img src="` + item.image + `" alt="Product">
                                                         <h6>` + item.title + `</h6>
                                                     </a>
