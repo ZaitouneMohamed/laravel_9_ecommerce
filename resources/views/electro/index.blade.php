@@ -79,10 +79,10 @@
                                                 </div>
                                                 <div class="price-template">
                                                     <div class="item-new-price">
-                                                        ${{ $item->price }}
+                                                        MAD {{ $item->price }}
                                                     </div>
                                                     <div class="item-old-price">
-                                                        ${{ $item->old_price }}
+                                                        MAD {{ $item->old_price }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -356,29 +356,16 @@
                                                         width="120px" height="120px">
                                                 </a>
                                                 <div class="item-action-behaviors">
-                                                    <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick
-                                                        Look
-                                                    </a>
-                                                    <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                    <a class="item-addwishlist" href="javascript:void(0)">Add to
-                                                        Wishlist</a>
+                                                    @auth
+                                                        <a class="item-addwishlist" href="javascript:void(0)">Add to
+                                                            Wishlist</a>
+                                                    @endauth
                                                     <a class="item-addCart" href="javascript:void(0)"
                                                         onclick="AddToCart({{ $item->id }})">Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">
                                                 <div class="what-product-is">
-                                                    <ul class="bread-crumb">
-                                                        <li class="has-separator">
-                                                            <a href="#">Men's</a>
-                                                        </li>
-                                                        <li class="has-separator">
-                                                            <a href="#">Tops</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Hoodies</a>
-                                                        </li>
-                                                    </ul>
                                                     <h6 class="item-title">
                                                         <a
                                                             href="{{ route('GetProduct', $item->id) }}">{{ $item->title }}</a>
@@ -386,10 +373,10 @@
                                                 </div>
                                                 <div class="price-template">
                                                     <div class="item-new-price">
-                                                        ${{ $item->price }}
+                                                        MAD {{ $item->price }}
                                                     </div>
                                                     <div class="item-old-price">
-                                                        ${{ $item->old_price }}
+                                                        MAD {{ $item->old_price }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -425,40 +412,26 @@
                                                         width="120px" height="120px">
                                                 </a>
                                                 <div class="item-action-behaviors">
-                                                    <a class="item-quick-look" data-toggle="modal"
-                                                        href="#quick-view">Quick
-                                                        Look
-                                                    </a>
-                                                    <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                    <a class="item-addwishlist" href="javascript:void(0)">Add to
-                                                        Wishlist</a>
+                                                    @auth
+                                                        <a class="item-addwishlist" href="javascript:void(0)">Add to
+                                                            Wishlist</a>
+                                                    @endauth
                                                     <a class="item-addCart" onclick="AddToCart({{ $item->id }})">Add
                                                         to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="item-content">
                                                 <div class="what-product-is">
-                                                    <ul class="bread-crumb">
-                                                        <li class="has-separator">
-                                                            <a href="shop-v1-root-category.html">Men's</a>
-                                                        </li>
-                                                        <li class="has-separator">
-                                                            <a href="shop-v2-sub-category.html">Tops</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-v3-sub-sub-category.html">Hoodies</a>
-                                                        </li>
-                                                    </ul>
                                                     <h6 class="item-title">
                                                         <a href="single-product.html">{{ $item->title }}</a>
                                                     </h6>
                                                 </div>
                                                 <div class="price-template">
                                                     <div class="item-new-price">
-                                                        ${{ $item->price }}
+                                                        MAD {{ $item->price }}
                                                     </div>
                                                     <div class="item-old-price">
-                                                        ${{ $item->old_price }}
+                                                        MAD {{ $item->old_price }}
                                                     </div>
                                                 </div>
                                             </div>

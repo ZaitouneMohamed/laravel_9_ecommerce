@@ -41,6 +41,11 @@
                                         <i class="far fa-heart u-s-m-r-9"></i>
                                         My Wishlist</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('logout') }}">
+                                        <i class="fa fa-user-o" aria-hidden="true"></i>
+                                        Log Out</a>
+                                </li>
                             @else
                                 <li>
                                     <a href="{{ route('login') }}">

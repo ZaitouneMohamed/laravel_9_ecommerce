@@ -81,7 +81,7 @@
                                                 <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">Delivery Frais</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text">$30.00</span>
+                                                <span class="calc-text">MAD 30.00</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -178,7 +178,7 @@
                                                     <div class="quantity">
                                                         <input type="text" class="quantity-text-field"
                                                             id="` + item.id + `" value="` + item.quantity +
-                                `" oninput="edit(` + item.id + `)"
+                                `" onchange="edit(` + item.id + `)"
                                                             >
                                                     </div>
                                                 </div>

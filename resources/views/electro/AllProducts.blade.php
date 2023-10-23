@@ -22,21 +22,6 @@
     <!-- Shop-Page -->
     <div class="page-shop u-s-p-t-80">
         <div class="container">
-            <!-- Shop-Intro -->
-            <div class="shop-intro">
-                <ul class="bread-crumb">
-                    <li class="has-separator">
-                        <a href="home.html">Home</a>
-                    </li>
-                    <li class="has-separator">
-                        <a href="shop-v1-root-category.html">Men's Clothing</a>
-                    </li>
-                    <li class="is-marked">
-                        <a href="shop-v3-sub-sub-category.html">Tops</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Shop-Intro /- -->
             <div class="row">
                 <!-- Shop-Left-Side-Bar-Wrapper -->
                 <div class="col-lg-3 col-md-3 col-sm-12">
@@ -92,7 +77,7 @@
                                             @auth
                                                 <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
                                             @endauth
-                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                            <a class="item-addCart" href="javascript:void(0)" onclick="AddToCart({{ $item->id }})">Add to Cart</a>
                                         </div>
                                     </div>
                                     <div class="item-content">

@@ -415,7 +415,7 @@
                                                         @foreach (Auth::user()->adresses as $item)
                                                             <div class="u-s-m-b-13">
                                                                 <input type="radio" class="radio-box" name="adresse"
-                                                                    id="cash-on-delivery">
+                                                                    id="cash-on-delivery" checked>
                                                                 <label class="label-text"
                                                                     for="cash-on-delivery">{{ $item->name }}</label>
                                                             </div>
@@ -605,7 +605,7 @@
                                                         <h3 class="order-h3">Subtotal</h3>
                                                     </td>
                                                     <td>
-                                                        <h3 class="order-h3">${{ $total }}</h3>
+                                                        <h3 class="order-h3">MAD {{ $total }}</h3>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -613,7 +613,7 @@
                                                         <h3 class="order-h3">delivery price</h3>
                                                     </td>
                                                     <td>
-                                                        <h3 class="order-h3">$30</h3>
+                                                        <h3 class="order-h3">MAD 30</h3>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -621,7 +621,7 @@
                                                         <h3 class="order-h3">Subtotal</h3>
                                                     </td>
                                                     <td>
-                                                        <h3 class="order-h3">${{ $total + 30 }}</h3>
+                                                        <h3 class="order-h3">MAD {{ $total + 30 }}</h3>
                                                     </td>
                                                 </tr>
                                             @endif
