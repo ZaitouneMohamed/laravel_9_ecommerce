@@ -28,18 +28,6 @@
         </div>
     </div>
     <!-- Main-Slider /- -->
-    <!-- Banner-Layer -->
-    <div class="banner-layer">
-        <div class="container">
-            <div class="image-banner">
-                <a href="#" class="mx-auto banner-hover effect-dark-opacity">
-                    <img class="img-fluid" src="{{ asset('assets/electro/images/banners/bannerlayer-1.jpg') }} "
-                        alt="Winter Season Banner">
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- Banner-Layer /- -->
     <!-- Men-Clothing -->
     <section class="section-maker">
         <div class="container">
@@ -592,21 +580,21 @@
                                 <div class="section-1-title-breadcrumb-rating">
                                     <div class="product-title">
                                         <h1>
-                                            <a href="single-product.html">Casual Hoodie Full Cotton</a>
+                                            <a href="#">Casual Hoodie Full Cotton</a>
                                         </h1>
                                     </div>
                                     <ul class="bread-crumb">
                                         <li class="has-separator">
-                                            <a href="home.html">Home</a>
+                                            <a href="#">Home</a>
                                         </li>
                                         <li class="has-separator">
-                                            <a href="shop-v1-root-category.html">Men's Clothing</a>
+                                            <a href="#">Men's Clothing</a>
                                         </li>
                                         <li class="has-separator">
-                                            <a href="shop-v2-sub-category.html">Tops</a>
+                                            <a href="#">Tops</a>
                                         </li>
                                         <li class="is-marked">
-                                            <a href="shop-v3-sub-sub-category.html">Hoodies</a>
+                                            <a href="#">Hoodies</a>
                                         </li>
                                     </ul>
                                     <div class="product-rating">

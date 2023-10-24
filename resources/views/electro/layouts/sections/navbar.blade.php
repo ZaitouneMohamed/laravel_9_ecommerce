@@ -72,7 +72,7 @@
                 <div class="col-lg-3 col-md-9 col-sm-6">
                     <div class="brand-logo text-lg-center">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('assets/electro/images/main-logo/groover-branding-1.png') }} "
+                            <img src="{{ asset('assets/electro/images/about/main-logo.jpeg') }} "
                                 alt="Groover Brand Logo" class="app-brand-logo">
                         </a>
                     </div>
@@ -91,12 +91,12 @@
                     <nav>
                         <ul class="mid-nav g-nav">
                             <li class="u-d-none-lg">
-                                <a href="home.html">
+                                <a href="#">
                                     <i class="ion ion-md-home u-c-brand"></i>
                                 </a>
                             </li>
                             <li class="u-d-none-lg">
-                                <a href="wishlist.html">
+                                <a href="#">
                                     <i class="far fa-heart"></i>
                                 </a>
                             </li>
@@ -120,7 +120,7 @@
             <button type="button" class="button fas fa-search" id="responsive-search"></button>
         </div>
         <div class="fixed-responsive-wrapper">
-            <a href="wishlist.html">
+            <a href="#">
                 <i class="far fa-heart"></i>
                 <span class="fixed-item-counter">4</span>
             </a>
@@ -147,7 +147,7 @@
                                 <ul class="v-list animated fadeIn">
                                     @foreach (\App\Models\Categorie::all() as $item)
                                         <li class="js-backdrop">
-                                            <a href="shop-v1-root-category.html">
+                                            <a href="#">
                                                 {{-- <i class="ion ion-md-shirt"></i> --}}
                                                 {{ $item->name }}
                                                 <i class="ion ion-ios-arrow-forward"></i>

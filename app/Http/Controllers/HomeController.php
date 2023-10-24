@@ -32,7 +32,8 @@ class HomeController extends Controller
     public function GetProduct($id)
     {
         $product = Product::with('Images')->find($id);
-        return view('electro.product', compact('product'));
+        $latest_products = Product::latest()->Active()->take(4)->get();
+        return view('electro.product', compact('product',"latest_products"));
     }
     public function Search(Request $request)
     {

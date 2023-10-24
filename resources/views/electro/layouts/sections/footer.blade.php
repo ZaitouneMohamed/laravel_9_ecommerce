@@ -27,13 +27,13 @@
                         <h6>CUSTOMER SERVICE</h6>
                         <ul>
                             <li>
-                                <a href="faq.html">FAQs</a>
+                                <a href="#">FAQs</a>
                             </li>
                             <li>
-                                <a href="track-order.html">Track Order</a>
+                                <a href="#">Track Order</a>
                             </li>
                             <li>
-                                <a href="terms-and-conditions.html">Terms & Conditions</a>
+                                <a href="#">Terms & Conditions</a>
                             </li>
                         </ul>
                     </div>
@@ -43,13 +43,13 @@
                         <h6>COMPANY</h6>
                         <ul>
                             <li>
-                                <a href="home.html">Home</a>
+                                <a href="{{route('home')}}">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About</a>
+                                <a href="{{route('about')}}">About</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="#">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -59,13 +59,13 @@
                         <h6>INFORMATION</h6>
                         <ul>
                             <li>
-                                <a href="store-directory.html">Categories Directory</a>
+                                <a href="#">Categories Directory</a>
                             </li>
                             <li>
-                                <a href="wishlist.html">My Wishlist</a>
+                                <a href="#">My Wishlist</a>
                             </li>
                             <li>
-                                <a href="cart.html">My Cart</a>
+                                <a href="#">My Cart</a>
                             </li>
                         </ul>
                     </div>
@@ -138,8 +138,7 @@
                     </li>
                 </ul>
             </div>
-            <p class="copyright-text">Copyright &copy; 2018
-                <a href="home.html">Groover</a> All Right Reserved</p>
+            <p class="copyright-text">Copyright &copy; 2023 All Right Reserved</p>
         </div>
     </div>
     <!-- Bottom-Footer /- -->
