@@ -28,30 +28,30 @@
                         <h1>Welcome to
                             <span>Canal Informatique</span>
                         </h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, delectus, modi? Accusamus fuga
-                            itaque laborum modi nam ullam vel veniam! Beatae consectetur debitis ipsa ipsam iusto provident
-                            quod. Sit, voluptatum!. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
-                            ea, earum eum eveniet ex, expedita id molestias nisi perspiciatis saepe vero voluptas
-                            voluptatum. Id, illum ipsum iste laboriosam placeat quo.
+                        <p>
+                            Bienvenue chez Canal Informatique, votre destination en ligne ultime pour tout ce qui concerne
+                            l'informatique, les logiciels et les solutions. Nous sommes fiers de vous offrir une expérience
+                            de shopping exceptionnelle, où la technologie rencontre l'innovation.
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, delectus, modi? Accusamus fuga
-                            itaque laborum modi nam ullam vel veniam! Beatae consectetur debitis ipsa ipsam iusto provident
-                            quod. Sit, voluptatum!. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
-                            ea, earum eum eveniet ex, expedita id molestias nisi perspiciatis saepe vero voluptas
-                            voluptatum. Id, illum ipsum iste laboriosam placeat quo.
+                        <p>
+                            Chez Canal Informatique, nous comprenons l'importance cruciale de l'informatique dans notre monde en
+                            constante évolution. C'est pourquoi nous nous efforçons de vous offrir une gamme complète de
+                            produits informatiques de haute qualité, des composants matériels aux logiciels sophistiqués, en
+                            passant par des solutions sur mesure pour répondre à vos besoins professionnels.
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, delectus, modi? Accusamus fuga
-                            itaque laborum modi nam ullam vel veniam! Beatae consectetur debitis ipsa ipsam iusto provident
-                            quod. Sit, voluptatum!. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium,
-                            ea, earum eum eveniet ex, expedita id molestias nisi perspiciatis saepe vero voluptas
-                            voluptatum. Id, illum ipsum iste laboriosam placeat quo.
+                        <p>
+                            Notre équipe dévouée travaille sans relâche pour vous proposer les dernières avancées
+                            technologiques, des marques renommées et des solutions adaptées à toutes les exigences. Nous
+                            croyons en l'accessibilité, en l'efficacité et en la fiabilité, et c'est ce que vous trouverez
+                            chez Canal Informatique.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="about-me-image u-s-m-b-30">
                         <div class="banner-hover effect-border-scaling-gray">
-                            <img class="img-fluid" src="{{ asset('assets/electro/images/about/logo.jpeg') }}" alt="About Picture">
+                            <img class="img-fluid" src="{{ asset('assets/electro/images/about/logo.jpeg') }}"
+                                alt="About Picture">
                         </div>
                     </div>
                     <div class="about-social text-center u-s-m-b-30">
