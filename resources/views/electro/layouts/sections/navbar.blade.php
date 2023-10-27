@@ -73,7 +73,7 @@
                     <div class="brand-logo text-lg-center">
                         <a href="{{ route('home') }}">
                             <img src="{{ asset('assets/electro/images/about/main-logo.jpeg') }} "
-                                alt="Groover Brand Logo" class="app-brand-logo">
+                                alt="Groover Brand Logo" class="app-brand-logo" style="margin-left: -128px">
                         </a>
                     </div>
                 </div>
