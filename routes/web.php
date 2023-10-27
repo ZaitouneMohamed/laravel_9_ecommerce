@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(ControllersHomeController::class)->group(function () {
     Route::get('/', "Home")->name("home");
     Route::get('/about', "about")->name("about");
+    Route::get('/contact', "contact")->name("contact");
     Route::get('/checkout', "checkout")->name("checkout");
     Route::get('/product/{id}', "GetProduct")->name("GetProduct");
     Route::get('/Search', "Search")->name("Search");

@@ -207,7 +207,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">Contact
+                            <a href="{{ route('contact') }}">Contact
                                 {{-- <span class="superscript-label-hot">HOT</span> --}}
                             </a>
                         </li>

@@ -33,14 +33,19 @@ class HomeController extends Controller
     {
         $product = Product::with('Images')->find($id);
         $latest_products = Product::latest()->Active()->take(4)->get();
-        return view('electro.product', compact('product',"latest_products"));
+        return view('electro.product', compact('product', "latest_products"));
     }
     public function Search(Request $request)
     {
         $products = Product::where('title', 'LIKE', '%' . $request->word . '%')->paginate(15);
         return view('electro.AllProducts', compact("products"));
     }
-    public function about() {
+    public function about()
+    {
         return view('electro.about');
+    }
+    public function contact()
+    {
+        return view('electro.contact');
     }
 }
